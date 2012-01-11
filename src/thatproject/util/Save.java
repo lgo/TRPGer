@@ -19,14 +19,17 @@ import org.w3c.dom.Node;
 public class Save {
 
     private static String[] paths = { "data/save.xml" };
-    private int saveNun;
-    private Document document = null;
+    private static int saveNum;
+    private static Document document = null;
 
     public Save() {
         init();
     }
 
-    private void init() {
+    /**
+     * Initialization - Checks if files exists
+     */
+    private static void init() {
         if (fileExists(paths[0])) {
 
         } else {
@@ -34,7 +37,7 @@ public class Save {
         }
     }
 
-    private boolean fileExists(String path) {
+    private static boolean fileExists(String path) {
         File f = new File(path);
         if (f.exists())
             return true;
@@ -42,13 +45,20 @@ public class Save {
             return false;
     }
 
+    
+    /**
+     * Save all current XML objects to disk
+     */
     private void save() {
         for (String path : paths) {
 
         }
     }
 
-    public void createSave() {
+    /**
+     * Create a new save
+     */
+    public static void createSave() {
         DocumentBuilder builder = null;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
@@ -59,77 +69,73 @@ public class Save {
         }
 
         // Insert Root Order
-        Element root = (Element) document.createElement("Character");
+        Element root = document.createElement("Character");
         // Insert child Manifest
         document.appendChild(root);
-        Node manifestChild = document.createElement("save"+saveNum);
-        root.appendChild(manifestChild);
+        Node child = document.createElement("save" + saveNum);
+        root.appendChild(child);
         // Insert Items
-        insertItem(document, manifestChild, "101", "Name one", "$29.99");
-        insertItem(document, manifestChild, "108", "Name two", "$19.99");
-        insertItem(document, manifestChild, "125", "Name three", "$39.99");
-        insertItem(document, manifestChild, "143", "Name four", "$59.99");
-        insertItem(document, manifestChild, "118", "Name five", "$99.99");
+        createSave(document, child);
 
         // Normalizing the DOM
         document.getDocumentElement().normalize();
-        
+
         try {
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            Transformer transformer = TransformerFactory.newInstance()
+                    .newTransformer();
 
-        //initialize StreamResult with File object to save to file
-        StreamResult result = new StreamResult(new StringWriter());
-        DOMSource source = new DOMSource(document);
-        transformer.transform(source, result);
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
-        String xmlString = result.getWriter().toString();
-        System.out.println(xmlString);
+            // initialize StreamResult with File object to save to file
+            StreamResult result = new StreamResult(new StringWriter());
+            DOMSource source = new DOMSource(document);
+            transformer.transform(source, result);
+
+            String xmlString = result.getWriter().toString();
+            System.out.println(xmlString);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * Insert "Item" to Document
+     * Create document base for new character
      * 
      * @param document
-     *            - Order Document
+     *            - Document to add to
      * @param parent
-     *            - Node where to insert a "Item"
-     * @param id
-     *            - Item's ID
-     * @param name
-     *            - Item's Name
-     * @param price
-     *            - Item's Price
+     *            - Save to append to
      */
-    private void insertItem(Document document, Node parent, String id,
-            String name, String price) {
-        // Insert child Item
-        Node itemChild = document.createElement("Item");
-        parent.appendChild(itemChild);
+    private static void createSave(Document d, Node parent) {
+        Node stats = document.createElement("stats");
+        parent.appendChild(stats);
 
-        // Insert child ID
-        Node item = document.createElement("ID");
-        itemChild.appendChild(item);
-        // Insert ID value
-        Node value = document.createTextNode(id);
-        item.appendChild(value);
+        insertElement(d, stats, "lvl", "1");
+        insertElement(d, stats, "exp", "0");
+        insertElement(d, stats, "str", "1");
+        insertElement(d, stats, "end", "1");
+        insertElement(d, stats, "dex", "1");
+        insertElement(d, stats, "luc", "1");
+        insertElement(d, stats, "gold", "100");
+    }
 
-        // Insert child NAME
-        item = document.createElement("NAME");
-        itemChild.appendChild(item);
-        // Insert NAME value
-        value = document.createTextNode(name);
-        item.appendChild(value);
-
-        // Insert child PRICE
-        item = document.createElement("PRICE");
-        itemChild.appendChild(item);
-        // Insert PRICE value
-        value = document.createTextNode(price);
+    /**
+     * Insert element into parent
+     * 
+     * @param document
+     *            - Document to add to
+     * @param parent
+     *            - Parent to appent elements into
+     * @param element
+     *            - Element to create
+     * @param content
+     *            - Content to insert into element
+     */
+    private static void insertElement(Document document, Node parent,
+            String element, String content) {
+        Node item = document.createElement(element);
+        parent.appendChild(item);
+        Node value = document.createTextNode(content);
         item.appendChild(value);
     }
 
