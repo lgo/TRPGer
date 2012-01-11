@@ -19,6 +19,7 @@ import org.w3c.dom.Node;
 public class Save {
 
     private static String[] paths = { "data/save.xml" };
+    private static String[] sections = { "stats", "attributes", "items" };
     private static int saveNum;
     private static Document document = null;
 
@@ -33,7 +34,7 @@ public class Save {
         if (fileExists(paths[0])) {
 
         } else {
-
+        	createSave();
         }
     }
 
@@ -75,7 +76,7 @@ public class Save {
         Node child = document.createElement("save" + saveNum);
         root.appendChild(child);
         // Insert Items
-        createSave(document, child);
+        createSave(document, child, sections);
 
         // Normalizing the DOM
         document.getDocumentElement().normalize();
@@ -106,17 +107,20 @@ public class Save {
      * @param parent
      *            - Save to append to
      */
-    private static void createSave(Document d, Node parent) {
-        Node stats = document.createElement("stats");
-        parent.appendChild(stats);
-
-        insertElement(d, stats, "lvl", "1");
-        insertElement(d, stats, "exp", "0");
-        insertElement(d, stats, "str", "1");
-        insertElement(d, stats, "end", "1");
-        insertElement(d, stats, "dex", "1");
-        insertElement(d, stats, "luc", "1");
-        insertElement(d, stats, "gold", "100");
+    private static void createSave(Document d, Node parent, String[] elements) {
+        Node[] element = new Node[elements.length];
+    	for (int i = 0; i < elements.length; i++) {
+    		element[i] = document.createElement(elements[i]);
+    		parent.appendChild(element[i]);
+    	} 
+    	
+        insertElement(d, element[0], "lvl", "1");
+        insertElement(d, element[0], "exp", "0");
+        insertElement(d, element[0], "str", "1");
+        insertElement(d, element[0], "end", "1");
+        insertElement(d, element[0], "dex", "1");
+        insertElement(d, element[0], "luc", "1");
+        insertElement(d, element[0], "gold", "100");
     }
 
     /**
@@ -131,8 +135,7 @@ public class Save {
      * @param content
      *            - Content to insert into element
      */
-    private static void insertElement(Document document, Node parent,
-            String element, String content) {
+    private static void insertElement(Document document, Node parent, String element, String content) {
         Node item = document.createElement(element);
         parent.appendChild(item);
         Node value = document.createTextNode(content);
