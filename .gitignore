@@ -1,0 +1,5 @@
+##Build folder
+/build
+
+##Class files
+*.class
