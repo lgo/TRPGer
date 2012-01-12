@@ -1,7 +1,16 @@
 package thatproject.util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.io.StringWriter;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.io.ByteArrayInputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,7 +29,6 @@ public class Save {
 
     private static String[] paths = { "data/save.xml" };
     private static String[] sections = { "stats", "attributes", "items" };
-    private static int saveNum;
     private static Document document = null;
 
     public Save() {
@@ -38,6 +46,11 @@ public class Save {
         }
     }
 
+    /**
+     * Checks if the given file exists (Includes directories)
+     * @param path to file for checking
+     * @return Boolean
+     */
     private static boolean fileExists(String path) {
         File f = new File(path);
         if (f.exists())
@@ -94,9 +107,25 @@ public class Save {
 
             String xmlString = result.getWriter().toString();
             System.out.println(xmlString);
+            saveToFile(xmlString);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    /**
+     * Saves the a string to file - Mainly for XML use
+     * @param xml String to output
+     */
+    public static void saveToFile (String xml) {
+    	FileOutputStream fout;
+		try {
+			fout = new FileOutputStream ("data/save.xml");
+			new PrintStream(fout).println (xml);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+    	
     }
 
     /**
