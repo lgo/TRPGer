@@ -1,17 +1,9 @@
 package thatproject.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.io.StringWriter;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.io.ByteArrayInputStream;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,6 +21,7 @@ public class Save {
 
     private static String[] paths = { "data/save.xml" };
     private static String[] sections = { "stats", "attributes", "items" };
+    private static int saveNum = 0;
     private static Document document = null;
 
     public Save() {
@@ -91,12 +84,19 @@ public class Save {
         // Insert Items
         createSave(document, child, sections);
 
-        // Normalizing the DOM
+        
+    }
+    
+    /**
+     * Saves the a string to file - Mainly for XML use
+     * @param xml String to output
+     */
+    public static void saveToFile (String xml) {
+    	// Normalizing the DOM
         document.getDocumentElement().normalize();
 
         try {
-            Transformer transformer = TransformerFactory.newInstance()
-                    .newTransformer();
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
 
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
@@ -106,26 +106,11 @@ public class Save {
             transformer.transform(source, result);
 
             String xmlString = result.getWriter().toString();
-            System.out.println(xmlString);
-            saveToFile(xmlString);
+            FileOutputStream fout = new FileOutputStream ("data/save.xml");
+			new PrintStream(fout).println (xmlString);
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    /**
-     * Saves the a string to file - Mainly for XML use
-     * @param xml String to output
-     */
-    public static void saveToFile (String xml) {
-    	FileOutputStream fout;
-		try {
-			fout = new FileOutputStream ("data/save.xml");
-			new PrintStream(fout).println (xml);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-    	
     }
 
     /**
