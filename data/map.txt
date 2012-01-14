@@ -1,0 +1,5 @@
+1 //X Cell
+2 //Y Cell
+1 //Map group (Say 1 is forest, forest monsters and events are here)
+Inner Forest //Specific Map Name (If empty generic map group name)
+Entry information of what comes up when you enter the zone //ONE LINE

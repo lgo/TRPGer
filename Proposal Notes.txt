@@ -1,0 +1,5 @@
+Stamina - No regenerate
+	ONLY FROM FOOD
+	NO FOOD IN BATTLES RAWR
+
+Attacks - Based on 100% to attack
