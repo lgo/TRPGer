@@ -12,6 +12,5 @@ public class ThatProject {
 
     public static void main(String[] args) {
         main.start();
-        Save.createSave();
     }
 }
