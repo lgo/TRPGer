@@ -6,7 +6,7 @@ public class Player extends Entity {
 
     private int lvl, exp, str, end, dex, luc, gold;
     private int x, y;
-    
+
     public Player(int[] stats) {
         lvl = stats[0];
         exp = stats[1];

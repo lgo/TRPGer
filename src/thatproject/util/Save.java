@@ -62,13 +62,13 @@ public class Save {
             e.printStackTrace();
         }
     }
-    
+
     public static int[] read() {
         int[] temp = new int[10];
         for (int i = 0; i < save.getLength(); i++) {
 
             Node nNode = save.item(i);
-            
+
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) nNode;
                 for (int j = 0; j < stats.length; j++) {

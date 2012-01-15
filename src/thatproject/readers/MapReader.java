@@ -14,7 +14,7 @@ public class MapReader extends FileReader {
         read();
         parse();
     }
-    
+
     /**
      * Start thread for creating the GUI
      */
@@ -45,10 +45,10 @@ public class MapReader extends FileReader {
         for (int i = 0; i < content.size() / 5; i += 5) {
             x = Integer.parseInt(split(content.get(i))[0]);
             y = Integer.parseInt(split(content.get(i))[1]);
-            zone = Integer.parseInt(content.get(i+1));
-            name = content.get(i+2);
-            description = content.get(i+3);
-            directions = directionSplit(content.get(i+4));
+            zone = Integer.parseInt(content.get(i + 1));
+            name = content.get(i + 2);
+            description = content.get(i + 3);
+            directions = directionSplit(content.get(i + 4));
             ThatProject.mm.populateWorlds(x, y, name, description, directions, zone);
         }
     }

@@ -14,10 +14,10 @@ public class ThatProject {
 
     public static MapManager mm = new MapManager(0, 0, 100, 100);
     public static MainMenu m;
-    
+
     public static MapReader mapr;
     public static MonsterReader monsterr;
-    
+
     public static Save s = new Save();
 
     public static void main(String[] args) {

@@ -13,14 +13,12 @@ public abstract class FileReader {
 
     public void read() {
         try {
-            FileInputStream fstream = new FileInputStream(this.path);
+            FileInputStream fstream = new FileInputStream(path);
             DataInputStream in = new DataInputStream(fstream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String strLine;
-            int i = 0;
             while ((strLine = br.readLine()) != null) {
                 content.add(strLine);
-                i++;
             }
             in.close();
         } catch (Exception e) {
