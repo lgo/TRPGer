@@ -9,6 +9,7 @@ public class FileReader {
 
     public static String path;
 
+    
     public static void read(String args[]) {
         try {
             // Open the file that is the first
@@ -26,8 +27,12 @@ public class FileReader {
             // Close the input stream
             in.close();
         } catch (Exception e) {// Catch exception if any
-            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
+    }
+    
+    public static String[] split(String input) {
+        return input.split(",\\s*");
     }
 
 }
