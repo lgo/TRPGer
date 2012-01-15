@@ -23,8 +23,10 @@ public class Save {
 
     private static String[] paths = { "data/save.xml" };
     private static String[] sections = { "stats", "attributes", "items" };
+    private static String[] stats = { "lvl", "exp", "str", "end", "luc", "dex", "gold" };
     private static int saveNum = 0;
     private static Document document = null;
+    private static NodeList save;
 
     public Save() {
         init();
@@ -55,19 +57,26 @@ public class Save {
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
 
-            NodeList save = doc.getElementsByTagName("save0");
-
-            for (int temp = 0; temp < save.getLength(); temp++) {
-
-                Node nNode = save.item(temp);
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode;
-                    getTagValue("luc", eElement);
-                }
-            }
+            save = doc.getElementsByTagName("save0");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public static int[] read() {
+        int[] temp = new int[10];
+        for (int i = 0; i < save.getLength(); i++) {
+
+            Node nNode = save.item(i);
+            
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+                for (int j = 0; j < stats.length; j++) {
+                    temp[j] = Integer.parseInt(getTagValue(stats[j], eElement));
+                }
+            }
+        }
+        return temp;
     }
 
     private static String getTagValue(String sTag, Element eElement) {

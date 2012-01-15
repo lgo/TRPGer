@@ -10,8 +10,8 @@ public class MapManager {
         currentLocation = locations[x][y];
     }
 
-    public void populateWorlds(int x, int y, String name, String description, boolean[] directions) {
-        locations[x][y] = new Map(x, y, name, description, directions);
+    public void populateWorlds(int x, int y, String name, String description, boolean[] directions, int zone) {
+        locations[x][y] = new Map(x, y, name, description, directions, zone);
     }
 
 }

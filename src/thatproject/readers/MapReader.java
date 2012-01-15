@@ -1,32 +1,55 @@
 package thatproject.readers;
 
+import java.lang.reflect.InvocationTargetException;
+
 import thatproject.ThatProject;
 import thatproject.util.FileReader;
 
 public class MapReader extends FileReader {
 
-    public static String path = "data/map.txt";
+    private String pathN = "data/map.txt";
 
     public MapReader() {
+        path = pathN;
         read();
         parse();
     }
     
+    /**
+     * Start thread for creating the GUI
+     */
+    public static void exec() {
+        // Create a seperate dispatch thread for initializing GUI
+        try {
+            javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
+                @Override
+                public void run() {
+                    init();
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void init() {
         ThatProject.mapr = new MapReader();
     }
 
     private void parse() {
-        int x, y;
+        int x, y, zone;
         String name, description;
         boolean[] directions = new boolean[4];
-        for (int i = 0; i < content.length / 5; i += 5) {
-            x = Integer.parseInt(content[i]);
-            y = Integer.parseInt(content[i + 1]);
-            name = content[i + 2];
-            description = content[i + 3];
-            directions = directionSplit(content[i + 4]);
-            ThatProject.mm.populateWorlds(x, y, name, description, directions);
+        for (int i = 0; i < content.size() / 5; i += 5) {
+            x = Integer.parseInt(split(content.get(i))[0]);
+            y = Integer.parseInt(split(content.get(i))[1]);
+            zone = Integer.parseInt(content.get(i+1));
+            name = content.get(i+2);
+            description = content.get(i+3);
+            directions = directionSplit(content.get(i+4));
+            ThatProject.mm.populateWorlds(x, y, name, description, directions, zone);
         }
     }
 
