@@ -3,6 +3,7 @@ package thatproject.menu;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -27,14 +28,21 @@ public class MainMenu extends JPanel {
     private static final int tfY = taY + taH + 5;
     private static final int tfW = taW;
     private static final int tfH = 20;
+    
+    private static String hi;
 
     private static JDesktopPane desk = new JDesktopPane();
 
+    public MainMenu() {
+        
+    }
+    
     public MainMenu(JFrame frame) {
         super(new GridBagLayout());
 
         // Setup text area
         textArea = new JTextArea();
+        textArea.setOpaque(false);
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -65,9 +73,26 @@ public class MainMenu extends JPanel {
      * 
      * @param String to set
      */
+    
     public void set(String s) {
-        textArea.setText(s);
-        contents = s;
+     // Create a seperate dispatch thread for initializing GUI
+        hi = s;
+        try {
+            javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
+                @Override
+                public void run() {
+                    set();
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+    public void set() {
+        textArea.setText(hi);
+        contents = hi;
     }
 
     /**
@@ -79,7 +104,7 @@ public class MainMenu extends JPanel {
                                                              // application on
                                                              // window close
 
-        MainMenu main = new MainMenu(frame);// Initialize un-static functions
+        ThatProject.m = new MainMenu(frame);// Initialize un-static functions and create object
         frame.setSize(ThatProject.x, ThatProject.y);// Set frame size
         frame.setVisible(true);
 
@@ -99,12 +124,18 @@ public class MainMenu extends JPanel {
      * Start thread for creating the GUI
      */
     public static void exec() {
-        // Create a seperate scheduled dispatch thread for initializing GUI
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                init();
-            }
-        });
+        // Create a seperate dispatch thread for initializing GUI
+        try {
+            javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
+                @Override
+                public void run() {
+                    init();
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -11,6 +11,10 @@ public class MapReader extends FileReader {
         read();
         parse();
     }
+    
+    public static void init() {
+        ThatProject.mapr = new MapReader();
+    }
 
     private void parse() {
         int x, y;
@@ -42,4 +46,5 @@ public class MapReader extends FileReader {
         }
         return bools;
     }
+
 }

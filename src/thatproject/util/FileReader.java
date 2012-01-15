@@ -4,10 +4,11 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
 
-public class FileReader {
+public abstract class FileReader {
 
-    public static String path;
+    public String path;
     protected String[] content;
 
     public void read() {
@@ -27,8 +28,30 @@ public class FileReader {
         }
     }
 
-    public String[] split(String input) {
+    public static String[] split(String input) {
         return input.split(",\\s*");
     }
+    
+    /**
+     * Start thread for creating the GUI
+     */
+    public static void exec() {
+        // Create a seperate dispatch thread for initializing GUI
+        try {
+            javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
+                @Override
+                public void run() {
+                    init();
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static void init() {
+        
+    }
 }
