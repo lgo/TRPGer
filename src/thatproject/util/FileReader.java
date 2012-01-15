@@ -10,7 +10,6 @@ public class FileReader {
     public static String path;
     protected String[] content;
 
-    
     public void read() {
         try {
             FileInputStream fstream = new FileInputStream(path);
@@ -27,7 +26,7 @@ public class FileReader {
             e.printStackTrace();
         }
     }
-    
+
     public String[] split(String input) {
         return input.split(",\\s*");
     }

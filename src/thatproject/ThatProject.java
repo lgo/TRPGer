@@ -8,7 +8,7 @@ public class ThatProject {
 
     public static int x = 700, y = 600;
     public static MainMenu main = new MainMenu(x, y);
-    public static MapManager mm = new MapManager(100,100);
+    public static MapManager mm = new MapManager(0, 0, 100, 100);
 
     public static Save s = new Save();
 

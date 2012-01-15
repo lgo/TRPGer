@@ -44,30 +44,25 @@ public class Save {
     /**
      * Opens the XML file
      * 
-     * @param uri
-     *            of the XML location
+     * @param uri of the XML location
      */
     private static void openFile(String uri) {
         try {
 
             File fXmlFile = new File(uri);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory
-                    .newInstance();
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
 
-            System.out.println("Root element :"
-                    + doc.getDocumentElement().getNodeName());
-            NodeList nList = doc.getElementsByTagName("save0");
-            System.out.println("-----------------------");
+            NodeList save = doc.getElementsByTagName("save0");
 
-            for (int temp = 0; temp < nList.getLength(); temp++) {
+            for (int temp = 0; temp < save.getLength(); temp++) {
 
-                Node nNode = nList.item(temp);
+                Node nNode = save.item(temp);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    System.out.println(getTagValue("luc", eElement));
+                    getTagValue("luc", eElement);
                 }
             }
         } catch (Exception e) {
@@ -76,8 +71,7 @@ public class Save {
     }
 
     private static String getTagValue(String sTag, Element eElement) {
-        NodeList nlList = eElement.getElementsByTagName(sTag).item(0)
-                .getChildNodes();
+        NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
 
         Node nValue = nlList.item(0);
 
@@ -87,8 +81,7 @@ public class Save {
     /**
      * Checks if the given file exists (Includes directories)
      * 
-     * @param path
-     *            to file for checking
+     * @param path to file for checking
      * @return Boolean
      */
     private static boolean fileExists(String path) {
@@ -134,41 +127,10 @@ public class Save {
     }
 
     /**
-     * Saves the a string to file - Mainly for XML use
-     * 
-     * @param xml
-     *            String to output
-     */
-    public static void saveToFile() {
-        // Normalizing the DOM
-        document.getDocumentElement().normalize();
-
-        try {
-            Transformer transformer = TransformerFactory.newInstance()
-                    .newTransformer();
-
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-            // initialize StreamResult with File object to save to file
-            StreamResult result = new StreamResult(new StringWriter());
-            DOMSource source = new DOMSource(document);
-            transformer.transform(source, result);
-
-            String xmlString = result.getWriter().toString();
-            FileOutputStream fout = new FileOutputStream("data/save.xml");
-            new PrintStream(fout).println(xmlString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Create document base for new character
      * 
-     * @param document
-     *            - Document to add to
-     * @param parent
-     *            - Save to append to
+     * @param document - Document to add to
+     * @param parent - Save to append to
      */
     private static void createSave(Document d, Node parent, String[] elements) {
         Node[] element = new Node[elements.length];
@@ -187,19 +149,41 @@ public class Save {
     }
 
     /**
+     * Saves the a string to file - Mainly for XML use
+     * 
+     * @param xml String to output
+     */
+    public static void saveToFile() {
+        // Normalizing the DOM
+        document.getDocumentElement().normalize();
+
+        try {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+            // initialize StreamResult with File object to save to file
+            StreamResult result = new StreamResult(new StringWriter());
+            DOMSource source = new DOMSource(document);
+            transformer.transform(source, result);
+
+            String xmlString = result.getWriter().toString();
+            FileOutputStream fout = new FileOutputStream("data/save.xml");
+            new PrintStream(fout).println(xmlString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Insert element into parent
      * 
-     * @param document
-     *            - Document to add to
-     * @param parent
-     *            - Parent to appent elements into
-     * @param element
-     *            - Element to create
-     * @param content
-     *            - Content to insert into element
+     * @param document - Document to add to
+     * @param parent - Parent to appent elements into
+     * @param element - Element to create
+     * @param content - Content to insert into element
      */
-    private static void insertElement(Document document, Node parent,
-            String element, String content) {
+    private static void insertElement(Document document, Node parent, String element, String content) {
         Node item = document.createElement(element);
         parent.appendChild(item);
         Node value = document.createTextNode(content);
