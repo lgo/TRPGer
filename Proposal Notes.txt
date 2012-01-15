@@ -1,5 +1,14 @@
-Stamina - No regenerate
-	ONLY FROM FOOD
-	NO FOOD IN BATTLES RAWR
+Stamina:
+	Only regenerates through food
+	Food is only edible out of combat
+	
+Attacks:
+	Strike - 75% base acc - 50% pow
+	Smash - 30% base acc - %100 pow
+	Slap - 100% base acc - 20% pow
 
-Attacks - Based on 100% to attack
+Armor:
+	Heavy Armor or Armor (In general) causes decrease in attack pow (few % at most)
+	Heavy Armor or Armor causes more stamina drain
+	Both are trade offs for % damage absorbed
+	Basic armor slots (Feet, head, torso, pants, hands)
