@@ -7,7 +7,7 @@ import thatproject.util.FileReader;
 
 public class MapReader extends FileReader {
 
-    private String pathN = "data/map.txt";
+    private String pathN = "data/monster/monster.txt";
 
     public MapReader() {
         path = pathN;
@@ -49,7 +49,7 @@ public class MapReader extends FileReader {
             name = content.get(i + 2);
             description = content.get(i + 3);
             directions = directionSplit(content.get(i + 4));
-            ThatProject.mm.populateWorlds(x, y, name, description, directions, zone);
+            ThatProject.mapm.populateWorlds(x, y, name, description, directions, zone);
         }
     }
 

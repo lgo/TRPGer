@@ -27,6 +27,10 @@ public abstract class FileReader {
     }
 
     public static String[] split(String input) {
-        return input.split(",\\s*");
+        return split(input, ",");
+    }
+
+    public static String[] split(String input, String regex) {
+        return input.split(regex);
     }
 }

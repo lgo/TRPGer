@@ -19,4 +19,8 @@ public class Map {
         zone = z;
     }
 
+    public String getName() {
+        return name;
+    }
+
 }
