@@ -3,6 +3,7 @@ package thatproject.menu;
 import thatproject.ThatProject;
 import thatproject.entities.being.Player;
 import thatproject.manager.MapManager;
+import thatproject.readers.AttackReader;
 import thatproject.readers.MapReader;
 import thatproject.readers.MonsterReader;
 import thatproject.readers.MovementReader;
@@ -14,6 +15,7 @@ public class Game {
     public static MapReader mapr;
     public static MonsterReader monsterr;
     public static MovementReader mover;
+    public static AttackReader attackr;
 
     public static final int mapW = 100;
     public static final int mapH = 100;
@@ -37,6 +39,7 @@ public class Game {
     private static void initFiles() {
         MapReader.exec();
         MovementReader.exec();
-        MonsterReader.exec();
+        // MonsterReader.exec();
+        // AttackReader.exec();
     }
 }

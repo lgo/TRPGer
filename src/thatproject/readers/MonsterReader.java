@@ -40,7 +40,7 @@ public class MonsterReader extends FileReader {
     }
 
     public static void init() {
-        Game.mapr = new MapReader();
+        Game.monsterr = new MonsterReader();
     }
 
     private void parse() {

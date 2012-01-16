@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import thatproject.manager.MonsterManager;
 import thatproject.menu.Game;
+import thatproject.util.Commands;
 import thatproject.util.FileReader;
 
 public class AttackReader extends FileReader {
@@ -36,7 +37,7 @@ public class AttackReader extends FileReader {
     }
 
     public static void init() {
-        Game.mapr = new MapReader();
+        Game.attackr = new AttackReader();
     }
 
     private void parse() {
@@ -44,7 +45,8 @@ public class AttackReader extends FileReader {
         int[] stats = null, zone = null;
         String name, description;
         String[] encounterLines = null;
-        for (int i = 0, count = 0; i < content.size() / 5; i += 5, count++) {
+        Commands.attackSize(content.size() - 1);
+        for (int i = 0; i < content.size() / 5; i += 5) {
             x = Integer.parseInt(split(content.get(i))[0]);
             y = Integer.parseInt(split(content.get(i))[1]);
             name = content.get(i + 2);
@@ -61,6 +63,6 @@ public class AttackReader extends FileReader {
      * @param id of the monster
      */
     private static void insertAttack(String input) {
-        
+
     }
 }
