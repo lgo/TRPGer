@@ -1,0 +1,6 @@
+1,2 // X and Y Cell Coord (overwrites the map on this coord)
+Whiterun //Specific Town Name
+Entry information of what comes up when you enter the town //ONE LINE, but as long as you want (Generic info of what the town has will already be listed)
+1,1,1,1 // Direction that you can go to (1 = true) North, South, East, West
+1,1,1 //Stuff the town withholds (e.g. tavern, smithy, item shop - 1,0,1 - usual 1 and 0 format)
+//Blank Line - Seperating the towns

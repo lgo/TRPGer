@@ -1,0 +1,6 @@
+Stab //Attack name
+0 //Stamina used
+1.1 //Speed modifier (1.1 * player speed)
+80 //Damage %
+100 //Accuracy %
+0 //Special paremeters (Stated by number ID in special.txt
