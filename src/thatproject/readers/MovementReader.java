@@ -8,7 +8,7 @@ import thatproject.util.FileReader;
 
 public class MovementReader extends FileReader {
 
-    private String pathN = "data/content/movement.txt";
+    private static final String pathN = "data/content/movement.txt";
 
     public MovementReader() {
         path = pathN;

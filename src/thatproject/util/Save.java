@@ -63,6 +63,11 @@ public class Save {
         }
     }
 
+    /**
+     * Reads the XML file for player stats
+     * 
+     * @return an integer array of stats
+     */
     public static int[] read() {
         int[] temp = new int[10];
         for (int i = 0; i < save.getLength(); i++) {
@@ -99,15 +104,6 @@ public class Save {
             return true;
         else
             return false;
-    }
-
-    /**
-     * Save all current XML objects to disk
-     */
-    private void save() {
-        for (String path : paths) {
-
-        }
     }
 
     /**

@@ -3,14 +3,18 @@ package thatproject.util;
 public class Commands {
 
     private static String[] attacks;
+    private static String[] accept = { "yes", "y", "okay", "k" };
 
     private static String active;
 
     public static void command(String s) {
-        active = s;
+        active = s.toLowerCase();
 
         if (check(attacks)) {
             attack();
+        }
+        else if (check(accept)) {
+            System.out.println("cool!");
         }
     }
 

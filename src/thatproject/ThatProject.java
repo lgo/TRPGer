@@ -2,7 +2,6 @@ package thatproject;
 
 import thatproject.menu.Game;
 import thatproject.menu.MainMenu;
-import thatproject.readers.MapReader;
 import thatproject.util.Save;
 
 public class ThatProject {
@@ -15,7 +14,6 @@ public class ThatProject {
     public static Save s = new Save();
 
     public static void main(String[] args) {
-        MapReader.exec();
         MainMenu.exec();
         Game.start();
     }
