@@ -1,8 +1,9 @@
 Skeleton //Name
 100 //Health
-Inner Forest //Stats
-1,4 //Item drop (In groups) - If empty use zones default drops - Could also scale for zone IE. iron here, steel there
-1,5 //Zones it appears in
+5,5,4 //Attack - Defense - Dex?
+1,4 //Item drop (In groups) - If empty use zones default drops - Could also scale for zone IE. iron here, steel there - Blank = Always gold (random amount)
+1,5 //Zones it appears in - Blank = none
+(1,3)(2,5) //Maps it appears on - Blank = none
 1 //Use zone encoutered in to scale difficulty
 1 //Use prefix on monster for zone(1 for true, 0 for false)
 //Blank line to next monster
