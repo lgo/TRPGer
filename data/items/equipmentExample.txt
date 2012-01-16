@@ -1,0 +1,7 @@
+Helmet //Equipment name
+0 //Special effect (effects.txt) such as resistance to X, or X bonus avoid
+10 //Armour points
+4//Slot (hands = 0, feet = 1, torso = 2, pants = 3, helmet = 4)
+1 //Scalable armour type (Usual 1 and 0)
+Bronze,Steel, Diamond //Scalable names
+1,1.2,2 //Scaling amount (As in 1.2x effects)

@@ -1,0 +1,5 @@
+Food //Usable Item name
+0 //Effect type (effects.txt)
+10 //Effect value (E.g. 10 of effect 0 (Stamina) meaning 10 stamina regain
+0,0 //Usable in battle, if so use one turn or not
+100 //Gold value to buy (Scaling % for selling amount)

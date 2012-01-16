@@ -1,3 +1,6 @@
 0 //Zone ID
 Deep Forest //Generic map name and zone name?
 Multiple, descriptions //Generic map descriptions, seperated by comma
+0,1 //Monster IDs that appear here (Monster ID is the place the monster is put in monster.txt - First monster is 0, second is 1 ...)
+Enraged,Confused,Lost //Monster prefixs
+1.2 //Scaling monster modifier
