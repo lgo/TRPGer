@@ -1,0 +1,4 @@
+You gradually travel to along the dirt road //Each line is something that is said while moving in a direction. Peroids will be automatically added
+You gradually travel ] along the dirt road //You can use ] to put the direction your going inbetween the place
+You gradually travel along the dirt road towards a : //You can use : to put the name of location your going into
+You gradually travel ] along a dirt road towards a :
