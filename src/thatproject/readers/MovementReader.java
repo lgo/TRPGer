@@ -2,8 +2,8 @@ package thatproject.readers;
 
 import java.lang.reflect.InvocationTargetException;
 
-import thatproject.ThatProject;
 import thatproject.actions.Movement;
+import thatproject.menu.Game;
 import thatproject.util.FileReader;
 
 public class MovementReader extends FileReader {
@@ -36,7 +36,7 @@ public class MovementReader extends FileReader {
     }
 
     public static void init() {
-        ThatProject.mover = new MovementReader();
+        Game.mover = new MovementReader();
     }
 
     private void parse() {

@@ -1,9 +1,13 @@
 package thatproject.world;
 
+import java.util.ArrayList;
+
 public class Map {
     private int x;
     private int y;
     private int zone;
+
+    private ArrayList<Integer> monster = new ArrayList<Integer>();
 
     private String name;
     private String description;
@@ -21,6 +25,10 @@ public class Map {
 
     public String getName() {
         return name;
+    }
+
+    public void insertMonster(int id) {
+        monster.add(id);
     }
 
 }

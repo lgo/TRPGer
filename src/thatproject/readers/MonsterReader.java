@@ -1,13 +1,18 @@
 package thatproject.readers;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import thatproject.ThatProject;
+import thatproject.manager.MapManager;
+import thatproject.manager.MonsterManager;
+import thatproject.menu.Game;
 import thatproject.util.FileReader;
 
 public class MonsterReader extends FileReader {
 
-    private String pathN = "data/map/map.txt";
+    private String pathN = "data/monster/monstertxt";
 
     public MonsterReader() {
         path = pathN;
@@ -35,39 +40,46 @@ public class MonsterReader extends FileReader {
     }
 
     public static void init() {
-        ThatProject.mapr = new MapReader();
+        Game.mapr = new MapReader();
     }
 
     private void parse() {
-        int x, y, zone;
+        int x, y;
+        int[] stats = null, zone = null;
         String name, description;
-        boolean[] directions = new boolean[4];
-        for (int i = 0; i < content.size() / 5; i += 5) {
+        String[] encounterLines = null;
+        for (int i = 0, count = 0; i < content.size() / 5; i += 5, count++) {
             x = Integer.parseInt(split(content.get(i))[0]);
             y = Integer.parseInt(split(content.get(i))[1]);
-            zone = Integer.parseInt(content.get(i + 1));
             name = content.get(i + 2);
             description = content.get(i + 3);
-            directions = directionSplit(content.get(i + 4));
-            ThatProject.mapm.populateWorlds(x, y, name, description, directions, zone);
+            insertMonsters(content.get(i + 4), count);
+            MonsterManager.populateMonsters(stats, name, description, encounterLines, zone);
         }
     }
 
     /**
-     * Returns appropriate boolean array for input
+     * Insert monster into appropriate maps
      * 
-     * @param line containing input
-     * @return booleans for directions passable
+     * @param input of the map string
+     * @param id of the monster
      */
-    private boolean[] directionSplit(String line) {
-        boolean[] bools = new boolean[4];
-        String[] splits = split(line);
-        int[] ints = new int[4];
-        for (int i = 0; i < 4; i++) {
-            ints[i] = Integer.parseInt(splits[i]);
-            bools[i] = ints[i] == 1 ? true : false;
-        }
-        return bools;
-    }
+    private static void insertMonsters(String input, int id) {
 
+        Pattern p = Pattern.compile("\\((.*?)\\)");
+        Matcher m = p.matcher(input);
+
+        ArrayList<String> s = new ArrayList<String>();
+
+        while (m.find()) {
+            s.add(m.group(1));
+        }
+
+        for (int i = 0; i < s.size(); i++) {
+            String[] temp = split(s.get(i), ",");
+            int x = Integer.parseInt(temp[0]);
+            int y = Integer.parseInt(temp[1]);
+            MapManager.insertMonster(x, y, id);
+        }
+    }
 }

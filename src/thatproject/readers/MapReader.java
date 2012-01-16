@@ -2,7 +2,8 @@ package thatproject.readers;
 
 import java.lang.reflect.InvocationTargetException;
 
-import thatproject.ThatProject;
+import thatproject.manager.MapManager;
+import thatproject.menu.Game;
 import thatproject.util.FileReader;
 
 public class MapReader extends FileReader {
@@ -35,7 +36,7 @@ public class MapReader extends FileReader {
     }
 
     public static void init() {
-        ThatProject.mapr = new MapReader();
+        Game.mapr = new MapReader();
     }
 
     private void parse() {
@@ -49,7 +50,7 @@ public class MapReader extends FileReader {
             name = content.get(i + 2);
             description = content.get(i + 3);
             directions = directionSplit(content.get(i + 4));
-            ThatProject.mapm.populateWorlds(x, y, name, description, directions, zone);
+            MapManager.populateWorlds(x, y, name, description, directions, zone);
         }
     }
 
