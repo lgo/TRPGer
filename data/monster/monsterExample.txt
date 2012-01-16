@@ -1,4 +1,5 @@
 Skeleton //Name
+100 // Spawn shares.. No idea how this will work, probably all shares added together though
 100 //Health
 5,5,4 //Attack - Defense - Dex?
 1,4 //Item drop (In groups) - If empty use zones default drops - Could also scale for zone IE. iron here, steel there - Blank = Always gold (random amount)
