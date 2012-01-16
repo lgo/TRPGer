@@ -1,4 +1,6 @@
-package thatproject.world;
+package thatproject.manager;
+
+import thatproject.world.Map;
 
 public class MapManager {
 

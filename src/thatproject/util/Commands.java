@@ -2,7 +2,7 @@ package thatproject.util;
 
 public class Commands {
 
-    private static String[] attacks;
+    private static String[] attacks = { "hi" };
     
     private static String active;
     

@@ -1,11 +1,11 @@
 package thatproject;
 
+import thatproject.manager.MapManager;
 import thatproject.menu.Game;
 import thatproject.menu.MainMenu;
 import thatproject.readers.MapReader;
 import thatproject.readers.MonsterReader;
 import thatproject.util.Save;
-import thatproject.world.MapManager;
 
 public class ThatProject {
 
