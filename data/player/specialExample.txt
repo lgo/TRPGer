@@ -1,0 +1,3 @@
+0 //Special ID
+Special effects.. Honestly put anything here, I'll have t hardcode them (Recovery, instaKO, undead damage otherwise heal etc)
+//Blank line between specials

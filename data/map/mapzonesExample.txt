@@ -1,0 +1,3 @@
+0 //Zone ID
+Deep Forest //Generic map name and zone name?
+Multiple, descriptions //Generic map descriptions, seperated by comma
