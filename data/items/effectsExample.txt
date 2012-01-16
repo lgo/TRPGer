@@ -1,0 +1,3 @@
+0 //Effect ID
+avoid addition //Effect input values
+This needs to be hardcoded, so give me a basic layout of the effect
