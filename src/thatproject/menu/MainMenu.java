@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -36,13 +37,20 @@ public class MainMenu extends JPanel implements ActionListener {
     private static JButton[][] buttons;
     private static final int buttonAmountWidth = 5;
     private static final int buttonAmountHeight = 7;
-    private static final int buttonXStart = 420;
+    private static final int buttonXStart = 440;
     private static final int buttonYStart = 200;
-    private static final int buttonXIncrement = 10;
+    private static final int buttonXIncrement = 5;
     private static final int buttonYIncrement = buttonXIncrement;
     private static final int buttonWidth = 40;
     private static final int buttonHeight = buttonWidth;
     
+    private static JProgressBar progressBar;
+    
+    private static JTextField playerHP;
+    private static final int stfX = taX;
+    private static final int stfY = taY + taH + 5;
+    private static final int stfW = taW;
+    private static final int stfH = 20;
 
     private static String hi;
 
