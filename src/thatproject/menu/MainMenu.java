@@ -5,8 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.InvocationTargetException;
 
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,6 +33,17 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int tfW = taW;
     private static final int tfH = 20;
 
+    private static JButton[][] buttons;
+    private static final int buttonAmountWidth = 5;
+    private static final int buttonAmountHeight = 7;
+    private static final int buttonXStart = 420;
+    private static final int buttonYStart = 200;
+    private static final int buttonXIncrement = 10;
+    private static final int buttonYIncrement = buttonXIncrement;
+    private static final int buttonWidth = 40;
+    private static final int buttonHeight = buttonWidth;
+    
+
     private static String hi;
 
     private static JDesktopPane desk = new JDesktopPane();
@@ -43,6 +54,8 @@ public class MainMenu extends JPanel implements ActionListener {
 
     public MainMenu(JFrame frame) {
         super(new GridBagLayout());
+        // Initialise
+        buttons = new JButton[buttonAmountWidth][buttonAmountHeight];
 
         // Setup text area
         textArea = new JTextArea();
@@ -57,6 +70,21 @@ public class MainMenu extends JPanel implements ActionListener {
         textField.setEditable(true);
         textField.setBounds(tfX, tfY, tfW, tfH);
         textField.addActionListener(this);
+
+        // Setup inventory buttons
+
+        for (int i = 0; i < buttonAmountWidth; i++) {
+            for (int j = 0; j < buttonAmountHeight; j++) {
+
+                buttons[i][j] = new JButton();
+                buttons[i][j].setBounds(buttonXStart + (i * buttonXIncrement) + (i * buttonWidth), buttonYStart + (j * buttonYIncrement) + (j * buttonHeight), buttonWidth, buttonHeight);
+            }
+        }
+        for (JButton[] button : buttons) {
+            for (JButton button2 : button) {
+                desk.add(button2);
+            }
+        }
 
         // Setup content pane
         desk.setOpaque(false);
@@ -74,7 +102,7 @@ public class MainMenu extends JPanel implements ActionListener {
     /**
      * Adds text to the textarea
      * 
-     * @param String to add
+     * @param s to add to textarea
      */
     public void add(String s) {
         set(contents + s);
@@ -83,22 +111,20 @@ public class MainMenu extends JPanel implements ActionListener {
     /**
      * Sets text to the textarea
      * 
-     * @param String to set
+     * @param s to set to textarea
      */
 
     public void set(String s) {
         // Create a seperate dispatch thread for initializing GUI
         hi = s;
         try {
-            javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     set();
                 }
             });
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -140,7 +166,7 @@ public class MainMenu extends JPanel implements ActionListener {
     public static void exec() {
         // Create a seperate dispatch thread for initializing GUI
         try {
-            SwingUtilities.invokeAndWait(new Runnable() {
+            SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     init();

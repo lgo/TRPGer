@@ -1,5 +1,6 @@
 package thatproject.util;
 
+import thatproject.ThatProject;
 import thatproject.manager.AttackManager;
 
 public class Commands {
@@ -15,7 +16,11 @@ public class Commands {
         if (check(attacks)) {
             attack();
         } else if (check(accept)) {
-            System.out.println("cool!");
+            Event.accept();
+        } else if (active.equals("drop")) {
+            Event.drop(true);
+        } else if (active.equals("cancel")) {
+            Event.drop(false);
         }
     }
 

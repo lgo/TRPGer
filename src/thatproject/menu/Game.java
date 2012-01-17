@@ -33,7 +33,7 @@ public class Game {
     private static void load() {
         MapManager.init(0, 0, 100, 100);
         p = new Player(Save.read());
-        ThatProject.m.set("Welcome");
+        intro();
     }
 
     private static void initFiles() {
@@ -41,5 +41,9 @@ public class Game {
         MovementReader.exec();
         // MonsterReader.exec();
         // AttackReader.exec();
+    }
+    
+    private static void intro() {
+        ThatProject.m.set("Welcome to the world of " + ThatProject.name + "!\nHi!");
     }
 }
