@@ -12,3 +12,6 @@ Armor:
 	Heavy Armor or Armor causes more stamina drain
 	Both are trade offs for % damage absorbed
 	Basic armor slots (Feet, head, torso, pants, hands)
+Items:
+	Generic images for inventory
+	Tooltip info (Popup on hover)

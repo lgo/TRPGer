@@ -5,3 +5,4 @@ Helmet //Equipment name
 1 //Scalable armour type (Usual 1 and 0)
 Bronze,Steel, Diamond //Scalable names
 1,1.2,2 //Scaling amount (As in 1.2x effects)
+Helment slot \nIncreases armour points by //Tooltip (Popup on hover over item) Displays as Helmet slot (Next line)-Increases armour points by X
