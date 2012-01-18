@@ -5,7 +5,7 @@ import thatproject.entities.Entity;
 
 public class Player extends Entity {
 
-    public int hp, hpMax;
+    public int hp, hpMax, stamina = 100, staminaMax = stamina;
     private int lvl, exp, str, end, dex, luc, gold;
     private int x, y;
 

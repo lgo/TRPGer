@@ -58,6 +58,18 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int hpY = barY - 20;
     private static final int hpW = 150;
     private static final int hpH = 20;
+    
+    public static JProgressBar staminaBar;
+    private static final int sbarX = 450;
+    private static final int sbarY = 80;
+    private static final int sbarH = 20;
+    private static final int sbarW = 200;
+
+    public static JTextField playerStamina;
+    private static final int stX = sbarX + 5;
+    private static final int stY = sbarY - 20;
+    private static final int stW = 150;
+    private static final int stH = 20;
 
     private static String hi;
 
@@ -108,8 +120,7 @@ public class MainMenu extends JPanel implements ActionListener {
             }
         }
 
-        // Setup progress bar and flair
-        UIManager.put("ProgressBar.foreground", Color.RED);
+     // Setup health bar and flair
         UIManager.put("ProgressBar.foreground", Color.RED);
         healthBar = new JProgressBar();
         healthBar.setBounds(barX, barY, barW, barH);
@@ -121,7 +132,7 @@ public class MainMenu extends JPanel implements ActionListener {
         healthBar.setMaximum(Game.p.hpMax);
         healthBar.setStringPainted(true);
         
-        healthBar.setValue(50);
+        healthBar.setValue(Game.p.hp);
         desk.add(healthBar);
         
         playerHP = new JTextField(){
@@ -132,6 +143,30 @@ public class MainMenu extends JPanel implements ActionListener {
         playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
         playerHP.setOpaque(false);
         desk.add(playerHP);
+        
+     // Setup health bar and flair
+        UIManager.put("ProgressBar.foreground", Color.GREEN);
+        staminaBar = new JProgressBar();
+        staminaBar.setBounds(sbarX, sbarY, sbarW, sbarH);
+        staminaBar.setMinimum(0);
+        ThatProject.threadFreeze = true;
+        while (!ThatProject.threadFreeze) {
+        Thread.yield();
+        }
+        staminaBar.setMaximum(Game.p.staminaMax);
+        staminaBar.setStringPainted(true);
+        
+        staminaBar.setValue(Game.p.stamina);
+        desk.add(staminaBar);
+        
+        playerStamina = new JTextField(){
+            @Override public void setBorder(Border border) {
+            }
+        };
+        playerStamina.setBounds(stX, stY, stW, stH);
+        playerStamina.setText("Stamina: " + Game.p.stamina + "/" + Game.p.staminaMax);
+        playerStamina.setOpaque(false);
+        desk.add(playerStamina);
 
         // Setup content pane
         desk.setOpaque(false);
