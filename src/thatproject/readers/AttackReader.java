@@ -22,10 +22,9 @@ public class AttackReader extends FileReader {
             public void run() {
                 init();
             }
-            
+
         }).start();
     }
-
 
     public static void init() {
         Game.attackr = new AttackReader();

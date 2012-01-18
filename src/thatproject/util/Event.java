@@ -26,7 +26,7 @@ public class Event {
             }
         }
     }
-    
+
     public static void update() {
         MainMenu.healthBar.setMaximum(Game.p.hpMax);
         MainMenu.healthBar.setValue(Game.p.hp);

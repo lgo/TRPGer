@@ -41,9 +41,8 @@ public class Save {
         if (fileExists(paths[0])) {
             openFile("data/save.xml");
             return read();
-        } else {
-           return createSave();
-        }
+        } else
+            return createSave();
     }
 
     /**
@@ -132,7 +131,7 @@ public class Save {
         createSave(document, child, sections);
         saveToFile();
 
-        return new int[] { 1,0,1,1,1,1,0, 100, 100, Game.gameStartX, Game.gameStartY};
+        return new int[] { 1, 0, 1, 1, 1, 1, 0, 100, 100, Game.gameStartX, Game.gameStartY };
     }
 
     /**

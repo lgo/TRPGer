@@ -19,7 +19,7 @@ public class Game {
 
     public static final int mapW = 100;
     public static final int mapH = 100;
-    
+
     public static final int gameStartX = 3;
     public static final int gameStartY = 0;
 

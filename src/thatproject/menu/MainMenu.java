@@ -58,7 +58,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int hpY = barY - 20;
     private static final int hpW = 150;
     private static final int hpH = 20;
-    
+
     public static JProgressBar staminaBar;
     private static final int sbarX = 450;
     private static final int sbarY = 80;
@@ -120,47 +120,49 @@ public class MainMenu extends JPanel implements ActionListener {
             }
         }
 
-     // Setup health bar and flair
+        // Setup health bar and flair
         UIManager.put("ProgressBar.foreground", Color.RED);
         healthBar = new JProgressBar();
         healthBar.setBounds(barX, barY, barW, barH);
         healthBar.setMinimum(0);
         ThatProject.threadFreeze = true;
         while (!ThatProject.threadFreeze) {
-        Thread.yield();
+            Thread.yield();
         }
         healthBar.setMaximum(Game.p.hpMax);
         healthBar.setStringPainted(true);
-        
+
         healthBar.setValue(Game.p.hp);
         desk.add(healthBar);
-        
-        playerHP = new JTextField(){
-            @Override public void setBorder(Border border) {
+
+        playerHP = new JTextField() {
+            @Override
+            public void setBorder(Border border) {
             }
         };
         playerHP.setBounds(hpX, hpY, hpW, hpH);
         playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
         playerHP.setOpaque(false);
         desk.add(playerHP);
-        
-     // Setup health bar and flair
+
+        // Setup health bar and flair
         UIManager.put("ProgressBar.foreground", Color.GREEN);
         staminaBar = new JProgressBar();
         staminaBar.setBounds(sbarX, sbarY, sbarW, sbarH);
         staminaBar.setMinimum(0);
         ThatProject.threadFreeze = true;
         while (!ThatProject.threadFreeze) {
-        Thread.yield();
+            Thread.yield();
         }
         staminaBar.setMaximum(Game.p.staminaMax);
         staminaBar.setStringPainted(true);
-        
+
         staminaBar.setValue(Game.p.stamina);
         desk.add(staminaBar);
-        
-        playerStamina = new JTextField(){
-            @Override public void setBorder(Border border) {
+
+        playerStamina = new JTextField() {
+            @Override
+            public void setBorder(Border border) {
             }
         };
         playerStamina.setBounds(stX, stY, stW, stH);

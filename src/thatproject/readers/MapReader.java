@@ -21,7 +21,7 @@ public class MapReader extends FileReader {
             public void run() {
                 init();
             }
-            
+
         }).start();
     }
 

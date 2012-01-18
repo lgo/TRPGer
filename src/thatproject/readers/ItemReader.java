@@ -11,12 +11,12 @@ public class ItemReader extends FileReader {
             public void run() {
                 init();
             }
-            
+
         }).start();
     }
-    
+
     public static void init() {
-        
+
     }
-    
+
 }

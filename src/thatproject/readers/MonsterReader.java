@@ -26,7 +26,7 @@ public class MonsterReader extends FileReader {
             public void run() {
                 init();
             }
-            
+
         }).start();
     }
 
