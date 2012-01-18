@@ -1,0 +1,1 @@
+//Items ID contained in chest (ID of the chest is per line, starting here at 1)
