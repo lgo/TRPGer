@@ -15,3 +15,6 @@ Armor:
 Items:
 	Generic images for inventory
 	Tooltip info (Popup on hover)
+	
+RANDOM :D
+	BURGER - Obesity in 2 turns they will have a heart attack
