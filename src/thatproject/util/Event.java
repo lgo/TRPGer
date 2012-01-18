@@ -1,5 +1,8 @@
 package thatproject.util;
 
+import thatproject.menu.Game;
+import thatproject.menu.MainMenu;
+
 public class Event {
 
     private static boolean drop = false;
@@ -22,5 +25,11 @@ public class Event {
 
             }
         }
+    }
+    
+    public static void update() {
+        MainMenu.healthBar.setMaximum(Game.p.hpMax);
+        MainMenu.healthBar.setValue(Game.p.hp);
+        MainMenu.playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
     }
 }

@@ -10,7 +10,7 @@ public abstract class FileReader {
 
     public String path;
     protected ArrayList<String> content = new ArrayList<String>();
-
+    
     public void read() {
         try {
             FileInputStream fstream = new FileInputStream(path);

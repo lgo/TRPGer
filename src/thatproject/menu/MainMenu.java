@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.border.Border;
 
 import thatproject.ThatProject;
 import thatproject.util.Commands;
@@ -46,17 +47,17 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int buttonWidth = 40;
     private static final int buttonHeight = buttonWidth;
 
-    private static JProgressBar healthBar;
-    private static final int barX = 400;
-    private static final int barY = 50;
+    public static JProgressBar healthBar;
+    private static final int barX = 450;
+    private static final int barY = 40;
     private static final int barH = 20;
-    private static final int barW = 100;
+    private static final int barW = 200;
 
-    private static JTextField playerHP;
-    private static final int stfX = taX;
-    private static final int stfY = taY + taH + 5;
-    private static final int stfW = taW;
-    private static final int stfH = 20;
+    public static JTextField playerHP;
+    private static final int hpX = barX + 5;
+    private static final int hpY = barY - 20;
+    private static final int hpW = 150;
+    private static final int hpH = 20;
 
     private static String hi;
 
@@ -108,17 +109,29 @@ public class MainMenu extends JPanel implements ActionListener {
         }
 
         // Setup progress bar and flair
-        UIManager.put("ProgressBar.foreground", Color.RED); // colour of
-                                                            // progress bar
+        UIManager.put("ProgressBar.foreground", Color.RED);
+        UIManager.put("ProgressBar.foreground", Color.RED);
         healthBar = new JProgressBar();
         healthBar.setBounds(barX, barY, barW, barH);
-        UIManager.put("healthBar.foreground", Color.RED);
         healthBar.setMinimum(0);
-        healthBar.setMaximum(1000);
+        ThatProject.threadFreeze = true;
+        while (!ThatProject.threadFreeze) {
+        Thread.yield();
+        }
+        healthBar.setMaximum(Game.p.hpMax);
         healthBar.setStringPainted(true);
-
+        
         healthBar.setValue(50);
         desk.add(healthBar);
+        
+        playerHP = new JTextField(){
+            @Override public void setBorder(Border border) {
+            }
+        };
+        playerHP.setBounds(hpX, hpY, hpW, hpH);
+        playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
+        playerHP.setOpaque(false);
+        desk.add(playerHP);
 
         // Setup content pane
         desk.setOpaque(false);
@@ -146,7 +159,7 @@ public class MainMenu extends JPanel implements ActionListener {
      * @param s to set to textarea
      */
 
-    public void set(String s) {
+    public static void set(String s) {
         // Create a seperate dispatch thread for initializing GUI
         hi = s;
         try {
@@ -161,7 +174,7 @@ public class MainMenu extends JPanel implements ActionListener {
         }
     }
 
-    public void set() {
+    public static void set() {
         textArea.setText(hi);
         contents = hi;
     }

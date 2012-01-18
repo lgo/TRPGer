@@ -19,11 +19,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import thatproject.menu.Game;
+
 public class Save {
 
     private static String[] paths = { "data/save.xml" };
     private static String[] sections = { "stats", "attributes", "items" };
-    private static String[] stats = { "lvl", "exp", "str", "end", "luc", "dex", "gold" };
+    private static String[] stats = { "lvl", "exp", "str", "end", "luc", "dex", "gold", "hp", "hpMax", "x", "y" };
     private static int saveNum = 0;
     private static Document document = null;
     private static NodeList save;
@@ -35,11 +37,12 @@ public class Save {
     /**
      * Initialization - Checks if files exists
      */
-    private static void init() {
+    public static int[] init() {
         if (fileExists(paths[0])) {
             openFile("data/save.xml");
+            return read();
         } else {
-            createSave();
+           return createSave();
         }
     }
 
@@ -69,7 +72,7 @@ public class Save {
      * @return an integer array of stats
      */
     public static int[] read() {
-        int[] temp = new int[10];
+        int[] temp = new int[stats.length];
         for (int i = 0; i < save.getLength(); i++) {
 
             Node nNode = save.item(i);
@@ -109,7 +112,7 @@ public class Save {
     /**
      * Create a new save
      */
-    public static void createSave() {
+    public static int[] createSave() {
         DocumentBuilder builder = null;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
@@ -129,6 +132,7 @@ public class Save {
         createSave(document, child, sections);
         saveToFile();
 
+        return new int[] { 1,0,1,1,1,1,0, 100, 100, Game.gameStartX, Game.gameStartY};
     }
 
     /**
@@ -143,14 +147,17 @@ public class Save {
             element[i] = document.createElement(elements[i]);
             parent.appendChild(element[i]);
         }
-
+        insertElement(d, element[0], "hp", "100");
+        insertElement(d, element[0], "hpMax", "100");
         insertElement(d, element[0], "lvl", "1");
         insertElement(d, element[0], "exp", "0");
         insertElement(d, element[0], "str", "1");
         insertElement(d, element[0], "end", "1");
         insertElement(d, element[0], "dex", "1");
         insertElement(d, element[0], "luc", "1");
-        insertElement(d, element[0], "gold", "100");
+        insertElement(d, element[0], "gold", "0");
+        insertElement(d, element[0], "x", Integer.toString(Game.gameStartX));
+        insertElement(d, element[0], "y", Integer.toString(Game.gameStartY));
     }
 
     /**

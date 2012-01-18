@@ -19,6 +19,9 @@ public class Game {
 
     public static final int mapW = 100;
     public static final int mapH = 100;
+    
+    public static final int gameStartX = 3;
+    public static final int gameStartY = 0;
 
     public static void start() {
         init();
@@ -31,8 +34,8 @@ public class Game {
     }
 
     private static void load() {
+        p = new Player(Save.init());
         MapManager.init(0, 0, 100, 100);
-        p = new Player(Save.read());
         intro();
     }
 
@@ -44,6 +47,6 @@ public class Game {
     }
 
     private static void intro() {
-        ThatProject.m.set("Welcome to the world of " + ThatProject.name + "!\nHi!");
+        MainMenu.set("Welcome to the world of " + ThatProject.name + "!\nHi!");
     }
 }

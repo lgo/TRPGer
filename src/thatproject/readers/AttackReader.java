@@ -1,7 +1,5 @@
 package thatproject.readers;
 
-import java.lang.reflect.InvocationTargetException;
-
 import thatproject.manager.MonsterManager;
 import thatproject.menu.Game;
 import thatproject.util.Commands;
@@ -17,24 +15,17 @@ public class AttackReader extends FileReader {
         parse();
     }
 
-    /**
-     * Start thread for creating the GUI
-     */
     public static void exec() {
-        // Create a seperate dispatch thread for initializing GUI
-        try {
-            javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
-                @Override
-                public void run() {
-                    init();
-                }
-            });
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                init();
+            }
+            
+        }).start();
     }
+
 
     public static void init() {
         Game.attackr = new AttackReader();

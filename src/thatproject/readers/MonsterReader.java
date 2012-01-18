@@ -1,6 +1,5 @@
 package thatproject.readers;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,23 +19,15 @@ public class MonsterReader extends FileReader {
         parse();
     }
 
-    /**
-     * Start thread for creating the GUI
-     */
     public static void exec() {
-        // Create a seperate dispatch thread for initializing GUI
-        try {
-            javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
-                @Override
-                public void run() {
-                    init();
-                }
-            });
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                init();
+            }
+            
+        }).start();
     }
 
     public static void init() {
