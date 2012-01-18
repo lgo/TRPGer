@@ -1,5 +1,6 @@
 package thatproject.menu;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
@@ -14,6 +15,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 import thatproject.ThatProject;
 import thatproject.util.Commands;
@@ -38,14 +40,18 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int buttonAmountWidth = 5;
     private static final int buttonAmountHeight = 7;
     private static final int buttonXStart = 440;
-    private static final int buttonYStart = 200;
+    private static final int buttonYStart = 220;
     private static final int buttonXIncrement = 5;
     private static final int buttonYIncrement = buttonXIncrement;
     private static final int buttonWidth = 40;
     private static final int buttonHeight = buttonWidth;
-    
-    private static JProgressBar progressBar;
-    
+
+    private static JProgressBar healthBar;
+    private static final int barX = 400;
+    private static final int barY = 50;
+    private static final int barH = 20;
+    private static final int barW = 100;
+
     private static JTextField playerHP;
     private static final int stfX = taX;
     private static final int stfY = taY + taH + 5;
@@ -63,6 +69,11 @@ public class MainMenu extends JPanel implements ActionListener {
     public MainMenu(JFrame frame) {
         super(new GridBagLayout());
         // Initialise
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         buttons = new JButton[buttonAmountWidth][buttonAmountHeight];
 
         // Setup text area
@@ -72,12 +83,14 @@ public class MainMenu extends JPanel implements ActionListener {
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setBounds(taX, taY, taW, taH);
+        desk.add(textArea);
 
         // Setup text field
         textField = new JTextField();
         textField.setEditable(true);
         textField.setBounds(tfX, tfY, tfW, tfH);
         textField.addActionListener(this);
+        desk.add(textField);
 
         // Setup inventory buttons
 
@@ -85,7 +98,7 @@ public class MainMenu extends JPanel implements ActionListener {
             for (int j = 0; j < buttonAmountHeight; j++) {
 
                 buttons[i][j] = new JButton();
-                buttons[i][j].setBounds(buttonXStart + (i * buttonXIncrement) + (i * buttonWidth), buttonYStart + (j * buttonYIncrement) + (j * buttonHeight), buttonWidth, buttonHeight);
+                buttons[i][j].setBounds(buttonXStart + i * buttonXIncrement + i * buttonWidth, buttonYStart + j * buttonYIncrement + j * buttonHeight, buttonWidth, buttonHeight);
             }
         }
         for (JButton[] button : buttons) {
@@ -94,10 +107,21 @@ public class MainMenu extends JPanel implements ActionListener {
             }
         }
 
+        // Setup progress bar and flair
+        UIManager.put("ProgressBar.foreground", Color.RED); // colour of
+                                                            // progress bar
+        healthBar = new JProgressBar();
+        healthBar.setBounds(barX, barY, barW, barH);
+        UIManager.put("healthBar.foreground", Color.RED);
+        healthBar.setMinimum(0);
+        healthBar.setMaximum(1000);
+        healthBar.setStringPainted(true);
+
+        healthBar.setValue(50);
+        desk.add(healthBar);
+
         // Setup content pane
         desk.setOpaque(false);
-        desk.add(textArea);
-        desk.add(textField);
 
     }
 

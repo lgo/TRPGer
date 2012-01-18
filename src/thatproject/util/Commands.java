@@ -1,6 +1,5 @@
 package thatproject.util;
 
-import thatproject.ThatProject;
 import thatproject.manager.AttackManager;
 
 public class Commands {

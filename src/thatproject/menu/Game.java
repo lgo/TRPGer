@@ -42,7 +42,7 @@ public class Game {
         // MonsterReader.exec();
         // AttackReader.exec();
     }
-    
+
     private static void intro() {
         ThatProject.m.set("Welcome to the world of " + ThatProject.name + "!\nHi!");
     }
