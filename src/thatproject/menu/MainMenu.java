@@ -121,6 +121,8 @@ public class MainMenu extends JPanel implements ActionListener {
         }
 
         // Setup health bar and flair
+        UIManager.put("ProgressBar.selectionBackground",Color.BLACK);
+        UIManager.put("ProgressBar.selectionForeground",Color.BLACK);
         UIManager.put("ProgressBar.foreground", Color.RED);
         healthBar = new JProgressBar();
         healthBar.setBounds(barX, barY, barW, barH);
@@ -145,30 +147,6 @@ public class MainMenu extends JPanel implements ActionListener {
         playerHP.setOpaque(false);
         desk.add(playerHP);
 
-        // Setup health bar and flair
-        UIManager.put("ProgressBar.foreground", Color.GREEN);
-        staminaBar = new JProgressBar();
-        staminaBar.setBounds(sbarX, sbarY, sbarW, sbarH);
-        staminaBar.setMinimum(0);
-        ThatProject.threadFreeze = true;
-        while (!ThatProject.threadFreeze) {
-            Thread.yield();
-        }
-        staminaBar.setMaximum(Game.p.staminaMax);
-        staminaBar.setStringPainted(true);
-
-        staminaBar.setValue(Game.p.stamina);
-        desk.add(staminaBar);
-
-        playerStamina = new JTextField() {
-            @Override
-            public void setBorder(Border border) {
-            }
-        };
-        playerStamina.setBounds(stX, stY, stW, stH);
-        playerStamina.setText("Stamina: " + Game.p.stamina + "/" + Game.p.staminaMax);
-        playerStamina.setOpaque(false);
-        desk.add(playerStamina);
 
         // Setup content pane
         desk.setOpaque(false);
@@ -195,7 +173,6 @@ public class MainMenu extends JPanel implements ActionListener {
      * 
      * @param s to set to textarea
      */
-
     public static void set(String s) {
         // Create a seperate dispatch thread for initializing GUI
         hi = s;
@@ -267,5 +244,33 @@ public class MainMenu extends JPanel implements ActionListener {
                 textField.requestFocus();
             }
         });
+    }
+
+    public void healthBar() {
+        
+    }
+    
+    public void staminaBar() {
+
+        // Setup Stamina bar and flair
+        UIManager.put("ProgressBar.foreground", Color.GREEN);
+        staminaBar = new JProgressBar();
+        staminaBar.setBounds(sbarX, sbarY, sbarW, sbarH);
+        staminaBar.setMinimum(0);
+        staminaBar.setMaximum(Game.p.staminaMax);
+        staminaBar.setStringPainted(true);
+
+        staminaBar.setValue(Game.p.stamina);
+        desk.add(staminaBar);
+
+        playerStamina = new JTextField() {
+            @Override
+            public void setBorder(Border border) {
+            }
+        };
+        playerStamina.setBounds(stX, stY, stW, stH);
+        playerStamina.setText("Stamina: " + Game.p.stamina + "/" + Game.p.staminaMax);
+        playerStamina.setOpaque(false);
+        desk.add(playerStamina);
     }
 }

@@ -21,7 +21,6 @@ public class Player extends Entity {
         hpMax = stats[8];
         x = stats[9];
         y = stats[10];
-        ThatProject.threadFreeze = false;
     }
 
 }
