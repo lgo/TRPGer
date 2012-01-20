@@ -120,32 +120,8 @@ public class MainMenu extends JPanel implements ActionListener {
             }
         }
 
-        // Setup health bar and flair
-        UIManager.put("ProgressBar.selectionBackground",Color.BLACK);
-        UIManager.put("ProgressBar.selectionForeground",Color.BLACK);
-        UIManager.put("ProgressBar.foreground", Color.RED);
-        healthBar = new JProgressBar();
-        healthBar.setBounds(barX, barY, barW, barH);
-        healthBar.setMinimum(0);
-        ThatProject.threadFreeze = true;
-        while (!ThatProject.threadFreeze) {
-            Thread.yield();
-        }
-        healthBar.setMaximum(Game.p.hpMax);
-        healthBar.setStringPainted(true);
-
-        healthBar.setValue(Game.p.hp);
-        desk.add(healthBar);
-
-        playerHP = new JTextField() {
-            @Override
-            public void setBorder(Border border) {
-            }
-        };
-        playerHP.setBounds(hpX, hpY, hpW, hpH);
-        playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
-        playerHP.setOpaque(false);
-        desk.add(playerHP);
+        healthBar();
+        staminaBar();
 
 
         // Setup content pane
@@ -247,7 +223,29 @@ public class MainMenu extends JPanel implements ActionListener {
     }
 
     public void healthBar() {
-        
+        UIManager.put("ProgressBar.foreground", Color.RED);
+        healthBar = new JProgressBar();
+        healthBar.setBounds(barX, barY, barW, barH);
+        healthBar.setMinimum(0);
+        ThatProject.threadFreeze = true;
+        while (!ThatProject.threadFreeze) {
+            Thread.yield();
+        }
+        healthBar.setMaximum(Game.p.hpMax);
+        healthBar.setStringPainted(true);
+
+        healthBar.setValue(Game.p.hp);
+        desk.add(healthBar);
+
+        playerHP = new JTextField() {
+            @Override
+            public void setBorder(Border border) {
+            }
+        };
+        playerHP.setBounds(hpX, hpY, hpW, hpH);
+        playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
+        playerHP.setOpaque(false);
+        desk.add(playerHP);
     }
     
     public void staminaBar() {

@@ -6,6 +6,7 @@ public class Commands {
 
     private static String[] attacks = { "boo" };
     private static String[] accept = { "yes", "y", "okay", "k" };
+    private static String[] directions = { "n", "s", "e", "w" };
 
     private static String active;
 
@@ -20,6 +21,19 @@ public class Commands {
             Event.drop(true);
         } else if (active.equals("cancel")) {
             Event.drop(false);
+        } else if (check(directions)) {
+            int dir = s.equals("n") ? 0 : s.equals("s") ? 1 : s.equals("e") ? 2 : 3;
+            if (s.equals("n")) {
+                dir = 0;
+            } else if (s.equals("s")) {
+                dir = 1;
+            } else if (s.equals("e")) {
+                dir = 2;
+            } else if (s.equals("w")) {
+                dir = 3;
+            }
+
+            Event.move(dir);
         }
     }
 

@@ -28,4 +28,8 @@ public class MapManager {
         locations[x][y].insertMonster(monster);
     }
 
+    public static void Move(int dir) {
+        
+    }
+
 }

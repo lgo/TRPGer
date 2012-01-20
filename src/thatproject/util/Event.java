@@ -1,5 +1,6 @@
 package thatproject.util;
 
+import thatproject.manager.MapManager;
 import thatproject.menu.Game;
 import thatproject.menu.MainMenu;
 
@@ -31,5 +32,9 @@ public class Event {
         MainMenu.healthBar.setMaximum(Game.p.hpMax);
         MainMenu.healthBar.setValue(Game.p.hp);
         MainMenu.playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
+    }
+
+    public static void move(int dir) {
+        MapManager.Move(dir);
     }
 }
