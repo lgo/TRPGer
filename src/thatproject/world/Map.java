@@ -31,4 +31,8 @@ public class Map {
         monster.add(id);
     }
 
+    public boolean move(int dir) {
+        return false;
+    }
+
 }

@@ -6,6 +6,7 @@ public class MapManager {
 
     private static Map[][] locations;
     private static Map currentLocation;
+    private static int x, y;
 
     /**
      * Initialize the static variables
@@ -18,6 +19,8 @@ public class MapManager {
     public static void init(int x, int y, int mapWidth, int mapLength) {
         locations = new Map[mapWidth][mapLength];
         currentLocation = locations[x][y];
+        MapManager.x = x;
+        MapManager.y = y;
     }
 
     public static void populateWorlds(int x, int y, String name, String description, boolean[] directions, int zone) {
@@ -29,6 +32,19 @@ public class MapManager {
     }
 
     public static void Move(int dir) {
+        if (currentLocation.move(dir)) {
+            
+        } else {
+            wrongDirection(dir);
+        }
+    }
+    
+    private static void wrongDirection(int dir) {
+        
+        
+    }
+
+    private static void initiateMap() {
         
     }
 
