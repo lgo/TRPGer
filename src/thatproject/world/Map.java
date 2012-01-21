@@ -32,7 +32,7 @@ public class Map {
     }
 
     public boolean move(int dir) {
-        return false;
+        return direction[dir];
     }
 
 }

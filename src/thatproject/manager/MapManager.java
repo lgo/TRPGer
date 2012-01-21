@@ -33,19 +33,18 @@ public class MapManager {
 
     public static void Move(int dir) {
         if (currentLocation.move(dir)) {
-            
+            initiateMap();
         } else {
             wrongDirection(dir);
         }
     }
-    
+
     private static void wrongDirection(int dir) {
-        
-        
+
     }
 
     private static void initiateMap() {
-        
+
     }
 
 }

@@ -7,6 +7,7 @@ import thatproject.readers.AttackReader;
 import thatproject.readers.MapReader;
 import thatproject.readers.MonsterReader;
 import thatproject.readers.MovementReader;
+import thatproject.readers.ZoneReader;
 import thatproject.util.Save;
 
 public class Game {
@@ -16,6 +17,7 @@ public class Game {
     public static MonsterReader monsterr;
     public static MovementReader mover;
     public static AttackReader attackr;
+    public static ZoneReader zoner;
 
     public static final int mapW = 100;
     public static final int mapH = 100;

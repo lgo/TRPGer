@@ -123,7 +123,6 @@ public class MainMenu extends JPanel implements ActionListener {
         healthBar();
         staminaBar();
 
-
         // Setup content pane
         desk.setOpaque(false);
 
@@ -247,7 +246,7 @@ public class MainMenu extends JPanel implements ActionListener {
         playerHP.setOpaque(false);
         desk.add(playerHP);
     }
-    
+
     public void staminaBar() {
 
         // Setup Stamina bar and flair

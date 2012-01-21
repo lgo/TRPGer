@@ -6,12 +6,18 @@ import thatproject.util.FileReader;
 
 public class MapReader extends FileReader {
 
-    private String pathN = "data/monster/monster.txt";
+    private static final String pathN = "data/map/map";
+    private static final String ext = ".txt";
+    private static int /*DEBUG mapAmount = 8; */ mapAmount = 1;
 
     public MapReader() {
-        path = pathN;
-        read();
-        parse();
+        //Debug
+        mapAmount = 1;
+        for (int i = 1; i - 1 < mapAmount; i++) {
+            path = pathN + i + ext;
+            read();
+            parse();
+        }
     }
 
     public static void exec() {
