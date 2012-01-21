@@ -20,7 +20,6 @@ public class Game {
     public static ZoneReader zoner;
 
     public static World world = new World();
-    public static boolean loaded = false;
 
     public static final int mapW = 100;
     public static final int mapH = 100;
@@ -28,6 +27,8 @@ public class Game {
     public static final int gameStartX = 1;
     public static final int gameStartY = 2;
 
+    public static boolean loaded = false;
+    
     public static void start() {
         init();
     }
@@ -36,11 +37,7 @@ public class Game {
         initFiles();
         p = new Player(Save.init());
         while(!loaded) {
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Thread.yield();
         }
         load();
 
@@ -52,6 +49,7 @@ public class Game {
 
     private static void initFiles() {
         ZoneReader.exec();
+        MapReader.exec();
         MovementReader.exec();
         // MonsterReader.exec();
         // AttackReader.exec();

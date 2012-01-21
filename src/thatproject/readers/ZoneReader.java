@@ -1,6 +1,7 @@
 package thatproject.readers;
 
 import thatproject.Game;
+import thatproject.ThatProject;
 import thatproject.util.FileReader;
 import thatproject.world.Zone;
 
@@ -19,7 +20,7 @@ public class ZoneReader extends FileReader {
             read();
             parse(i);
         }
-        MapReader.exec();
+        ThatProject.threadFreeze = false;
     }
 
     public static void exec() {
@@ -38,13 +39,12 @@ public class ZoneReader extends FileReader {
     }
 
     private void parse(int z) {
-        System.out.println(content.size());
-        for (int i = 0, count = 0; i < content.size() / LINESIZE; i += LINESIZE, count++) {
+        for (int i = 0; i < content.size() / LINESIZE; i += LINESIZE) {
             count(true);
             String name = content.get(i + count());
             String[] description = split(content.get(i + count()));
             int[] monsters = splitInt(content.get(i + count()));
-            Game.world.zones[count] = new Zone(i, name, description, monsters);
+            Game.world.zones[z - 1] = new Zone(z - 1, name, description, monsters);
         }
     }
 

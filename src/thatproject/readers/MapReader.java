@@ -1,6 +1,7 @@
 package thatproject.readers;
 
 import thatproject.Game;
+import thatproject.ThatProject;
 import thatproject.manager.MapManager;
 import thatproject.util.FileReader;
 
@@ -13,6 +14,9 @@ public class MapReader extends FileReader {
     private static int counter = 0;
 
     public MapReader() {
+        while (ThatProject.threadFreeze) {
+            Thread.yield();
+        }
         for (int i = 1; i - 1 < mapAmount; i++) {
             path = PATH + i + EXT;
             read();

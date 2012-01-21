@@ -9,6 +9,8 @@ public class ThatProject {
 
     public static MainMenu m;
 
+    public static boolean threadFreeze = true;
+
     public static void main(String[] args) {
         try {
 
