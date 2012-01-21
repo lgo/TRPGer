@@ -1,7 +1,7 @@
 package thatproject.util;
 
+import thatproject.Game;
 import thatproject.manager.MapManager;
-import thatproject.menu.Game;
 import thatproject.menu.MainMenu;
 
 public class Event {

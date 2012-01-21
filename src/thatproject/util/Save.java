@@ -19,7 +19,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import thatproject.menu.Game;
+import thatproject.Game;
 
 public class Save {
 

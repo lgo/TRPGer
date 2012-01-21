@@ -1,7 +1,7 @@
 package thatproject.readers;
 
+import thatproject.Game;
 import thatproject.actions.Movement;
-import thatproject.menu.Game;
 import thatproject.util.FileReader;
 
 public class MovementReader extends FileReader {
@@ -30,6 +30,7 @@ public class MovementReader extends FileReader {
     }
 
     private void parse() {
+        Movement.movements = new String[content.size()];
         for (int i = 0; i < content.size() / 5; i++) {
             Movement.movements[i] = content.get(i);
         }

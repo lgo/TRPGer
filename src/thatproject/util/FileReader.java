@@ -33,4 +33,13 @@ public abstract class FileReader {
     public static String[] split(String input, String regex) {
         return input.split(regex);
     }
+
+    public static int[] splitInt(String input) {
+        String[] s = input.split(",");
+        int[] temp = new int[s.length];
+        for (int i = 0; i < s.length; i++) {
+            temp[i] = Integer.parseInt(s[i]);
+        }
+        return temp;
+    }
 }

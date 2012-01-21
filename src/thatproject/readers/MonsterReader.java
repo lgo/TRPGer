@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import thatproject.Game;
 import thatproject.manager.MapManager;
 import thatproject.manager.MonsterManager;
-import thatproject.menu.Game;
 import thatproject.util.FileReader;
 
 public class MonsterReader extends FileReader {

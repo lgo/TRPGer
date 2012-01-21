@@ -18,6 +18,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
 
+import thatproject.Game;
 import thatproject.ThatProject;
 import thatproject.util.Commands;
 
@@ -226,10 +227,6 @@ public class MainMenu extends JPanel implements ActionListener {
         healthBar = new JProgressBar();
         healthBar.setBounds(barX, barY, barW, barH);
         healthBar.setMinimum(0);
-        ThatProject.threadFreeze = true;
-        while (!ThatProject.threadFreeze) {
-            Thread.yield();
-        }
         healthBar.setMaximum(Game.p.hpMax);
         healthBar.setStringPainted(true);
 

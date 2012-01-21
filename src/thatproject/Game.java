@@ -1,14 +1,14 @@
-package thatproject.menu;
+package thatproject;
 
-import thatproject.ThatProject;
 import thatproject.entities.being.Player;
-import thatproject.manager.MapManager;
+import thatproject.menu.MainMenu;
 import thatproject.readers.AttackReader;
 import thatproject.readers.MapReader;
 import thatproject.readers.MonsterReader;
 import thatproject.readers.MovementReader;
 import thatproject.readers.ZoneReader;
 import thatproject.util.Save;
+import thatproject.world.World;
 
 public class Game {
 
@@ -19,11 +19,14 @@ public class Game {
     public static AttackReader attackr;
     public static ZoneReader zoner;
 
+    public static World world = new World();
+    public static boolean loaded = false;
+
     public static final int mapW = 100;
     public static final int mapH = 100;
 
-    public static final int gameStartX = 3;
-    public static final int gameStartY = 0;
+    public static final int gameStartX = 1;
+    public static final int gameStartY = 2;
 
     public static void start() {
         init();
@@ -31,24 +34,32 @@ public class Game {
 
     private static void init() {
         initFiles();
+        p = new Player(Save.init());
+        while(!loaded) {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         load();
 
     }
 
     private static void load() {
-        p = new Player(Save.init());
-        MapManager.init(0, 0, 100, 100);
         intro();
     }
 
     private static void initFiles() {
-        MapReader.exec();
+        ZoneReader.exec();
         MovementReader.exec();
         // MonsterReader.exec();
         // AttackReader.exec();
     }
 
     private static void intro() {
-        MainMenu.set("Welcome to the world of " + ThatProject.name + "!\nHi!");
+        world.startGame(gameStartX, gameStartY);
+        MainMenu.set("Welcome to the world of " + ThatProject.name + "!\nHi!\n");
+        // Movement.getMovement(World.currentMap, 1);
     }
 }

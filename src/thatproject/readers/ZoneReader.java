@@ -1,17 +1,25 @@
 package thatproject.readers;
 
-import thatproject.manager.ZoneManager;
-import thatproject.menu.Game;
+import thatproject.Game;
 import thatproject.util.FileReader;
+import thatproject.world.Zone;
 
 public class ZoneReader extends FileReader {
 
-    private String pathN = "data/monster/monster.txt";
+    private static final String PATH = "data/map/mapzone";
+    private static final String EXT = ".txt";
+    private static int /* DEBUG zoneAmount = 8; */zoneAmount = 2;
+    private static final int LINESIZE = 3;
+    private static int counter = 0;
 
     public ZoneReader() {
-        path = pathN;
-        read();
-        parse();
+        Game.world.zones = new Zone[zoneAmount];
+        for (int i = 1; i - 1 < zoneAmount; i++) {
+            path = PATH + i + EXT;
+            read();
+            parse(i);
+        }
+        MapReader.exec();
     }
 
     public static void exec() {
@@ -29,18 +37,27 @@ public class ZoneReader extends FileReader {
         Game.zoner = new ZoneReader();
     }
 
-    private void parse() {
-        int x, y, zone;
-        String name, description;
-        boolean[] directions = new boolean[4];
-        for (int i = 0; i < content.size() / 5; i += 5) {
-            x = Integer.parseInt(split(content.get(i))[0]);
-            y = Integer.parseInt(split(content.get(i))[1]);
-            zone = Integer.parseInt(content.get(i + 1));
-            name = content.get(i + 2);
-            description = content.get(i + 3);
-            ZoneManager.populateZones(x, y, name, description, directions, zone);
+    private void parse(int z) {
+        System.out.println(content.size());
+        for (int i = 0, count = 0; i < content.size() / LINESIZE; i += LINESIZE, count++) {
+            count(true);
+            String name = content.get(i + count());
+            String[] description = split(content.get(i + count()));
+            int[] monsters = splitInt(content.get(i + count()));
+            Game.world.zones[count] = new Zone(i, name, description, monsters);
         }
     }
 
+    private int count() {
+        return count(false);
+    }
+
+    private int count(boolean mode) {
+        if (!mode) {
+            counter++;
+        } else {
+            counter = 0;
+        }
+        return counter - 1;
+    }
 }

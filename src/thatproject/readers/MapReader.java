@@ -1,23 +1,24 @@
 package thatproject.readers;
 
+import thatproject.Game;
 import thatproject.manager.MapManager;
-import thatproject.menu.Game;
 import thatproject.util.FileReader;
 
 public class MapReader extends FileReader {
 
-    private static final String pathN = "data/map/map";
-    private static final String ext = ".txt";
-    private static int /*DEBUG mapAmount = 8; */ mapAmount = 1;
+    private static final String PATH = "data/map/map";
+    private static final String EXT = ".txt";
+    private static int /* DEBUG mapAmount = 8; */mapAmount = 2;
+    private static final int LINESIZE = 4;
+    private static int counter = 0;
 
     public MapReader() {
-        //Debug
-        mapAmount = 1;
         for (int i = 1; i - 1 < mapAmount; i++) {
-            path = pathN + i + ext;
+            path = PATH + i + EXT;
             read();
-            parse();
+            parse(i);
         }
+        Game.loaded = true;
     }
 
     public static void exec() {
@@ -35,18 +36,16 @@ public class MapReader extends FileReader {
         Game.mapr = new MapReader();
     }
 
-    private void parse() {
-        int x, y, zone;
-        String name, description;
-        boolean[] directions = new boolean[4];
-        for (int i = 0; i < content.size() / 5; i += 5) {
-            x = Integer.parseInt(split(content.get(i))[0]);
-            y = Integer.parseInt(split(content.get(i))[1]);
-            zone = Integer.parseInt(content.get(i + 1));
-            name = content.get(i + 2);
-            description = content.get(i + 3);
-            directions = directionSplit(content.get(i + 4));
-            MapManager.populateWorlds(x, y, name, description, directions, zone);
+    private void parse(int zone) {
+        for (int i = 0; i < content.size() / LINESIZE; i += LINESIZE) {
+            count(true);
+            String[] xy = split(content.get(i + count()));
+            int x = Integer.parseInt(xy[0]);
+            int y = Integer.parseInt(xy[1]);
+            String name = content.get(i + count());
+            String description = content.get(i + count());
+            boolean[] directions = directionSplit(content.get(i + count()));
+            MapManager.populateWorlds(zone - 1, x, y, name, description, directions);
         }
     }
 
@@ -67,4 +66,17 @@ public class MapReader extends FileReader {
         return bools;
     }
 
+    private int count() {
+        return count(false);
+    }
+
+    private int count(boolean mode) {
+        if (!mode) {
+            counter++;
+        } else {
+            counter = 0;
+        }
+        return counter - 1;
+    }
+    
 }

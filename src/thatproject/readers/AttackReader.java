@@ -1,7 +1,7 @@
 package thatproject.readers;
 
+import thatproject.Game;
 import thatproject.manager.MonsterManager;
-import thatproject.menu.Game;
 import thatproject.util.Commands;
 import thatproject.util.FileReader;
 
