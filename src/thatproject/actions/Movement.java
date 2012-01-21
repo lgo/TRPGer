@@ -21,6 +21,9 @@ public class Movement {
         int i = generator.nextInt(movements.length - 1);
         String[] s;
         String string = "";
+        for (String move : movements) {
+            System.out.println(move);
+        }
         if ((s = FileReader.split(Movement.movements[i], ":")).length != 1) {
             for (int j = 1; j < s.length; j++) {
                 if (j == 1) {

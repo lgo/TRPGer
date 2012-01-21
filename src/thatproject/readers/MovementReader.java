@@ -6,10 +6,10 @@ import thatproject.util.FileReader;
 
 public class MovementReader extends FileReader {
 
-    private static final String pathN = "data/content/movement.txt";
+    private static final String PATH = "data/content/movement.txt";
 
     public MovementReader() {
-        path = pathN;
+        path = PATH;
         read();
         parse();
     }
@@ -31,7 +31,7 @@ public class MovementReader extends FileReader {
 
     private void parse() {
         Movement.movements = new String[content.size()];
-        for (int i = 0; i < content.size() / 5; i++) {
+        for (int i = 0; i < content.size(); i++) {
             Movement.movements[i] = content.get(i);
         }
     }

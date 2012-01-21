@@ -12,7 +12,6 @@ public class Commands {
 
     public static void command(String s) {
         active = s.toLowerCase();
-
         if (check(attacks)) {
             attack();
         } else if (check(accept)) {

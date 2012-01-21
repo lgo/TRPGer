@@ -1,5 +1,6 @@
 package thatproject;
 
+import thatproject.actions.Movement;
 import thatproject.entities.being.Player;
 import thatproject.menu.MainMenu;
 import thatproject.readers.AttackReader;
@@ -58,6 +59,6 @@ public class Game {
     private static void intro() {
         world.startGame(gameStartX, gameStartY);
         MainMenu.set("Welcome to the world of " + ThatProject.name + "!\nHi!\n");
-        // Movement.getMovement(World.currentMap, 1);
+        Movement.getMovement(World.currentMap, 1);
     }
 }

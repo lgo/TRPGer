@@ -37,4 +37,8 @@ public class Event {
     public static void move(int dir) {
         MapManager.Move(dir);
     }
+    
+    public static void buttonPress(int x, int y) {
+        System.out.println(x + " : " + y);
+    }
 }

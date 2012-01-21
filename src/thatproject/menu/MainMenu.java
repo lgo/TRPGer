@@ -21,6 +21,7 @@ import javax.swing.border.Border;
 import thatproject.Game;
 import thatproject.ThatProject;
 import thatproject.util.Commands;
+import thatproject.util.Event;
 
 public class MainMenu extends JPanel implements ActionListener {
 
@@ -110,9 +111,17 @@ public class MainMenu extends JPanel implements ActionListener {
 
         for (int i = 0; i < buttonAmountWidth; i++) {
             for (int j = 0; j < buttonAmountHeight; j++) {
-
+                final int tempI = i, tempJ = j;
                 buttons[i][j] = new JButton();
                 buttons[i][j].setBounds(buttonXStart + i * buttonXIncrement + i * buttonWidth, buttonYStart + j * buttonYIncrement + j * buttonHeight, buttonWidth, buttonHeight);
+                buttons[i][j].addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                        Event.buttonPress(tempI,tempJ);
+                    }
+
+                });
             }
         }
         for (JButton[] button : buttons) {
@@ -131,6 +140,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent evt) {
+        System.out.println(evt.getSource());
         Commands.command(textField.getText());
         textField.setText("");
     }
