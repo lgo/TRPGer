@@ -4,7 +4,7 @@ import thatproject.menu.MainMenu;
 
 public class ThatProject {
 
-    public static String name = "Mysteria";
+    public static String name = "Absolute Power";
     public static int x = 900, y = 600;
 
     public static MainMenu m;

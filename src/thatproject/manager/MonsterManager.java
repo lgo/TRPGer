@@ -11,7 +11,7 @@ public class MonsterManager {
     private static Enemy currentBattle;
 
     public static void populateMonsters(int[] stats, String name, String description, String[] encounter, int[] zone) {
-        monsters.add(new Monster(stats, name, encounter));
+        // monsters.add(new Monster(stats, name, encounter));
 
     }
 

@@ -2,8 +2,14 @@ package thatproject.entities;
 
 public class Monster extends Entity {
 
-    public Monster(int stats[], String name, String[] encounter) {
+    public int hpMax;
+    public int[] stats;
+    public String name;
 
+    public Monster(int s[], int hp, String n) {
+        stats = s;
+        hpMax = hp;
+        name = n;
     }
 
 }

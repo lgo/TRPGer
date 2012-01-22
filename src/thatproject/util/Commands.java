@@ -17,12 +17,14 @@ public class Commands {
     private static int count = 0;
 
     private static String active;
-    
+
     public static boolean specialEvent = false;
 
     public static void command(String s) {
         active = s.toLowerCase();
-        if (specialEvent) SpecialEvents.command(active);
+        if (specialEvent) {
+            SpecialEvents.command(active);
+        }
         switch (gameState) {
             case 0:
                 startState();

@@ -4,8 +4,12 @@ import thatproject.entities.Monster;
 
 public class Enemy extends Monster {
 
-    public Enemy(int[] stats, String name, String[] encounter) {
-        super(stats, name, encounter);
+    public int hp;
+    public int attack;
+
+    public Enemy(Monster m) {
+        super(m.stats, m.hpMax, m.name);
+        hp = m.hpMax;
     }
 
 }
