@@ -1,4 +1,9 @@
 1,2
 Inner Forest
-Entry information of what comes up when you enter the zone
-1,1,1,1
+FIRST MAP!
+0,1,0,0
+
+1,1
+Inner Forest TWO
+SECOND MAP!
+1,0,0,0

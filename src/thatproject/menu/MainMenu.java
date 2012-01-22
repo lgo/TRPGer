@@ -32,6 +32,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int taH = 520;
 
     private static String contents = "";
+    private static String contentsTemp = "";
 
     private static JTextField textField;
     private static final int tfX = taX;
@@ -83,7 +84,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     public MainMenu(JFrame frame) {
         super(new GridBagLayout());
-        // Initialise
+        // Initialize
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -111,14 +112,16 @@ public class MainMenu extends JPanel implements ActionListener {
 
         for (int i = 0; i < buttonAmountWidth; i++) {
             for (int j = 0; j < buttonAmountHeight; j++) {
-                final int tempI = i, tempJ = j;
                 buttons[i][j] = new JButton();
                 buttons[i][j].setBounds(buttonXStart + i * buttonXIncrement + i * buttonWidth, buttonYStart + j * buttonYIncrement + j * buttonHeight, buttonWidth, buttonHeight);
+
+                final int tempI = i, tempJ = j;
                 buttons[i][j].addActionListener(new ActionListener() {
 
                     @Override
                     public void actionPerformed(ActionEvent evt) {
                         Event.buttonPress(tempI,tempJ);
+                        MainMenu.focus();
                     }
 
                 });
@@ -140,7 +143,6 @@ public class MainMenu extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent evt) {
-        System.out.println(evt.getSource());
         Commands.command(textField.getText());
         textField.setText("");
     }
@@ -150,16 +152,37 @@ public class MainMenu extends JPanel implements ActionListener {
      * 
      * @param s to add to textarea
      */
-    public void add(String s) {
-        set(contents + s);
+    public static void add(String s) {
+        contents += s;
+        set(contents, true);
+    }
+    
+    public static void addTemp(String s) {
+        set(contents + s, true);
     }
 
     /**
-     * Sets text to the textarea
+     * Sets text to the textarea (Used to call from add())
      * 
      * @param s to set to textarea
      */
+    public static void set(String s, boolean overmode) {
+        // Create a seperate dispatch thread for initializing GUI
+        hi = s;
+        try {
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    set();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public static void set(String s) {
+        contents = s;
         // Create a seperate dispatch thread for initializing GUI
         hi = s;
         try {
@@ -176,7 +199,6 @@ public class MainMenu extends JPanel implements ActionListener {
 
     public static void set() {
         textArea.setText(hi);
-        contents = hi;
     }
 
     /**

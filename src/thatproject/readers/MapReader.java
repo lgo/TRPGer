@@ -9,8 +9,8 @@ public class MapReader extends FileReader {
 
     private static final String PATH = "data/map/map";
     private static final String EXT = ".txt";
-    private static int /* DEBUG mapAmount = 8; */mapAmount = 2;
-    private static final int LINESIZE = 4;
+    private static int /* DEBUG mapAmount = 8; */mapAmount = 1;
+    private static final int LINESIZE = 5;
     private static int counter = 0;
 
     public MapReader() {
@@ -41,14 +41,14 @@ public class MapReader extends FileReader {
     }
 
     private void parse(int zone) {
-        for (int i = 0; i < content.size() / LINESIZE; i += LINESIZE) {
+        for (int i = 0; i < content.size(); i += LINESIZE) {
             count(true);
-            String[] xy = split(content.get(i + count()));
+            String[] xy = split(content.get(i + 0));
             int x = Integer.parseInt(xy[0]);
             int y = Integer.parseInt(xy[1]);
-            String name = content.get(i + count());
-            String description = content.get(i + count());
-            boolean[] directions = directionSplit(content.get(i + count()));
+            String name = content.get(i + 1);
+            String description = content.get(i + 2);
+            boolean[] directions = directionSplit(content.get(i + 3));
             MapManager.populateWorlds(zone - 1, x, y, name, description, directions);
         }
     }

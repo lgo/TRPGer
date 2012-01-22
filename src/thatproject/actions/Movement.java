@@ -19,23 +19,6 @@ public class Movement {
      */
     public static String getMovement(Map to, int dir) {
         int i = generator.nextInt(movements.length - 1);
-        String[] s;
-        String string = "";
-        for (String move : movements) {
-            System.out.println(move);
-        }
-        if ((s = FileReader.split(Movement.movements[i], ":")).length != 1) {
-            for (int j = 1; j < s.length; j++) {
-                if (j == 1) {
-                    string += s[j - 1] + to.getName() + s[j];
-                } else {
-                    string += to.getName() + s[j];
-                }
-            }
-        } else {
-            string = s[0];
-        }
-
         return splitDirection(splitName(movements[i], to.getName()), dir);
     }
 
@@ -58,7 +41,7 @@ public class Movement {
                 }
             }
         }
-        return string;
+        return string + "\n";
     }
 
     /**
@@ -73,20 +56,7 @@ public class Movement {
         if ((s = FileReader.split(string, "]")).length != 1) {
             string = "";
             String direction = "";
-            switch (dir) {
-                case 0:
-                    direction = "North";
-                    break;
-                case 1:
-                    direction = "South";
-                    break;
-                case 2:
-                    direction = "East";
-                    break;
-                case 3:
-                    direction = "West";
-                    break;
-            }
+            
 
             for (int j = 1; j < s.length; j++) {
                 if (j == 1) {
@@ -97,6 +67,25 @@ public class Movement {
             }
         }
         return string;
+    }
+    
+    public static String directionToString(int dir) {
+        String direction = null;
+        switch (dir) {
+            case 0:
+                direction = "North";
+                break;
+            case 1:
+                direction = "South";
+                break;
+            case 2:
+                direction = "East";
+                break;
+            case 3:
+                direction = "West";
+                break;
+        }
+        return direction;
     }
 
 }

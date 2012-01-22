@@ -21,7 +21,7 @@ public class Commands {
         } else if (active.equals("cancel")) {
             Event.drop(false);
         } else if (check(directions)) {
-            int dir = s.equals("n") ? 0 : s.equals("s") ? 1 : s.equals("e") ? 2 : 3;
+            int dir = 0;
             if (s.equals("n")) {
                 dir = 0;
             } else if (s.equals("s")) {

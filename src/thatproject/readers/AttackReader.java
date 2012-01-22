@@ -1,8 +1,6 @@
 package thatproject.readers;
 
 import thatproject.Game;
-import thatproject.manager.MonsterManager;
-import thatproject.util.Commands;
 import thatproject.util.FileReader;
 
 public class AttackReader extends FileReader {
@@ -31,19 +29,7 @@ public class AttackReader extends FileReader {
     }
 
     private void parse() {
-        int x, y;
-        int[] stats = null, zone = null;
-        String name, description;
-        String[] encounterLines = null;
-        Commands.attackSize(content.size() - 1);
-        for (int i = 0; i < content.size() / 5; i += 5) {
-            x = Integer.parseInt(split(content.get(i))[0]);
-            y = Integer.parseInt(split(content.get(i))[1]);
-            name = content.get(i + 2);
-            description = content.get(i + 3);
-            insertAttack(content.get(i + 4));
-            MonsterManager.populateMonsters(stats, name, description, encounterLines, zone);
-        }
+        
     }
 
     /**

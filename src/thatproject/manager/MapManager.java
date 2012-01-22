@@ -1,7 +1,10 @@
 package thatproject.manager;
 
 import thatproject.Game;
+import thatproject.actions.Movement;
+import thatproject.menu.MainMenu;
 import thatproject.world.Map;
+import thatproject.world.World;
 
 public class MapManager {
 
@@ -14,19 +17,20 @@ public class MapManager {
     }
 
     public static void Move(int dir) {
-        if (Game.world.currentMap.move(dir)) {
-            initiateMap();
+        if (World.currentMap.move(dir)) {
+            initiateMap(dir);
         } else {
             wrongDirection(dir);
         }
     }
 
     private static void wrongDirection(int dir) {
-
+        MainMenu.addTemp("You cannot go " + Movement.directionToString(dir) + " from here.");
     }
 
-    private static void initiateMap() {
-
+    private static void initiateMap(int dir) {
+        World.move(dir);
+        MainMenu.add(Movement.getMovement(World.currentMap, dir));
     }
 
 }

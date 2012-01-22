@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 import thatproject.Game;
 import thatproject.manager.MapManager;
-import thatproject.manager.MonsterManager;
 import thatproject.util.FileReader;
 
 public class MonsterReader extends FileReader {
@@ -35,7 +34,8 @@ public class MonsterReader extends FileReader {
     }
 
     private void parse() {
-        int x, y;
+        //TODO
+        /* int x, y;
         int[] stats = null, zone = null;
         String name, description;
         String[] encounterLines = null;
@@ -47,6 +47,7 @@ public class MonsterReader extends FileReader {
             insertMonsters(content.get(i + 4), count);
             MonsterManager.populateMonsters(stats, name, description, encounterLines, zone);
         }
+        */
     }
 
     /**

@@ -9,8 +9,8 @@ public class ZoneReader extends FileReader {
 
     private static final String PATH = "data/map/mapzone";
     private static final String EXT = ".txt";
-    private static int /* DEBUG zoneAmount = 8; */zoneAmount = 2;
-    private static final int LINESIZE = 3;
+    private static int /* DEBUG zoneAmount = 8; */zoneAmount = 1;
+    private static final int LINESIZE = 4;
     private static int counter = 0;
 
     public ZoneReader() {
@@ -39,7 +39,7 @@ public class ZoneReader extends FileReader {
     }
 
     private void parse(int z) {
-        for (int i = 0; i < content.size() / LINESIZE; i += LINESIZE) {
+        for (int i = 0; i < content.size(); i += LINESIZE) {
             count(true);
             String name = content.get(i + count());
             String[] description = split(content.get(i + count()));

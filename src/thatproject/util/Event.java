@@ -35,7 +35,7 @@ public class Event {
     }
 
     public static void move(int dir) {
-        MapManager.Move(dir);
+       MapManager.Move(dir);
     }
     
     public static void buttonPress(int x, int y) {
