@@ -34,20 +34,17 @@ public class MonsterReader extends FileReader {
     }
 
     private void parse() {
-        //TODO
-        /* int x, y;
-        int[] stats = null, zone = null;
-        String name, description;
-        String[] encounterLines = null;
-        for (int i = 0, count = 0; i < content.size() / 5; i += 5, count++) {
-            x = Integer.parseInt(split(content.get(i))[0]);
-            y = Integer.parseInt(split(content.get(i))[1]);
-            name = content.get(i + 2);
-            description = content.get(i + 3);
-            insertMonsters(content.get(i + 4), count);
-            MonsterManager.populateMonsters(stats, name, description, encounterLines, zone);
-        }
-        */
+        // TODO
+        /*
+         * int x, y; int[] stats = null, zone = null; String name, description;
+         * String[] encounterLines = null; for (int i = 0, count = 0; i <
+         * content.size() / 5; i += 5, count++) { x =
+         * Integer.parseInt(split(content.get(i))[0]); y =
+         * Integer.parseInt(split(content.get(i))[1]); name = content.get(i +
+         * 2); description = content.get(i + 3); insertMonsters(content.get(i +
+         * 4), count); MonsterManager.populateMonsters(stats, name, description,
+         * encounterLines, zone); }
+         */
     }
 
     /**

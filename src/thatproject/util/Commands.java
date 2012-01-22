@@ -1,20 +1,56 @@
 package thatproject.util;
 
 import thatproject.manager.AttackManager;
+import thatproject.menu.MainMenu;
 
 public class Commands {
 
+    public static int gameState = 0;
+    
     private static String[] attacks = { "boo" };
     private static String[] accept = { "yes", "y", "okay", "k" };
+    private static String[] deny = { "no", "n" };
     private static String[] directions = { "n", "s", "e", "w" };
+    
+    private static int count = 0;
 
     private static String active;
 
     public static void command(String s) {
-        active = s.toLowerCase();
+        active = s.toLowerCase();        
+        switch (gameState) {
+            case 0:
+                startState();
+                break;
+            case 1:
+                mapState();
+                break;
+            case 2:
+                battleState();
+                break;
+            case 3:
+                statState();
+                break;
+        }
+        
+        //Globals
+        if (active.equals("help")) {
+            help();
+        }
+        
+    }
+
+    private static void statState() {
+    }
+
+    private static void battleState() {
         if (check(attacks)) {
             attack();
-        } else if (check(accept)) {
+        }
+    }
+
+    private static void mapState() {
+        if (check(accept)) {
             Event.accept();
         } else if (active.equals("drop")) {
             Event.drop(true);
@@ -22,18 +58,43 @@ public class Commands {
             Event.drop(false);
         } else if (check(directions)) {
             int dir = 0;
-            if (s.equals("n")) {
+            if (active.equals("n")) {
                 dir = 0;
-            } else if (s.equals("s")) {
+            } else if (active.equals("s")) {
                 dir = 1;
-            } else if (s.equals("e")) {
+            } else if (active.equals("e")) {
                 dir = 2;
-            } else if (s.equals("w")) {
+            } else if (active.equals("w")) {
                 dir = 3;
             }
 
             Event.move(dir);
+        } else if (check(new String[] { "stat", "stats"})) {
+            
         }
+        
+    }
+
+    private static void startState() {
+        switch (count) {
+            case 0:
+                if (check(accept)) {
+                    Event.initiateFirst();
+                    count++;
+                } else if (check(deny)) {
+                    System.exit(0);
+                }
+                break;
+            case 1:
+                if (check(accept)) {
+                
+                } else if (check(deny)) {
+                    gameState = 1;
+                    Event.initiateGame();
+                }
+                break;
+        }
+        
     }
 
     private static boolean check(String[] a) {
@@ -50,6 +111,19 @@ public class Commands {
                 AttackManager.attack(i);
             }
         }
+    }
+    
+    private static void help() {
+        switch (gameState) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+        MainMenu.addTemp("TODO!");
+        
     }
 
     /**

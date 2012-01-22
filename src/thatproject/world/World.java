@@ -1,6 +1,5 @@
 package thatproject.world;
 
-
 public class World {
 
     public static Zone[] zones;
@@ -17,7 +16,7 @@ public class World {
     public static Zone getZone() {
         return zones[currentZone];
     }
-    
+
     public static void move(int dir) {
         switch (dir) {
             case 0:

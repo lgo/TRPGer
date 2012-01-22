@@ -82,5 +82,5 @@ public class MapReader extends FileReader {
         }
         return counter - 1;
     }
-    
+
 }

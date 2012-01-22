@@ -3,6 +3,7 @@ package thatproject.util;
 import thatproject.Game;
 import thatproject.manager.MapManager;
 import thatproject.menu.MainMenu;
+import thatproject.world.World;
 
 public class Event {
 
@@ -35,10 +36,18 @@ public class Event {
     }
 
     public static void move(int dir) {
-       MapManager.Move(dir);
+        MapManager.Move(dir);
     }
-    
+
     public static void buttonPress(int x, int y) {
         System.out.println(x + " : " + y);
+    }
+
+    public static void initiateGame() {
+        World.currentMap.enter();
+    }
+
+    public static void initiateFirst() {
+        MainMenu.set("You awaken, brandished of what has occured in recent moments. With complete amnesia you move forward to the edge of a tree, only to see a large spider drop down and prepare to pounce(LOLWUT?) onto you.\n\nDo you wish to engage it (Combat Tutorial)?");
     }
 }

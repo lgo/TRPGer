@@ -29,7 +29,7 @@ public class AttackReader extends FileReader {
     }
 
     private void parse() {
-        
+
     }
 
     /**

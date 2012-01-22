@@ -1,11 +1,11 @@
 package thatproject.manager;
 
-import thatproject.Game;
+import thatproject.world.World;
 
 public class ZoneManager {
 
     public static void insertMonster(int z, int monster) {
-        Game.world.zones[z].insertMonster(monster);
+        World.zones[z].insertMonster(monster);
     }
 
 }

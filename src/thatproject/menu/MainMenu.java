@@ -28,7 +28,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private static JTextArea textArea;
     private static final int taX = 5;
     private static final int taY = 5;
-    private static final int taW = 400;
+    private static final int taW = 600;
     private static final int taH = 520;
 
     private static String contents = "";
@@ -43,7 +43,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private static JButton[][] buttons;
     private static final int buttonAmountWidth = 5;
     private static final int buttonAmountHeight = 7;
-    private static final int buttonXStart = 440;
+    private static final int buttonXStart = taX + taW + 35;
     private static final int buttonYStart = 220;
     private static final int buttonXIncrement = 5;
     private static final int buttonYIncrement = buttonXIncrement;
@@ -51,7 +51,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int buttonHeight = buttonWidth;
 
     public static JProgressBar healthBar;
-    private static final int barX = 450;
+    private static final int barX = taX + taW + 45;
     private static final int barY = 40;
     private static final int barH = 20;
     private static final int barW = 200;
@@ -63,7 +63,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int hpH = 20;
 
     public static JProgressBar staminaBar;
-    private static final int sbarX = 450;
+    private static final int sbarX = barX;
     private static final int sbarY = 80;
     private static final int sbarH = 20;
     private static final int sbarW = 200;
@@ -120,7 +120,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
                     @Override
                     public void actionPerformed(ActionEvent evt) {
-                        Event.buttonPress(tempI,tempJ);
+                        Event.buttonPress(tempI, tempJ);
                         MainMenu.focus();
                     }
 
@@ -156,7 +156,7 @@ public class MainMenu extends JPanel implements ActionListener {
         contents += s;
         set(contents, true);
     }
-    
+
     public static void addTemp(String s) {
         set(contents + s, true);
     }
@@ -180,7 +180,7 @@ public class MainMenu extends JPanel implements ActionListener {
             e.printStackTrace();
         }
     }
-    
+
     public static void set(String s) {
         contents = s;
         // Create a seperate dispatch thread for initializing GUI
@@ -280,6 +280,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
         // Setup Stamina bar and flair
         UIManager.put("ProgressBar.foreground", Color.GREEN);
+        UIManager.put("ProgressBar.selectionForeground", Color.BLACK);
         staminaBar = new JProgressBar();
         staminaBar.setBounds(sbarX, sbarY, sbarW, sbarH);
         staminaBar.setMinimum(0);

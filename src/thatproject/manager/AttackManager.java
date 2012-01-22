@@ -9,4 +9,5 @@ public class AttackManager {
     public static void attack(int id) {
 
     }
+
 }

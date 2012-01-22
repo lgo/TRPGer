@@ -33,4 +33,8 @@ public class Map {
         return direction[dir];
     }
 
+    public void enter() {
+
+    }
+
 }

@@ -3,6 +3,7 @@ package thatproject.readers;
 import thatproject.Game;
 import thatproject.ThatProject;
 import thatproject.util.FileReader;
+import thatproject.world.World;
 import thatproject.world.Zone;
 
 public class ZoneReader extends FileReader {
@@ -14,7 +15,7 @@ public class ZoneReader extends FileReader {
     private static int counter = 0;
 
     public ZoneReader() {
-        Game.world.zones = new Zone[zoneAmount];
+        World.zones = new Zone[zoneAmount];
         for (int i = 1; i - 1 < zoneAmount; i++) {
             path = PATH + i + EXT;
             read();
@@ -44,7 +45,7 @@ public class ZoneReader extends FileReader {
             String name = content.get(i + count());
             String[] description = split(content.get(i + count()));
             int[] monsters = splitInt(content.get(i + count()));
-            Game.world.zones[z - 1] = new Zone(z - 1, name, description, monsters);
+            World.zones[z - 1] = new Zone(z - 1, name, description, monsters);
         }
     }
 

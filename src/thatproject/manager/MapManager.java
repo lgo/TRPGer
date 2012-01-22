@@ -1,6 +1,5 @@
 package thatproject.manager;
 
-import thatproject.Game;
 import thatproject.actions.Movement;
 import thatproject.menu.MainMenu;
 import thatproject.world.Map;
@@ -9,11 +8,11 @@ import thatproject.world.World;
 public class MapManager {
 
     public static void populateWorlds(int z, int x, int y, String name, String description, boolean[] directions) {
-        Game.world.zones[z].insertMap(x, y, new Map(x, y, name, description, directions));
+        World.zones[z].insertMap(x, y, new Map(x, y, name, description, directions));
     }
 
     public static void insertMonster(int x, int y, int monster) {
-        Game.world.getZone().getMap(x, y).insertMonster(monster);
+        World.getZone().getMap(x, y).insertMonster(monster);
     }
 
     public static void Move(int dir) {
