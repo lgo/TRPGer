@@ -2,22 +2,27 @@ package thatproject.util;
 
 import thatproject.manager.AttackManager;
 import thatproject.menu.MainMenu;
+import thatproject.world.SpecialEvents;
+import thatproject.world.World;
 
 public class Commands {
 
     public static int gameState = 0;
-    
+
     private static String[] attacks = { "boo" };
     private static String[] accept = { "yes", "y", "okay", "k" };
     private static String[] deny = { "no", "n" };
     private static String[] directions = { "n", "s", "e", "w" };
-    
+
     private static int count = 0;
 
     private static String active;
+    
+    public static boolean specialEvent = false;
 
     public static void command(String s) {
-        active = s.toLowerCase();        
+        active = s.toLowerCase();
+        if (specialEvent) SpecialEvents.command(active);
         switch (gameState) {
             case 0:
                 startState();
@@ -32,15 +37,18 @@ public class Commands {
                 statState();
                 break;
         }
-        
-        //Globals
+
+        // Globals
         if (active.equals("help")) {
             help();
         }
-        
+
     }
 
     private static void statState() {
+        if (active.equals("exit")) {
+            gameState = 1;
+        }
     }
 
     private static void battleState() {
@@ -69,10 +77,10 @@ public class Commands {
             }
 
             Event.move(dir);
-        } else if (check(new String[] { "stat", "stats"})) {
-            
+        } else if (check(new String[] { "stat", "stats" })) {
+
         }
-        
+
     }
 
     private static void startState() {
@@ -87,14 +95,14 @@ public class Commands {
                 break;
             case 1:
                 if (check(accept)) {
-                
+                    SpecialEvents.tutorialSpider();
                 } else if (check(deny)) {
                     gameState = 1;
-                    Event.initiateGame();
+                    World.start();
                 }
                 break;
         }
-        
+
     }
 
     private static boolean check(String[] a) {
@@ -112,7 +120,7 @@ public class Commands {
             }
         }
     }
-    
+
     private static void help() {
         switch (gameState) {
             case 0:
@@ -123,7 +131,7 @@ public class Commands {
                 break;
         }
         MainMenu.addTemp("TODO!");
-        
+
     }
 
     /**

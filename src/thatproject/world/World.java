@@ -35,4 +35,7 @@ public class World {
         currentMap = getZone().getMap(x, y);
     }
 
+    public static void start() {
+    }
+
 }
