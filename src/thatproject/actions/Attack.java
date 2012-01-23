@@ -13,6 +13,7 @@ public class Attack {
     public static final int SPACES = 20;
 
     public static String attackDisplay(int hp, int hpMax, int spaces, String name) {
+        hp = (hp < 0) ? 0 : hp;
         return name + n + "Health: " + healthDisplay(hp, hpMax, spaces);
     }
 
@@ -42,6 +43,6 @@ public class Attack {
     }
 
     public static int attack(int low, int high) {
-        return generator.nextInt(high - low) + low;
+        return generator.nextInt((high - low)) + low;
     }
 }

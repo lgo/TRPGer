@@ -35,33 +35,62 @@ public class SpecialEvents {
                 int damage = Attack.attack(15, 25);
                 temp -= damage;
                 MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
-                MainMenu.add("\nYou give the spider deep impale for " + damage + ".\n\n");
+                MainMenu.add("\nYou give the spider a deep impale for " + damage + ".\n\n");
                 MainMenu.addTemp("See how that did much more damage? That's because different attacks have different amounts of damage that it will induce. Go ahead and give the spider another 'stab'!");
                 stage++;
             } else {
                 MainMenu.addTemp("If you would like to survive, I highly advise you give 'stab' a go.");
             }
-            
+
         } else if (stage == 3) {
             if (active.equals("stab")) {
                 MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
                 MainMenu.add("\nYou lunge at the spider, but swiftly miss it with the dagger.\n\n");
-                MainMenu.addTemp("That's the downside of more powerful attacks such as stab, they miss more often then attacks such as slash.\nThroughout this journey you will find what suits you as well as what your limits are. With this in mind, finish off the Spider with what you know.");
+                MainMenu.addTemp("That's the downside of more powerful attacks such as stab, they miss more often then attacks such as slash.\n\nThroughout this journey you will find what suits you as well as what your limits are. With this in mind, finish off the Spider with what you know.");
                 stage++;
             } else {
                 MainMenu.addTemp("If you really want to get going, you definitely need to give 'stab' another shot!");
             }
         }
-        
-        else if (temp > 0){
-            //Spider killing events
-        } else {
 
-            Commands.specialEvent = false;
-            spider = false;
+        else if (temp > 0) {
+            if (active.equals("stab")) {
+                int damage = Attack.attack(10, 25);
+                temp -= damage;
+                if (temp <= 0) {
+
+                    MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                    MainMenu.add("\nYou give the spider a deep impale for " + damage + " and finish it off!\n\n");
+                    MainMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures!");
+                    spiderEnd();
+                } else {
+                    MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                    MainMenu.add("\nYou give the spider a deep impale for " + damage + ".\n\n");
+                }
+            } else if (active.equals("slash")) {
+                int damage = Attack.attack(5, 10);
+                temp -= damage;
+                if (temp <= 0) {
+
+                    MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                    MainMenu.add("\nYou slash away at the spider for " + damage + " and finish it off!\n\n");
+                    MainMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures!");
+                    spiderEnd();
+                } else {
+                    MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                    MainMenu.add("\nYou slash away at the spider for " + damage + ".\n\n");
+                }
+            } else {
+                MainMenu.addTemp("If you keep this up the Spider will end up attacking you!");
+            }
         }
     }
 
+    private static void spiderEnd() {
+        Commands.specialEvent = false;
+        SpecialEvents.spider = false;
+    }
+    
     public static void command(String a) {
         active = a;
         if (spider) {
