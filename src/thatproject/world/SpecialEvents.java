@@ -89,6 +89,7 @@ public class SpecialEvents {
     private static void spiderEnd() {
         Commands.specialEvent = false;
         SpecialEvents.spider = false;
+        World.start();
     }
     
     public static void command(String a) {

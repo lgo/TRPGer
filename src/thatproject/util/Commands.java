@@ -98,9 +98,10 @@ public class Commands {
             case 1:
                 if (check(accept)) {
                     SpecialEvents.tutorialSpider();
-                } else if (check(deny)) {
                     gameState = 1;
+                } else if (check(deny)) {
                     World.start();
+                    gameState = 1;
                 }
                 break;
         }
@@ -124,16 +125,37 @@ public class Commands {
     }
 
     private static void help() {
+        String t = "";
         switch (gameState) {
-            case 0:
-                break;
             case 1:
+                boolean[] temp = World.currentMap.move();
+                for (int i = 0; i < temp.length; i++) {
+                    if (temp[i] == true) {
+                        t += "\n";
+                        switch (i) {
+                            case 0:
+                                t += "n - Travel Sorth";
+                                break;
+                            case 1:
+                                t += "s - Travel South";
+                                break;
+                            case 2:
+                                t += "e - Travel East";
+                                break;
+                            case 3:
+                                t += "w - Travel West";
+                                break;
+                        }
+                    }
+                }
+                t += "\ntalk - Talk with someone in the current area.";
                 break;
             case 2:
                 break;
+            case 3:
+                break;
         }
-        MainMenu.addTemp("TODO!");
-
+        MainMenu.addTemp(t);
     }
 
     /**

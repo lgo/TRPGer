@@ -32,6 +32,10 @@ public class Map {
     public boolean move(int dir) {
         return direction[dir];
     }
+    
+    public boolean[] move() {
+        return direction;
+    }
 
     public void enter() {
 
