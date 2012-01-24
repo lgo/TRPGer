@@ -3,10 +3,15 @@ package thatproject.menu;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -138,7 +143,8 @@ public class MainMenu extends JPanel implements ActionListener {
 
         // Setup content pane
         desk.setOpaque(false);
-
+        
+        ThatProject.menuLoaded = true;
     }
 
     @Override
@@ -299,5 +305,14 @@ public class MainMenu extends JPanel implements ActionListener {
         playerStamina.setText("Stamina: " + Game.p.stamina + "/" + Game.p.staminaMax);
         playerStamina.setOpaque(false);
         desk.add(playerStamina);
+    }
+    public static void refreshHP() {
+        healthBar.setValue(Game.p.hp);
+        playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
+       
+    }
+    
+    public static void setButton(int x, int y, String i) {
+       buttons[x][y].setIcon(new ImageIcon(i));
     }
 }
