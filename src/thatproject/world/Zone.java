@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Zone {
     private int zone;
 
-    private Map[][] locations = new Map[5][5];
+    private Map[][] locations = new Map[6][6];
 
     private ArrayList<Integer> monster = new ArrayList<Integer>();
 

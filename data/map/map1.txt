@@ -1,9 +1,69 @@
-1,2
-Inner Forest
-FIRST MAP!
+0,3
+1
+The forest opens to a clearing, the sky has gone dark and you stand alone with a hooded figure holding an imposing gun. He walks up to you shoots you before leaving through the door you opened.
+0,0,1,0
+
+1,3
+0
+The forest is think around you. You think you see a Scythe in the bushes.
+0,0,1,1
+
+2,2
+0
+The forest is thick around you. There is an oddly shaped bush to your left.
+0,1,1,0
+
+2,3
+0
+The forest is thinning out before you but is still too thick to see through the foliage. You see 5000 gold on the ground.
+1,1,1,1
+
+2,4
+1
+A squirrel swarm darts towards you, fight them off before they overwhelm you!
+1,0,1,0
+
+3,0
+1
+A clearing is opened up to you as you stumble out of the forest. There is a leafy bed that looks comfortable for resting. You see an opened chest beside it with a Dull Sword and a Spoon inside of it.
 0,1,0,0
 
-1,1
-Inner Forest TWO
-SECOND MAP!
+3,1
+0
+The forest is getting thicker. You see a bush to your left and a dead bird hanging from a tree branch.
+0,1,0,0
+
+3,2
+0
+The forest thickens.
+1,1,1,1
+
+3,3
+1
+A giant ostrich sprints towers you. Will you run or fight it?
+1,1,0,1
+
+3,4
+1
+A squirrel swarm darts towards you! Fight them off before they overwhelm you!
+1,0,1,1
+
+4,3
+1
+A troll stands before a gate sporting a tight leather suit. "Away with you pawn, I'm busy." Upon seeing you not leaving he picks you up and flings you to the west.
+0,0,1,1
+
+4,4
+0
+You sense a trap as you look towards the south and east.
+0,1,1,1
+
+4,5
+1
+A giant bird sweeps down from a nearby tree and pins you to the ground.
 1,0,0,0
+
+5,4
+1
+A giant bird sweeps down from a nearby tree and pins you to the ground.
+0,0,0,1

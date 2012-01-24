@@ -96,7 +96,7 @@ public class SpecialEvents {
         active = a;
         if (spider) {
             tutorialSpider();
-        }
+        } //else if ()
     }
 
 }

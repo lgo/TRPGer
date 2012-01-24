@@ -2,7 +2,6 @@ package thatproject;
 
 import thatproject.entities.being.Player;
 import thatproject.menu.MainMenu;
-import thatproject.readers.AttackReader;
 import thatproject.readers.MapReader;
 import thatproject.readers.MonsterReader;
 import thatproject.readers.MovementReader;
@@ -17,7 +16,6 @@ public class Game {
     public static MapReader mapr;
     public static MonsterReader monsterr;
     public static MovementReader mover;
-    public static AttackReader attackr;
     public static ZoneReader zoner;
 
     public static World world = new World();
@@ -48,7 +46,12 @@ public class Game {
     
     //Calls intro() function
     private static void load() {
+        postLoad();
         intro();
+    }
+    
+    private static void postLoad() {
+        
     }
 
     //Starts the readers for maps, zones, and others.
@@ -57,7 +60,6 @@ public class Game {
         MapReader.exec();
         MovementReader.exec();
         // MonsterReader.exec();
-        // AttackReader.exec();
     }
 
     //Sets the intro text to the screen of the main menu when starting the game

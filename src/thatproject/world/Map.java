@@ -11,12 +11,13 @@ public class Map {
     private String name;
     private String description;
 
+    private boolean spawn;
     private boolean[] direction = new boolean[4];
 
-    public Map(int xLoc, int yLoc, String n, String d, boolean[] dir) {
+    public Map(int xLoc, int yLoc, boolean s, String d, boolean[] dir) {
         x = xLoc;
         y = yLoc;
-        name = n;
+        spawn = s;
         description = d;
         direction = dir;
     }
