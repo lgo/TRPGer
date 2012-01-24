@@ -1,1 +1,1 @@
-java -cp ThatProject.jar thatproject.ThatProject
+java -cp build/classes/ thatproject.ThatProject
