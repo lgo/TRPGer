@@ -27,9 +27,4 @@ public class MapManager {
         MainMenu.addTemp("\nYou cannot go " + Movement.directionToString(dir) + " from here.");
     }
 
-    private static void initiateMap(int dir) {
-        World.move(dir);
-        MainMenu.add(Movement.getMovement(World.currentMap, dir));
-    }
-
 }

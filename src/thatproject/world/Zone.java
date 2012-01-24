@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Zone {
     private int zone;
 
-    private Map[][] locations = new Map[6][6];
+    private Map[][] locations = new Map[7][7];
 
     private ArrayList<Integer> monster = new ArrayList<Integer>();
     private int spawn_rate;
@@ -49,6 +49,10 @@ public class Zone {
             m[i] = monster.get(i);
         }
         return m;
+    }
+
+    public void diag() {
+        System.out.println("");
     }
 
 }

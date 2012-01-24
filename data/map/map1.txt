@@ -48,6 +48,11 @@ A giant ostrich sprints towers you. Will you run or fight it?
 A squirrel swarm darts towards you! Fight them off before they overwhelm you!
 1,0,1,1
 
+4,2
+1
+TODO STUFF (MISSING >_>)
+1,0,1,0
+
 4,3
 1
 A troll stands before a gate sporting a tight leather suit. "Away with you pawn, I'm busy." Upon seeing you not leaving he picks you up and flings you to the west.

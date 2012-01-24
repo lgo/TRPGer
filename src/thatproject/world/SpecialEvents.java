@@ -61,7 +61,7 @@ public class SpecialEvents {
 
                     MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
                     MainMenu.add("\nYou give the spider a deep impale for " + damage + " and finish it off!\n\n");
-                    MainMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures!");
+                    MainMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures! Type 'continue' to move on.");
                     spiderEnd();
                 } else {
                     MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
@@ -74,7 +74,7 @@ public class SpecialEvents {
 
                     MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
                     MainMenu.add("\nYou slash away at the spider for " + damage + " and finish it off!\n\n");
-                    MainMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures!");
+                    MainMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures! Type 'continue' to move on.");
                     spiderEnd();
                 } else {
                     MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
@@ -87,16 +87,17 @@ public class SpecialEvents {
     }
 
     private static void spiderEnd() {
-        Commands.specialEvent = false;
         SpecialEvents.spider = false;
-        World.start();
     }
 
     public static void command(String a) {
         active = a;
         if (spider) {
             tutorialSpider();
-        } //else if ()
+        } else if (active.equals("continue")) {
+            Commands.specialEvent = false;
+            World.start();
+        }
     }
 
 }

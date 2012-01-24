@@ -22,7 +22,7 @@ public class MonsterManager {
 
     public static void spawn(int dir, Map m) {
         if (generator.nextInt(100) <= World.getZone().getRate()) {
-            System.out.println("SPAWN!");
+         //   System.out.println("SPAWN!");
            /*
             int monsterSpawn = generator.nextInt(100);
             int temp = 0;
