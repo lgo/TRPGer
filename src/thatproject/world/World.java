@@ -10,7 +10,7 @@ public class World {
     public static int currentZone = 0;
     private static int x, y;
 
-    public void startGame(int gamestartx, int gamestarty) {
+    public static void startGame(int gamestartx, int gamestarty) {
         currentMap = getZone().getMap(gamestartx, gamestarty);
         x = gamestartx;
         y = gamestarty;
