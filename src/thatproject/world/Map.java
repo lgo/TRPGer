@@ -55,28 +55,33 @@ public class Map {
         World.currentMap = this;
         if (spawn) {
             System.out.println("Combat text!");
-            MonsterManager.spawn();
+            MonsterManager.spawn(dir, this);
         } else {
             postSpawn(dir);
         }
     }
 
-    public void postCompat(int dir) {
+    public void postCombat(int dir) {
         System.out.println("Post combat texties");//TODO post combat text
         postSpawn(dir);
     }
 
     public void postSpawn(int dir) {
-        MainMenu.set(Movement.getMovement(World.getZone().getMap(x, y), dir) + description);
+        MainMenu.set(Movement.getMovement(World.getZone().getMap(x, y), dir) + enter(true));
     }
 
     public void enter() {
         MainMenu.set(description);
         MainMenu.add(travelDirections());
     }
+    
+    public String enter(boolean override) {
+        return description + travelDirections();
+    }
 
     private String travelDirections() {
         String r = "";
+        System.out.println("travel");
         
         for (int i = 0; i < 4; i++) {
             if (direction[i]) {

@@ -5,6 +5,7 @@ import java.util.Random;
 
 import thatproject.entities.Monster;
 import thatproject.entities.being.Enemy;
+import thatproject.world.Map;
 import thatproject.world.World;
 
 public class MonsterManager {
@@ -19,7 +20,7 @@ public class MonsterManager {
 
     }
 
-    public static void spawn() {
+    public static void spawn(int dir, Map m) {
         if (generator.nextInt(100) <= World.getZone().getRate()) {
             System.out.println("SPAWN!");
            /*
@@ -33,6 +34,7 @@ public class MonsterManager {
                 }
             } */
         }
+        m.postCombat(dir);
     }
 
 }
