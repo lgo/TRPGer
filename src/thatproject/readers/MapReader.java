@@ -42,14 +42,13 @@ public class MapReader extends FileReader {
 
     private void parse(int zone) {
         for (int i = 0; i < content.size(); i += LINESIZE) {
-            count(true);
             String[] xy = split(content.get(i + 0));
             int x = Integer.parseInt(xy[0]);
             int y = Integer.parseInt(xy[1]);
-            String name = content.get(i + 1);
+            boolean spawn = (Integer.parseInt(content.get(i + 1)) == 1) ? false : true;
             String description = content.get(i + 2);
             boolean[] directions = directionSplit(content.get(i + 3));
-            MapManager.populateWorlds(zone - 1, x, y, name, description, directions);
+            MapManager.populateWorlds(zone - 1, x, y, spawn, description, directions);
         }
     }
 
@@ -68,19 +67,6 @@ public class MapReader extends FileReader {
             bools[i] = ints[i] == 1 ? true : false;
         }
         return bools;
-    }
-
-    private int count() {
-        return count(false);
-    }
-
-    private int count(boolean mode) {
-        if (!mode) {
-            counter++;
-        } else {
-            counter = 0;
-        }
-        return counter - 1;
     }
 
 }

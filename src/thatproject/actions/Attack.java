@@ -3,7 +3,6 @@ package thatproject.actions;
 import java.util.Random;
 
 import thatproject.entities.being.Enemy;
-import thatproject.entities.being.Player;
 
 public class Attack {
 
@@ -37,12 +36,10 @@ public class Attack {
         return r;
     }
 
-    public static int attack(Player p) {
-        return 0;
-
-    }
-
     public static int attack(int low, int high) {
         return generator.nextInt((high - low)) + low;
+    }
+
+    public static void attack(int i) {
     }
 }

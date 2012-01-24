@@ -1,6 +1,6 @@
 package thatproject.util;
 
-import thatproject.manager.AttackManager;
+import thatproject.actions.Attack;
 import thatproject.menu.MainMenu;
 import thatproject.world.SpecialEvents;
 import thatproject.world.World;
@@ -9,7 +9,7 @@ public class Commands {
 
     public static int gameState = 0;
 
-    private static String[] attacks = { "boo" };
+    private static String[] attacks = { "stab", "slash", "hack" };
     private static String[] accept = { "yes", "y", "okay", "k" };
     private static String[] deny = { "no", "n" };
     private static String[] directions = { "n", "s", "e", "w" };
@@ -119,7 +119,7 @@ public class Commands {
     private static void attack() {
         for (int i = 0; i < attacks.length; i++) {
             if (active.equals(attacks[i])) {
-                AttackManager.attack(i);
+                Attack.attack(i);
             }
         }
     }

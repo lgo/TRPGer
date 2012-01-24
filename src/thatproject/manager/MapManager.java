@@ -7,8 +7,8 @@ import thatproject.world.World;
 
 public class MapManager {
 
-    public static void populateWorlds(int z, int x, int y, String name, String description, boolean[] directions) {
-        World.zones[z].insertMap(x, y, new Map(x, y, name, description, directions));
+    public static void populateWorlds(int z, int x, int y, boolean spawn, String description, boolean[] directions) {
+        World.zones[z].insertMap(x, y, new Map(x, y, spawn, description, directions));
     }
 
     public static void insertMonster(int x, int y, int monster) {

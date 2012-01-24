@@ -36,6 +36,7 @@ public class World {
     }
 
     public static void start() {
+        currentMap.enter();
     }
 
 }
