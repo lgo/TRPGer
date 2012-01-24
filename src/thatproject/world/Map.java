@@ -98,7 +98,7 @@ public class Map {
         }
         return r;
     }
-    
+
     public boolean isMap(int xLoc, int yLoc) {
         return x == xLoc && y == yLoc ? true : false;
     }

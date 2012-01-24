@@ -19,9 +19,9 @@ public class ThatProject {
 
             MainMenu.exec();
             Game.start();
-        } 
+        }
         //Catches error and prints it.
-        catch (Exception e) { 
+        catch (Exception e) {
             e.printStackTrace();
         }
     }

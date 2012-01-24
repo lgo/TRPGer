@@ -36,7 +36,7 @@ public class ZoneReader extends FileReader {
     }
 
     private void parse() {
-        World.zones = new Zone[content.size()+1 / LINESIZE];
+        World.zones = new Zone[content.size() + 1 / LINESIZE];
         for (int i = 0, count = 0; i < content.size(); i += LINESIZE, count++) {
             count(true);
             String name = content.get(i + count());
