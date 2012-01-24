@@ -51,4 +51,8 @@ public class Zone {
         return m;
     }
 
+    public void diag() {
+        System.out.println("");
+    }
+
 }
