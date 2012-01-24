@@ -2,6 +2,9 @@ package thatproject.world;
 
 import java.util.ArrayList;
 
+import thatproject.actions.Movement;
+import thatproject.menu.MainMenu;
+
 public class Map {
     private int x;
     private int y;
@@ -38,8 +41,27 @@ public class Map {
         return direction;
     }
 
-    public void enter() {
-
+    public void enter(int dir) {
+        if (spawn) {
+            
+        } else {
+            postSpawn(dir);
+        }
     }
-
+    
+    public void postSpawn(int dir) {
+        MainMenu.set(Movement.getMovement(World.getZone().getMap(x, y), dir) +description);
+    }
+    
+    public void enter() {
+        MainMenu.set(description);
+        MainMenu.add(travelDirections());
+    }
+    
+    private String travelDirections() {
+        for (int i = 0; i < 4; i ++) {
+            
+        }
+        
+    }
 }
