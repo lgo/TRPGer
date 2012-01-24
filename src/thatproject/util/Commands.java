@@ -1,5 +1,6 @@
 package thatproject.util;
 
+import thatproject.Game;
 import thatproject.actions.Attack;
 import thatproject.menu.MainMenu;
 import thatproject.world.SpecialEvents;
@@ -80,6 +81,11 @@ public class Commands {
 
             Event.move(dir);
         } else if (check(new String[] { "stat", "stats" })) {
+
+        } else if (active.equals("rest") && World.currentMap.isMap(3, 0)) {
+            MainMenu.addTemp("\nYou have rested here, your HP and Stamina have regenerated.");
+            Game.p.hp = Game.p.hpMax;
+            MainMenu.refreshHP();
 
         }
 

@@ -54,7 +54,7 @@ public class Map {
     public void enter(int dir) {
         World.currentMap = this;
         if (spawn) {
-          //  System.out.println("Combat text!");
+            // System.out.println("Combat text!");
             MonsterManager.spawn(dir, this);
         } else {
             postSpawn(dir);
@@ -62,7 +62,7 @@ public class Map {
     }
 
     public void postCombat(int dir) {
-     //   System.out.println("Post combat texties");//TODO post combat text
+        // System.out.println("Post combat texties");//TODO post combat text
         postSpawn(dir);
     }
 
@@ -74,24 +74,33 @@ public class Map {
         MainMenu.set(description);
         MainMenu.add(travelDirections());
     }
-    
+
     public String enter(boolean override) {
         System.out.println(x + ":" + y);
         return description + travelDirections();
-        
+
     }
 
     private String travelDirections() {
         String r = "";
         World.getZone().diag();
-       // System.out.println("travel");
-        
+        // System.out.println("travel");
+
         for (int i = 0; i < 4; i++) {
             if (direction[i]) {
-                r += "\nYou can travel " + Movement.directionToString(i) + " from here towards a " + directionToMap(i).getName();
+                try {
+                    r += "\nYou can travel " + Movement.directionToString(i) + " from here towards a " + directionToMap(i).getName();
+                } catch (Exception e) {
+                    System.out.println("Something is wrong with the map directions! " + x + ":" + y);
+                }
+
             }
         }
         return r;
+    }
+    
+    public boolean isMap(int xLoc, int yLoc) {
+        return x == xLoc && y == yLoc ? true : false;
     }
 
     public Map directionToMap(int dir) {
