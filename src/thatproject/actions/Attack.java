@@ -21,7 +21,7 @@ public class Attack {
     }
 
     public static String healthDisplay(int hp, int hpMax, int spaces) {
-        double h = hp, hm = hpMax, s = spaces;
+        float h = hp, hm = hpMax, s = spaces;
         String r = "[";
         for (int i = 0; i < spaces; i++) {
             if (i == 0 && hp > 0) {
