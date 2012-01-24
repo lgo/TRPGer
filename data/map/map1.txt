@@ -1,12 +1,12 @@
 0,3
 1
 The forest opens to a clearing, the sky has gone dark and you stand alone with a hooded figure holding an imposing gun. He walks up to you shoots you before leaving through the door you opened.
-0,0,1,0
+0,1,0,0
 
 1,3
 0
 The forest is think around you. You think you see a Scythe in the bushes.
-0,0,1,1
+1,1,0,0
 
 2,2
 0

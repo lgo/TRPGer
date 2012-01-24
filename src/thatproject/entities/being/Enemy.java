@@ -8,7 +8,7 @@ public class Enemy extends Monster {
     public int attack;
 
     public Enemy(Monster m) {
-        super(m.stats, m.hpMax, m.name);
+        super(m.stats, m.hpMax, m.name, m.rate);
         hp = m.hpMax;
     }
 

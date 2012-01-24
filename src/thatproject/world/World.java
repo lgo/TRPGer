@@ -1,5 +1,8 @@
 package thatproject.world;
 
+import thatproject.entities.Monster;
+import thatproject.entities.being.Enemy;
+
 public class World {
 
     public static Zone[] zones;
@@ -37,6 +40,11 @@ public class World {
 
     public static void start() {
         currentMap.enter();
+    }
+
+    public static void startCombat(Monster monster) {
+        Enemy e = new Enemy(monster);
+        System.out.println(e.name);
     }
 
 }

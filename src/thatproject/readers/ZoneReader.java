@@ -10,17 +10,13 @@ public class ZoneReader extends FileReader {
 
     private static final String PATH = "data/map/mapzone";
     private static final String EXT = ".txt";
-    private static int /* DEBUG zoneAmount = 8; */zoneAmount = 1;
-    private static final int LINESIZE = 4;
+    private static final int LINESIZE = 5;
     private static int counter = 0;
 
     public ZoneReader() {
-        World.zones = new Zone[zoneAmount];
-        for (int i = 1; i - 1 < zoneAmount; i++) {
-            path = PATH + i + EXT;
-            read();
-            parse(i);
-        }
+        path = PATH + EXT;
+        read();
+        parse();
         ThatProject.threadFreeze = false;
     }
 
@@ -39,13 +35,15 @@ public class ZoneReader extends FileReader {
         Game.zoner = new ZoneReader();
     }
 
-    private void parse(int z) {
-        for (int i = 0; i < content.size(); i += LINESIZE) {
+    private void parse() {
+        World.zones = new Zone[content.size()+1 / LINESIZE];
+        for (int i = 0, count = 0; i < content.size(); i += LINESIZE, count++) {
             count(true);
             String name = content.get(i + count());
             String[] description = split(content.get(i + count()));
             int[] monsters = splitInt(content.get(i + count()));
-            World.zones[z - 1] = new Zone(z - 1, name, description, monsters);
+            int rate = Integer.parseInt(content.get(i + count()));
+            World.zones[count] = new Zone(count, name, description, monsters, rate);
         }
     }
 

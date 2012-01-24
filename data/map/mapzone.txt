@@ -1,0 +1,9 @@
+Deep Forest
+You've entered the forest!, You've also entered the forest!
+0,1,2
+50
+
+Inner Forest
+You've entered the forest!, You've also entered the forest!
+0,1,2
+50

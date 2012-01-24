@@ -1,11 +1,15 @@
 package thatproject.manager;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import thatproject.entities.Monster;
 import thatproject.entities.being.Enemy;
+import thatproject.world.World;
 
 public class MonsterManager {
+
+    private static Random generator = new Random();
 
     private static ArrayList<Monster> monsters = new ArrayList<Monster>();
     private static Enemy currentBattle;
@@ -16,7 +20,19 @@ public class MonsterManager {
     }
 
     public static void spawn() {
-
+        if (generator.nextInt(100) <= World.getZone().getRate()) {
+            System.out.println("SPAWN!");
+           /*
+            int monsterSpawn = generator.nextInt(100);
+            int temp = 0;
+            for (int m : World.getZone().getMonsters()) {
+                if (monsterSpawn >= temp && monsterSpawn < monsters.get(m).getRate()) {
+                    World.startCombat(monsters.get(m));
+                } else {
+                    temp += monsters.get(m).getRate();
+                }
+            } */
+        }
     }
 
 }

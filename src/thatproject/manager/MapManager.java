@@ -17,14 +17,14 @@ public class MapManager {
 
     public static void Move(int dir) {
         if (World.currentMap.move(dir)) {
-            initiateMap(dir);
+            World.currentMap.directionToMap(dir).enter(dir);
         } else {
             wrongDirection(dir);
         }
     }
 
     private static void wrongDirection(int dir) {
-        MainMenu.addTemp("You cannot go " + Movement.directionToString(dir) + " from here.");
+        MainMenu.addTemp("\nYou cannot go " + Movement.directionToString(dir) + " from here.");
     }
 
     private static void initiateMap(int dir) {

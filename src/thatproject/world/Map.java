@@ -3,6 +3,7 @@ package thatproject.world;
 import java.util.ArrayList;
 
 import thatproject.actions.Movement;
+import thatproject.manager.MonsterManager;
 import thatproject.menu.MainMenu;
 
 public class Map {
@@ -25,8 +26,17 @@ public class Map {
         direction = dir;
     }
 
+    public Map(String n, int xLoc, int yLoc, boolean s, String d, boolean[] dir) {
+        name = n;
+        x = xLoc;
+        y = yLoc;
+        spawn = s;
+        description = d;
+        direction = dir;
+    }
+
     public String getName() {
-        return name;
+        return name == null ? World.getZone().getName() : name;
     }
 
     public void insertMonster(int id) {
@@ -42,11 +52,18 @@ public class Map {
     }
 
     public void enter(int dir) {
+        World.currentMap = this;
         if (spawn) {
-
+            System.out.println("Combat text!");
+            MonsterManager.spawn();
         } else {
             postSpawn(dir);
         }
+    }
+
+    public void postCompat(int dir) {
+        System.out.println("Post combat texties");//TODO post combat text
+        postSpawn(dir);
     }
 
     public void postSpawn(int dir) {
@@ -60,11 +77,31 @@ public class Map {
 
     private String travelDirections() {
         String r = "";
+        
         for (int i = 0; i < 4; i++) {
             if (direction[i]) {
-                
+                r += "\nYou can travel " + Movement.directionToString(i) + " from here towards a " + directionToMap(i).getName();
             }
         }
         return r;
+    }
+
+    public Map directionToMap(int dir) {
+        Map temp = null;
+        switch (dir) {
+            case 0:
+                temp = World.getZone().getMap(x - 1, y);
+                break;
+            case 1:
+                temp = World.getZone().getMap(x + 1, y);
+                break;
+            case 2:
+                temp = World.getZone().getMap(x, y + 1);
+                break;
+            case 3:
+                temp = World.getZone().getMap(x, y - 1);
+                break;
+        }
+        return temp;
     }
 }
