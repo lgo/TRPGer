@@ -36,32 +36,35 @@ public class Map {
     public boolean move(int dir) {
         return direction[dir];
     }
-    
+
     public boolean[] move() {
         return direction;
     }
 
     public void enter(int dir) {
         if (spawn) {
-            
+
         } else {
             postSpawn(dir);
         }
     }
-    
+
     public void postSpawn(int dir) {
-        MainMenu.set(Movement.getMovement(World.getZone().getMap(x, y), dir) +description);
+        MainMenu.set(Movement.getMovement(World.getZone().getMap(x, y), dir) + description);
     }
-    
+
     public void enter() {
         MainMenu.set(description);
         MainMenu.add(travelDirections());
     }
-    
+
     private String travelDirections() {
-        for (int i = 0; i < 4; i ++) {
-            
+        String r = "";
+        for (int i = 0; i < 4; i++) {
+            if (direction[i]) {
+                
+            }
         }
-        
+        return r;
     }
 }

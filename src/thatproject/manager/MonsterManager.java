@@ -14,9 +14,9 @@ public class MonsterManager {
         // monsters.add(new Monster(stats, name, encounter));
 
     }
-    
+
     public static void spawn() {
-        
+
     }
 
 }

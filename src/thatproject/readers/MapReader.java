@@ -45,7 +45,7 @@ public class MapReader extends FileReader {
             String[] xy = split(content.get(i + 0));
             int x = Integer.parseInt(xy[0]);
             int y = Integer.parseInt(xy[1]);
-            boolean spawn = (Integer.parseInt(content.get(i + 1)) == 1) ? false : true;
+            boolean spawn = Integer.parseInt(content.get(i + 1)) == 1 ? false : true;
             String description = content.get(i + 2);
             boolean[] directions = directionSplit(content.get(i + 3));
             MapManager.populateWorlds(zone - 1, x, y, spawn, description, directions);

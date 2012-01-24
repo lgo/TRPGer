@@ -91,7 +91,7 @@ public class SpecialEvents {
         SpecialEvents.spider = false;
         World.start();
     }
-    
+
     public static void command(String a) {
         active = a;
         if (spider) {

@@ -43,15 +43,15 @@ public class Game {
         load();
 
     }
-    
+
     //Calls intro() function
     private static void load() {
         postLoad();
         intro();
     }
-    
+
     private static void postLoad() {
-        
+
     }
 
     //Starts the readers for maps, zones, and others.
