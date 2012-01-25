@@ -54,7 +54,6 @@ public class Map {
     public void enter(int dir) {
         World.currentMap = this;
         if (spawn) {
-            // System.out.println("Combat text!");
             MonsterManager.spawn(dir, this);
         } else {
             postSpawn(dir);
@@ -62,7 +61,6 @@ public class Map {
     }
 
     public void postCombat(int dir) {
-        // System.out.println("Post combat texties");//TODO post combat text
         postSpawn(dir);
     }
 
@@ -76,16 +74,12 @@ public class Map {
     }
 
     public String enter(boolean override) {
-        System.out.println(x + ":" + y);
         return description + travelDirections();
 
     }
 
     private String travelDirections() {
         String r = "";
-        World.getZone().diag();
-        // System.out.println("travel");
-
         for (int i = 0; i < 4; i++) {
             if (direction[i]) {
                 try {
