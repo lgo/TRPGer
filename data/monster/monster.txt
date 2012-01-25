@@ -11,3 +11,10 @@ Giant Bird
 12,7
 
 A bird swoops from the trees, attacking you.
+
+Giant Birdz
+45
+120
+12,7
+
+A birdz swoops from the trees, attacking you.

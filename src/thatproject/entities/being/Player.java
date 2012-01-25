@@ -3,6 +3,7 @@ package thatproject.entities.being;
 import thatproject.Game;
 import thatproject.entities.Entity;
 import thatproject.menu.MainMenu;
+import thatproject.util.Formulas;
 
 public class Player extends Entity {
 
@@ -23,6 +24,12 @@ public class Player extends Entity {
         hpMax = stats[8];
         x = stats[9];
         y = stats[10];
+    }
+
+    public int[] calculateDamage() {
+        int temp = Formulas.attack(str);
+        int[] temp2 = { (int) (temp * 0.7), temp };
+        return temp2;
     }
 
     public void checkXP() {

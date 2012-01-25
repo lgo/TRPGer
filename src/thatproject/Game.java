@@ -1,5 +1,6 @@
 package thatproject;
 
+import thatproject.entities.being.Enemy;
 import thatproject.entities.being.Player;
 import thatproject.menu.MainMenu;
 import thatproject.readers.ItemReader;
@@ -14,6 +15,7 @@ public class Game {
 
     //Declaring and Initializing public variables
     public static Player p;
+    public static Enemy e;
     public static MapReader mapr;
     public static MonsterReader monsterr;
     public static MovementReader mover;

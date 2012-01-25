@@ -2,6 +2,8 @@ package thatproject.world;
 
 import java.util.ArrayList;
 
+import thatproject.Game;
+import thatproject.actions.Attack;
 import thatproject.actions.Movement;
 import thatproject.manager.MonsterManager;
 import thatproject.menu.MainMenu;
@@ -65,7 +67,7 @@ public class Map {
     }
 
     public void postSpawn(int dir) {
-        MainMenu.set(Movement.getMovement(World.getZone().getMap(x, y), dir) + enter(true));
+        MainMenu.set(Movement.getMovement(this, dir) + enter(true));
     }
 
     public void enter() {
@@ -114,5 +116,12 @@ public class Map {
                 break;
         }
         return temp;
+    }
+
+    public void startCombat(int dir) {
+        World.nextMap = this;
+        World.nextMapInt = dir;
+        MainMenu.set(Attack.attackDisplay(Game.e, Attack.SPACES));
+        
     }
 }

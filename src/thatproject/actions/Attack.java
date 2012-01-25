@@ -2,7 +2,10 @@ package thatproject.actions;
 
 import java.util.Random;
 
+import thatproject.Game;
 import thatproject.entities.being.Enemy;
+import thatproject.menu.MainMenu;
+import thatproject.world.World;
 
 public class Attack {
 
@@ -44,6 +47,43 @@ public class Attack {
         return generator.nextInt(high - low) + low; //generates attack damage
     }
 
+    /**
+     * Call and execute attack procedure
+     * 
+     * @param i (0 = slash)(1 = stab)(2 = crush)
+     */
     public static void attack(int i) {
+        int attackLow = 0, attackHigh = 0, accuracy = 0;
+        int[] temp = Game.p.calculateDamage();
+        switch (i) {
+            case 0:
+                attackLow = (int) (temp[0] * 0.7);
+                attackHigh = (int) (temp[1] * 0.7);
+                accuracy = 100;
+                break;
+            case 1:
+                attackLow = temp[0];
+                attackHigh = temp[1];
+                accuracy = 80;
+                break;
+            case 2:
+                attackLow = (int) (temp[0] * 1.2);
+                attackHigh = (int) (temp[1] * 1.2);
+                accuracy = 65;
+                break;
+        }
+        if (generator.nextInt(100) > accuracy) {
+            missed();
+        } else {
+            attack(attackLow, attackHigh);
+        }
+    }
+    
+    private static void missed() {
+        MainMenu.add("You swung at the " + Game.e.name + " and missed.");
+    }
+    
+    public static void endCombat() {
+        World.nextMap.postCombat(World.nextMapInt);
     }
 }

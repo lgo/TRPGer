@@ -9,6 +9,8 @@ public class World {
     public static Map currentMap;
     public static int currentZone = 0;
     private static int x, y;
+    public static Map nextMap;
+    public static int nextMapInt;
 
     public static void startGame(int gamestartx, int gamestarty) {
         currentMap = getZone().getMap(gamestartx, gamestarty);
