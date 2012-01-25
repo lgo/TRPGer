@@ -79,6 +79,7 @@ public class Game {
         //After full load
     }
 
+    //sets menu to say game over
     public static void gameover() {
         lost = true;
         MainMenu.set("You have died! Game over.");

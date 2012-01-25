@@ -2,6 +2,7 @@ package thatproject.entities;
 
 public class Monster extends Entity {
 
+    //declaring variables
     public int hpMax;
     public int[] stats;
     public String name;
@@ -9,6 +10,7 @@ public class Monster extends Entity {
     public int[] itemDrops;
     public String encounter;
 
+    //Function for spawning a monster.
     public Monster(String name2, int rate2, int health, int[] stats2, int[] itemDrops2, String encounter2) {
         stats = stats2;
         hpMax = health;
@@ -18,6 +20,7 @@ public class Monster extends Entity {
         encounter = encounter2;
     }
 
+    //function that returns the spawn rate of the monster.
     public int getRate() {
         return rate;
     }

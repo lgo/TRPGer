@@ -68,6 +68,12 @@ public class Movement {
         return string;
     }
 
+    /**
+     * Sets the directional string from an integer
+     * 
+     * @param dir the direction integer
+     * @return directional string
+     */
     public static String directionToString(int dir) {
         String direction = null;
         switch (dir) {
