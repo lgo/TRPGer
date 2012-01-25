@@ -3,8 +3,6 @@ package thatproject.world;
 import java.util.ArrayList;
 
 import thatproject.entities.Item;
-import thatproject.entities.objects.Equipment;
-import thatproject.entities.objects.Usable;
 import thatproject.menu.MainMenu;
 
 public class Inventory {
@@ -43,11 +41,11 @@ public class Inventory {
     }
 
     public static void addEquip(String name, String description, String imgPath, int stat, int equipType) {
-        itemList.add(new Equipment(name, description, imgPath, stat, equipType));
+        itemList.add(new Item(name, description, imgPath, stat, equipType));
     }
 
     public static void addUseable(String name, String description, String imgPath, int stat) {
-        itemList.add(new Usable(name, description, imgPath, stat));
+        itemList.add(new Item(name, description, imgPath, stat));
     }
 
     public static void addItem(String name, String description, String imgPath) {
