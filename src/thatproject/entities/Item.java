@@ -1,7 +1,5 @@
 package thatproject.entities;
 
-import thatproject.Game;
-import thatproject.menu.MainMenu;
 
 public class Item {
 
@@ -33,12 +31,6 @@ public class Item {
         type = 1;
     }
 
-    //Function for using a healing item
-    public void use() {
-        Game.p.hp += stat; //Adds value to health
-        MainMenu.refreshHP(); //displays new health value
-    }
-
     /**
      * Item constructor
      * 
@@ -50,6 +42,7 @@ public class Item {
         name = n;
         description = d;
         imagePath = i;
+        type = 0;
     }
 
     //gets stats and info for items in the inventory

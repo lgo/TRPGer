@@ -7,6 +7,7 @@ import thatproject.actions.Attack;
 import thatproject.actions.Movement;
 import thatproject.manager.MonsterManager;
 import thatproject.menu.MainMenu;
+import thatproject.util.Commands;
 
 public class Map {
     private int x;
@@ -19,6 +20,7 @@ public class Map {
 
     private boolean spawn;
     private boolean[] direction = new boolean[4];
+    private static final String nl = "\n";
 
     public Map(int xLoc, int yLoc, boolean s, String d, boolean[] dir) {
         x = xLoc;
@@ -119,9 +121,11 @@ public class Map {
     }
 
     public void startCombat(int dir) {
+        Commands.gameState = 2;
         World.nextMap = this;
         World.nextMapInt = dir;
         MainMenu.set(Attack.attackDisplay(Game.e, Attack.SPACES));
+        MainMenu.add(nl + Game.e.encounter);
         
     }
 }

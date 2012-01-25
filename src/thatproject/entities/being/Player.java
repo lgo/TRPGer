@@ -33,8 +33,9 @@ public class Player extends Entity {
     }
 
     public void checkXP() {
-        if (exp == 100 * Math.pow(1.15, lvl)) {
-            exp -= 100 * Math.pow(1.15, lvl);
+        double temp;
+        if (exp == (temp = 100 * Math.pow(1.15, lvl))) {
+            exp -= temp;
             levelUp();
         }
     }

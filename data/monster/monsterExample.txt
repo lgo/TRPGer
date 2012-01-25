@@ -2,6 +2,6 @@ Skeleton //Name
 100 // Spawn %
 100 //Health
 5,5 //Stats - Attack - Defense?
-1,4 //Item drop (In groups) - If empty use zones default drops - Could also scale for zone IE. iron here, steel there - Blank = Always gold (random amount)1 //Use prefix on monster for zone(1 for true, 0 for false) E.G. Deep Forest prefix - Mossy Skeleton
+1,4 //Item drop (In groups) - If empty use zones default drops - Could also scale for zone IE. iron here, steel there - Blank = Always gold (random amount)
 that is scraping joints //Suffix of encounter line in this format "ENCOUNTERLINES MONSTERNAME THISLINE"
 //Blank line to next monster

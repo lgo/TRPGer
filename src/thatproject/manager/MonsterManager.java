@@ -24,6 +24,8 @@ public class MonsterManager {
                 if (monsterSpawn >= temp && monsterSpawn <= (temp += monsters.get(monster).getRate())){
                     System.out.println(monsters.get(monster).name);
                     Game.e = new Enemy(monsters.get(monster));
+
+                    m.startCombat(dir);
                 }
                 
             }
@@ -33,7 +35,6 @@ public class MonsterManager {
         catch (Exception e) {
             e.printStackTrace();
         }
-        m.startCombat(dir);
     }
 
     public static void populateMonsters(String name, int rate, int health, int[] stats, int[] itemDrops, String encounter) {

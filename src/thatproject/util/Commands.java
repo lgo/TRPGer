@@ -47,7 +47,7 @@ public class Commands {
         // Globals
         if (active.equals("help")) {
             help();
-        } else if (active.equals("potion" + "")) {
+        } else if (active.equals("potion")) {
             Inventory.getItem(Inventory.itemList.get(2));
         }
 
