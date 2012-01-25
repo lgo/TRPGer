@@ -3,6 +3,7 @@ package thatproject.util;
 import thatproject.Game;
 import thatproject.actions.Attack;
 import thatproject.menu.MainMenu;
+import thatproject.world.Inventory;
 import thatproject.world.SpecialEvents;
 import thatproject.world.World;
 
@@ -23,6 +24,8 @@ public class Commands {
 
     public static void command(String s) {
         active = s.toLowerCase();
+        if (Game.lost)
+            return;
         if (specialEvent) {
             SpecialEvents.command(active);
         }
@@ -44,6 +47,8 @@ public class Commands {
         // Globals
         if (active.equals("help")) {
             help();
+        } else if (active.equals("potion" + "")) {
+            Inventory.getItem(Inventory.itemList.get(2));
         }
 
     }
@@ -131,7 +136,7 @@ public class Commands {
     }
 
     private static void help() {
-        String t = "";
+        String t = "\n";
         switch (gameState) {
             case 1:
                 boolean[] temp = World.currentMap.move();
@@ -154,9 +159,10 @@ public class Commands {
                         }
                     }
                 }
-                t += "\ntalk - Talk with someone in the current area.";
+                MainMenu.addTemp(t);
                 break;
             case 2:
+
                 break;
             case 3:
                 break;

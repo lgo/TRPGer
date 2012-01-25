@@ -1,5 +1,6 @@
 package thatproject;
 
+import thatproject.entities.being.Enemy;
 import thatproject.entities.being.Player;
 import thatproject.menu.MainMenu;
 import thatproject.readers.ItemReader;
@@ -8,13 +9,13 @@ import thatproject.readers.MonsterReader;
 import thatproject.readers.MovementReader;
 import thatproject.readers.ZoneReader;
 import thatproject.util.Save;
-import thatproject.world.Inventory;
 import thatproject.world.World;
 
 public class Game {
 
     //Declaring and Initializing public variables
     public static Player p;
+    public static Enemy e;
     public static MapReader mapr;
     public static MonsterReader monsterr;
     public static MovementReader mover;
@@ -28,6 +29,7 @@ public class Game {
     public static final int gameStartY = 0;
 
     public static boolean loaded = false;
+    public static boolean lost;
 
     //Initial starting function to starting function
     public static void start() {
@@ -74,8 +76,12 @@ public class Game {
         while (!ThatProject.itemsLoaded || !ThatProject.menuLoaded) {
             Thread.yield();
         }
-        Inventory.getItem(Inventory.itemList.get(0));
-        Inventory.getItem(Inventory.itemList.get(1));
-        Inventory.getItem(Inventory.itemList.get(2));
+        //After full load
+    }
+
+    //sets menu to say game over
+    public static void gameover() {
+        lost = true;
+        MainMenu.set("You have died! Game over.");
     }
 }

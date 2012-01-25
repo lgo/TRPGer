@@ -5,6 +5,7 @@ import thatproject.menu.MainMenu;
 
 public class Item {
 
+    //declaring and initializing variables.
     public String name;
     public String description;
     public int stat;
@@ -32,9 +33,10 @@ public class Item {
         type = 1;
     }
 
+    //Function for using a healing item
     public void use() {
-        Game.p.hp += stat;
-        MainMenu.refreshHP();
+        Game.p.hp += stat; //Adds value to health
+        MainMenu.refreshHP(); //displays new health value
     }
 
     /**
@@ -50,6 +52,7 @@ public class Item {
         imagePath = i;
     }
 
+    //gets stats and info for items in the inventory
     public String getToolTip() {
         if (type == 0)
             return "<html><b>" + name + "</b>" + nl + description + "</html>";
@@ -57,6 +60,7 @@ public class Item {
             return "<html><b>" + name + "</b>" + nl + description + nl + itemStats() + "</html>";
     }
 
+    
     public String getPath() {
         return PATH + imagePath + EXT;
     }
@@ -79,11 +83,12 @@ public class Item {
         type = 2;
     }
 
+    //Fetches item's stats and returns it to getToolTip()
     public String itemStats() {
         if (type == 2)
-            return catagory == 5 ? "Attack: " : "Armour: " + stat;
+            return catagory == 5 ? "Attack: " : "Armour: " + stat; //If equipment returns attack/armor of the item
         else
-            return "Heal: " + stat;
+            return "Heal: " + stat; //if healing item returns how much it heals
     }
 
 }

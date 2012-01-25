@@ -2,6 +2,8 @@ package thatproject.world;
 
 import java.util.ArrayList;
 
+import thatproject.Game;
+import thatproject.actions.Attack;
 import thatproject.actions.Movement;
 import thatproject.manager.MonsterManager;
 import thatproject.menu.MainMenu;
@@ -54,7 +56,6 @@ public class Map {
     public void enter(int dir) {
         World.currentMap = this;
         if (spawn) {
-            // System.out.println("Combat text!");
             MonsterManager.spawn(dir, this);
         } else {
             postSpawn(dir);
@@ -62,12 +63,11 @@ public class Map {
     }
 
     public void postCombat(int dir) {
-        // System.out.println("Post combat texties");//TODO post combat text
         postSpawn(dir);
     }
 
     public void postSpawn(int dir) {
-        MainMenu.set(Movement.getMovement(World.getZone().getMap(x, y), dir) + enter(true));
+        MainMenu.set(Movement.getMovement(this, dir) + enter(true));
     }
 
     public void enter() {
@@ -76,16 +76,12 @@ public class Map {
     }
 
     public String enter(boolean override) {
-        System.out.println(x + ":" + y);
         return description + travelDirections();
 
     }
 
     private String travelDirections() {
         String r = "";
-        World.getZone().diag();
-        // System.out.println("travel");
-
         for (int i = 0; i < 4; i++) {
             if (direction[i]) {
                 try {
@@ -120,5 +116,12 @@ public class Map {
                 break;
         }
         return temp;
+    }
+
+    public void startCombat(int dir) {
+        World.nextMap = this;
+        World.nextMapInt = dir;
+        MainMenu.set(Attack.attackDisplay(Game.e, Attack.SPACES));
+        
     }
 }
