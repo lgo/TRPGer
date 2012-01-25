@@ -8,6 +8,6 @@ key
 Helmet
 A standard helmet, not made for head bashing.
 helmet
-1
+2
 1
 1
