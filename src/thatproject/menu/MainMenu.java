@@ -34,8 +34,6 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int taH = 520;
 
     private static String contents = "";
-    private static String contentsTemp = "";
-
     private static JTextField textField;
     private static final int tfX = taX;
     private static final int tfY = taY + taH + 5;
@@ -311,7 +309,7 @@ public class MainMenu extends JPanel implements ActionListener {
     }
 
     public static void setButton(int x, int y, Item i) {
-        buttons[x][y].setIcon(new ImageIcon(i.name));
+        buttons[x][y].setIcon(new ImageIcon(i.getPath()));
         buttons[x][y].setToolTipText(i.getToolTip());
 
     }

@@ -6,6 +6,9 @@ public class Item {
     public String description;
     public int stat;
     public String imagePath;
+    private static final String nl = "<br />";
+    private static final String PATH = "data/assets/";
+    private static final String EXT = ".png";
 
     public Item(String n, String d, String i, int s) {
         stat = s;
@@ -21,7 +24,11 @@ public class Item {
     }
 
     public String getToolTip() {
-        return null;
+        return "<html><b>" + name + "</b>" + nl + description + "</html>";
+    }
+
+    public String getPath() {
+        return PATH + imagePath + EXT;
     }
 
 }

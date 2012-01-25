@@ -10,7 +10,7 @@ public class Commands {
 
     public static int gameState = 0;
 
-    private static String[] attacks = { "stab", "slash", "hack" };
+    private static String[] attacks = { "stab", "slash", "crush" };
     private static String[] accept = { "yes", "y", "okay", "k" };
     private static String[] deny = { "no", "n" };
     private static String[] directions = { "n", "s", "e", "w" };
