@@ -1,6 +1,7 @@
 package thatproject.entities.being;
 
 import thatproject.entities.Entity;
+import thatproject.menu.MainMenu;
 
 public class Player extends Entity {
 
@@ -34,6 +35,7 @@ public class Player extends Entity {
         lvl++;
         spareStats += 5;
         hpMax = 86 + str + end * 5 + lvl * 8;
+        MainMenu.refreshHP();
     }
 
     /**
@@ -58,6 +60,7 @@ public class Player extends Entity {
         }
         spareStats--;
         hpMax = 86 + str + end * 5 + lvl * 8;
+        MainMenu.refreshHP();
     }
 
 }

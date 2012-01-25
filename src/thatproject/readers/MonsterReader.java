@@ -6,7 +6,7 @@ import thatproject.util.FileReader;
 
 public class MonsterReader extends FileReader {
 
-    private static final String PATH = "data/items/items";
+    private static final String PATH = "data/monster/monster";
     private static final String EXT = ".txt";
     private static final int LINESIZE = 7;
     private static int counter = 0;
@@ -34,12 +34,13 @@ public class MonsterReader extends FileReader {
 
     private void parse() {
         for (int i = 0; i < content.size(); i += LINESIZE) {
+            String temp;
             count(true);
             String name = content.get(i + count());
             int rate = Integer.parseInt(content.get(i + count()));
             int health = Integer.parseInt(content.get(i + count()));
             int[] stats = splitInt(content.get(i + count()));
-            int[] itemDrops = splitInt(content.get(i + count()));
+            int[] itemDrops = (temp = content.get(i)) == null ? splitInt(temp) : null;
             String encounter = content.get(i + count());
             MonsterManager.populateMonsters(name, rate, health, stats, itemDrops, encounter);
         }
