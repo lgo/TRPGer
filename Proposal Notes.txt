@@ -20,3 +20,6 @@ Conceptial:
 	
 RANDOM :D
 	BURGER - Obesity in 2 turns they will have a heart attack
+
+SORTING:
+	Personal algorithm to institate sorting by item type, then by item stat (Equip also by catagory)
