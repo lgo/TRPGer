@@ -63,4 +63,9 @@ public class Player extends Entity {
         MainMenu.refreshHP();
     }
 
+    public void heal(int stat) {
+        hp = hp + stat > hpMax ? hpMax : hp + stat;
+        MainMenu.refreshHP();
+    }
+
 }

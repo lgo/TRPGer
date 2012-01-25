@@ -14,7 +14,7 @@ public class Item {
     private static final String EXT = ".png";
 
     public int catagory;
-    private int type;
+    public int type;
 
     /**
      * Usable constructor

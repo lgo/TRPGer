@@ -320,6 +320,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     public static void refreshHP() {
         healthBar.setValue(Game.p.hp);
+        healthBar.setMaximum(Game.p.hpMax);
         playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
 
     }

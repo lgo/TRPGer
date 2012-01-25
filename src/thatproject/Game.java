@@ -76,5 +76,6 @@ public class Game {
         }
         Inventory.getItem(Inventory.itemList.get(0));
         Inventory.getItem(Inventory.itemList.get(1));
+        Inventory.getItem(Inventory.itemList.get(2));
     }
 }

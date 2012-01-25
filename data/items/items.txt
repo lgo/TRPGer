@@ -1,5 +1,5 @@
 Skeleton Key
-An odly shaped key, seems like it could fit somewhere.
+An oddly shaped key, seems like it could fit somewhere.
 key
 0
 0
@@ -11,3 +11,9 @@ helmet
 2
 1
 1
+
+Potion
+A not so normal deep red potion. Are these things even safe?
+potion
+1
+20

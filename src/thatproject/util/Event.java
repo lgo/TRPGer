@@ -1,8 +1,8 @@
 package thatproject.util;
 
-import thatproject.Game;
 import thatproject.manager.MapManager;
 import thatproject.menu.MainMenu;
+import thatproject.world.Inventory;
 import thatproject.world.World;
 
 public class Event {
@@ -29,18 +29,14 @@ public class Event {
         }
     }
 
-    public static void update() {
-        MainMenu.healthBar.setMaximum(Game.p.hpMax);
-        MainMenu.healthBar.setValue(Game.p.hp);
-        MainMenu.playerHP.setText("Health: " + Game.p.hp + "/" + Game.p.hpMax);
-    }
-
     public static void move(int dir) {
         MapManager.Move(dir);
     }
 
     public static void buttonPress(int x, int y) {
-        System.out.println(x + " : " + y);
+        if (Inventory.exists(x, y)) {
+            Inventory.useItem(x, y);
+        }
     }
 
     public static void initiateGame() {
