@@ -1,6 +1,5 @@
 package thatproject;
 
-import thatproject.entities.Item;
 import thatproject.entities.being.Player;
 import thatproject.menu.MainMenu;
 import thatproject.readers.ItemReader;
@@ -62,7 +61,7 @@ public class Game {
         MapReader.exec();
         MovementReader.exec();
         ItemReader.exec();
-        // MonsterReader.exec();
+        MonsterReader.exec();
     }
 
     //Sets the intro text to the screen of the main menu when starting the game
@@ -72,12 +71,10 @@ public class Game {
         String nl2 = "\n\n"; //again, shorter than putting "\n\n"
         World.startGame(gameStartX, gameStartY);
         MainMenu.set("Welcome to the world of " + n + "!" + nl + n + " is a text based RPG where you must make your way through the inner depths to succeed in your quest." + nl + "To play you will type commands and press enter in the field below." + nl2 + "For starting off, type 'yes' to continue into the game, or 'no' to exit the game." + nl2 + "You may also type 'help' at any moment for a list of current usable commands and what they do. Alongside those are shorthand abbreviations for nearly all commands.");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (!ThatProject.itemsLoaded || !ThatProject.menuLoaded) {
+            Thread.yield();
         }
-        Item temp = Inventory.itemList.get(0);
-        Inventory.getItem(temp);
+        Inventory.getItem(Inventory.itemList.get(0));
+        Inventory.getItem(Inventory.itemList.get(1));
     }
 }

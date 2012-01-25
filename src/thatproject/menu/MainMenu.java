@@ -74,6 +74,12 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int stW = 150;
     private static final int stH = 20;
 
+    private static JTextField authorField;
+    private static final int atX = 650;
+    private static final int atY = 527;
+    private static final int atW = 200;
+    private static final int atH = 30;
+
     private static String hi;
 
     private static JDesktopPane desk = new JDesktopPane();
@@ -135,6 +141,16 @@ public class MainMenu extends JPanel implements ActionListener {
 
         healthBar();
         staminaBar();
+
+        authorField = new JTextField() {
+            @Override
+            public void setBorder(Border border) {
+            }
+        };
+        authorField.setBounds(atX, atY, atW, atH);
+        authorField.setText("Created by Joey, Sean and Jackson!");
+        authorField.setOpaque(false);
+        desk.add(authorField);
 
         // Setup content pane
         desk.setOpaque(false);

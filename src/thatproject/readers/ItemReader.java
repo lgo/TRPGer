@@ -1,6 +1,7 @@
 package thatproject.readers;
 
 import thatproject.Game;
+import thatproject.ThatProject;
 import thatproject.util.FileReader;
 import thatproject.world.Inventory;
 
@@ -15,6 +16,7 @@ public class ItemReader extends FileReader {
         path = PATH + EXT;
         read();
         parse();
+        ThatProject.itemsLoaded = true;
     }
 
     public static void exec() {

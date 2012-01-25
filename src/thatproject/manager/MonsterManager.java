@@ -34,4 +34,8 @@ public class MonsterManager {
         m.postCombat(dir);
     }
 
+    public static void populateMonsters(String name, int rate, int health, int[] stats, int[] itemDrops, String encounter) {
+        monsters.add(new Monster(name, rate, health, stats, itemDrops, encounter));
+    }
+
 }

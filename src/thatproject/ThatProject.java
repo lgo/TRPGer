@@ -12,6 +12,7 @@ public class ThatProject {
 
     public static boolean threadFreeze = true;
     public static boolean menuLoaded = false;
+    public static boolean itemsLoaded = false;
 
     //Main function which starts executes the main menu and starts the game.
     public static void main(String[] args) {

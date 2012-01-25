@@ -27,6 +27,10 @@ public class Item {
         return "<html><b>" + name + "</b>" + nl + description + "</html>";
     }
 
+    public String getToolTip(String s) {
+        return "<html><b>" + name + "</b>" + nl + description + s + "</html>";
+    }
+
     public String getPath() {
         return PATH + imagePath + EXT;
     }

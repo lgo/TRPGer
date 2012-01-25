@@ -8,8 +8,12 @@ public class Enemy extends Monster {
     public int attack;
 
     public Enemy(Monster m) {
-        super(m.stats, m.hpMax, m.name, m.rate);
+        super(m.name, m.rate, m.hpMax, m.stats, m.itemDrops, m.encounter);
         hp = m.hpMax;
+    }
+
+    public int exp() {
+        return (int) (hpMax * .5);
     }
 
 }

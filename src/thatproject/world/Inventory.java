@@ -19,11 +19,11 @@ public class Inventory {
     }
 
     public static void getItem(Item item) {
-        int x = 0;
-        int y = itemCount;
-        while (y > 4) {
-            x++;
-            y -= 5;
+        int y = 0;
+        int x = itemCount;
+        while (x > 4) {
+            y++;
+            x -= 5;
         }
         insertItem(x, y, item);
 

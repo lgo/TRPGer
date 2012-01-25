@@ -1,19 +1,18 @@
 package thatproject.readers;
 
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import thatproject.Game;
-import thatproject.manager.MapManager;
+import thatproject.manager.MonsterManager;
 import thatproject.util.FileReader;
 
 public class MonsterReader extends FileReader {
 
-    private String pathN = "data/monster/monstertxt";
+    private static final String PATH = "data/items/items";
+    private static final String EXT = ".txt";
+    private static final int LINESIZE = 7;
+    private static int counter = 0;
 
     public MonsterReader() {
-        path = pathN;
+        path = PATH + EXT;
         read();
         parse();
     }
@@ -34,41 +33,28 @@ public class MonsterReader extends FileReader {
     }
 
     private void parse() {
-        // TODO
-        /*
-         * int x, y; int[] stats = null, zone = null; String name, description;
-         * String[] encounterLines = null; for (int i = 0, count = 0; i <
-         * content.size() / 5; i += 5, count++) { x =
-         * Integer.parseInt(split(content.get(i))[0]); y =
-         * Integer.parseInt(split(content.get(i))[1]); name = content.get(i +
-         * 2); description = content.get(i + 3); insertMonsters(content.get(i +
-         * 4), count); MonsterManager.populateMonsters(stats, name, description,
-         * encounterLines, zone); }
-         */
+        for (int i = 0; i < content.size(); i += LINESIZE) {
+            count(true);
+            String name = content.get(i + count());
+            int rate = Integer.parseInt(content.get(i + count()));
+            int health = Integer.parseInt(content.get(i + count()));
+            int[] stats = splitInt(content.get(i + count()));
+            int[] itemDrops = splitInt(content.get(i + count()));
+            String encounter = content.get(i + count());
+            MonsterManager.populateMonsters(name, rate, health, stats, itemDrops, encounter);
+        }
     }
 
-    /**
-     * Insert monster into appropriate maps
-     * 
-     * @param input of the map string
-     * @param id of the monster
-     */
-    private static void insertMonsters(String input, int id) {
+    private int count() {
+        return count(false);
+    }
 
-        Pattern p = Pattern.compile("\\((.*?)\\)");
-        Matcher m = p.matcher(input);
-
-        ArrayList<String> s = new ArrayList<String>();
-
-        while (m.find()) {
-            s.add(m.group(1));
+    private int count(boolean mode) {
+        if (!mode) {
+            counter++;
+        } else {
+            counter = 0;
         }
-
-        for (int i = 0; i < s.size(); i++) {
-            String[] temp = split(s.get(i), ",");
-            int x = Integer.parseInt(temp[0]);
-            int y = Integer.parseInt(temp[1]);
-            MapManager.insertMonster(x, y, id);
-        }
+        return counter - 1;
     }
 }
