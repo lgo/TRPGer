@@ -1,6 +1,6 @@
-Food //Usable Item name
-0 //Effect type (effects.txt)
-10 //Effect value (E.g. 10 of effect 0 (Stamina) meaning 10 stamina regain
-0,0 //Usable in battle, if so use one turn or not
-100 //Gold value to buy (Scaling % for selling amount)
-Using this will recover 10 stamina //Tooltip (Popup on hover over item)
+Skeleton Key // Name
+A KEY! //Description
+key // Image name
+0 // Item (0 = unusable) (1 = usable) (2 = equipment)
+0 // Stat
+0 // Equipment type, chest, helmet, glove, feet, pants

@@ -21,6 +21,7 @@ import javax.swing.border.Border;
 
 import thatproject.Game;
 import thatproject.ThatProject;
+import thatproject.entities.Item;
 import thatproject.util.Commands;
 import thatproject.util.Event;
 
@@ -41,7 +42,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int tfW = taW;
     private static final int tfH = 20;
 
-    private static JButton[][] buttons;
+    public static JButton[][] buttons;
     private static final int buttonAmountWidth = 5;
     private static final int buttonAmountHeight = 7;
     private static final int buttonXStart = taX + taW + 35;
@@ -309,7 +310,9 @@ public class MainMenu extends JPanel implements ActionListener {
 
     }
 
-    public static void setButton(int x, int y, String i) {
-        buttons[x][y].setIcon(new ImageIcon(i));
+    public static void setButton(int x, int y, Item i) {
+        buttons[x][y].setIcon(new ImageIcon(i.name));
+        buttons[x][y].setToolTipText(i.getToolTip());
+
     }
 }

@@ -1,2 +1,13 @@
 Skeleton Key
+A odly shaped key, seems like it could fit somewhere.
 key
+0
+0
+
+
+Helmet
+A standard helmet, not made for head bashing.
+helmet
+1
+1
+1
