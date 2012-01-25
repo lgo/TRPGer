@@ -132,7 +132,7 @@ public class Commands {
     }
 
     private static void help() {
-        String t = "";
+        String t = "\n";
         switch (gameState) {
             case 1:
                 boolean[] temp = World.currentMap.move();
@@ -155,9 +155,10 @@ public class Commands {
                         }
                     }
                 }
-                t += "\ntalk - Talk with someone in the current area.";
+                MainMenu.addTemp(t);
                 break;
             case 2:
+                
                 break;
             case 3:
                 break;

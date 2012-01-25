@@ -25,7 +25,7 @@ A squirrel swarm darts towards you, fight them off before they overwhelm you!
 
 3,0
 1
-A clearing is opened up to you as you stumble out of the forest. There is a leafy bed that looks comfortable for a 'rest'. You see an opened chest beside it with a Dull Sword and a Spoon inside of it.
+A clearing is opened up to you as you stumble out of the forest. There is a leafy bed that looks comfortable for a 'rest'. You see an opened chest beside it with a Dull Sword inside of it.
 0,0,1,0
 
 3,1
