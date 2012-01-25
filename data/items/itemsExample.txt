@@ -3,4 +3,4 @@ A KEY! //Description
 key // Image name
 0 // Item (0 = unusable) (1 = usable) (2 = equipment)
 0 // Stat
-0 // Equipment type, chest, helmet, glove, feet, pants
+0 // Equipment type, chest, helmet, glove, feet, pants, weapon

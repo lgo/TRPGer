@@ -1,0 +1,13 @@
+Snake
+50
+60
+5,5
+
+A snake slithers out from the grass and attacks!
+
+Giant Bird
+5
+120
+12,7
+
+A bird swoops from the trees, attacking you.

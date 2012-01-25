@@ -1,11 +1,7 @@
 Skeleton //Name
-100 // Spawn shares.. No idea how this will work, probably all shares added together though
+100 // Spawn %
 100 //Health
-5,5,4 //Attack - Defense - Dex?
-1,4 //Item drop (In groups) - If empty use zones default drops - Could also scale for zone IE. iron here, steel there - Blank = Always gold (random amount)
-1,5 //Zones it appears in - Blank = none
-(1,3)(2,5) //Maps it appears on - Blank = none
-1 //Use zone encoutered in to scale difficulty
-1 //Use prefix on monster for zone(1 for true, 0 for false) E.G. Deep Forest prefix - Mossy Skeleton
+5,5 //Stats - Attack - Defense?
+1,4 //Item drop (In groups) - If empty use zones default drops - Could also scale for zone IE. iron here, steel there - Blank = Always gold (random amount)1 //Use prefix on monster for zone(1 for true, 0 for false) E.G. Deep Forest prefix - Mossy Skeleton
 that is scraping joints //Suffix of encounter line in this format "ENCOUNTERLINES MONSTERNAME THISLINE"
 //Blank line to next monster
