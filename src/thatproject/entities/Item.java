@@ -54,7 +54,7 @@ public class Item {
         if (type == 0)
             return "<html><b>" + name + "</b>" + nl + description + "</html>";
         else
-            return "<html><b>" + name + "</b>" + nl + description + itemStats() + "</html>";
+            return "<html><b>" + name + "</b>" + nl + description + nl + itemStats() + "</html>";
     }
 
     public String getPath() {
