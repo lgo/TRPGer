@@ -3,6 +3,7 @@ package thatproject.util;
 import thatproject.Game;
 import thatproject.actions.Attack;
 import thatproject.menu.MainMenu;
+import thatproject.world.Inventory;
 import thatproject.world.SpecialEvents;
 import thatproject.world.World;
 

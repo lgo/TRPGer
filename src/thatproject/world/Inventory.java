@@ -11,6 +11,8 @@ public class Inventory {
     public static Item[][] items = new Item[5][7];
     public static ArrayList<Item> itemList = new ArrayList<Item>();
     public static int itemCount;
+    public static int nextX = 0;
+    public static int nextY = 0;
 
     public static void insertItem(int x, int y, Item i) {
         itemCount++;
@@ -19,21 +21,28 @@ public class Inventory {
     }
 
     public static void getItem(Item item) {
-        int y = 0;
-        int x = itemCount;
-        while (x > 4) {
-            y++;
-            x -= 5;
-        }
+        int y = nextY;
+        int x = nextX;
         insertItem(x, y, item);
-
+        nextSlot();
     }
 
     public static void removeItem(int x, int y) {
         MainMenu.buttons[x][y].setIcon(null);
         MainMenu.buttons[x][y].setToolTipText(null);
         items[x][y] = null;
-
+        nextSlot();
+    }
+    
+    private static void nextSlot() {
+         for (int z = 6; z > -1; z--){
+             for (int i = 4; i > -1; i--)   {
+                if (items[i][z] == null) {
+                    nextX = i;
+                    nextY = z;
+                }
+            }
+        }
     }
 
     public static void useItem(int x, int y) {
