@@ -3,7 +3,6 @@ package thatproject.util;
 import thatproject.Game;
 import thatproject.actions.Attack;
 import thatproject.menu.MainMenu;
-import thatproject.world.Inventory;
 import thatproject.world.SpecialEvents;
 import thatproject.world.World;
 
@@ -24,6 +23,8 @@ public class Commands {
 
     public static void command(String s) {
         active = s.toLowerCase();
+        if (Game.lost)
+            return;
         if (specialEvent) {
             SpecialEvents.command(active);
         }
@@ -158,7 +159,7 @@ public class Commands {
                 MainMenu.addTemp(t);
                 break;
             case 2:
-                
+
                 break;
             case 3:
                 break;

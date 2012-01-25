@@ -33,10 +33,10 @@ public class Inventory {
         items[x][y] = null;
         nextSlot();
     }
-    
+
     private static void nextSlot() {
-         for (int z = 6; z > -1; z--){
-             for (int i = 4; i > -1; i--)   {
+        for (int z = 6; z > -1; z--) {
+            for (int i = 4; i > -1; i--) {
                 if (items[i][z] == null) {
                     nextX = i;
                     nextY = z;
