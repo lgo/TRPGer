@@ -126,6 +126,6 @@ public class Map {
         World.nextMapInt = dir;
         MainMenu.set(Attack.attackDisplay(Game.e, Attack.SPACES));
         MainMenu.add(nl + Game.e.encounter);
-        
+
     }
 }

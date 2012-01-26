@@ -76,14 +76,14 @@ public class Attack {
             missed();
         } else {
             Game.e.hit(attack(attackLow, attackHigh), i);
-            
+
         }
     }
-    
+
     private static void missed() {
         MainMenu.addTemp("\nYou swung at the " + Game.e.name + " and missed.");
     }
-    
+
     public static void endCombat() {
         World.nextMap.postCombat(World.nextMapInt);
     }

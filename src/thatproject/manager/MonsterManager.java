@@ -21,23 +21,22 @@ public class MonsterManager {
     public static void spawn(int dir, Map m) {
         try {
             //generates random number and compares to rate of spawn
-        if (generator.nextInt(100) <= World.getZone().getRate()) {
-            int monsterSpawn = generator.nextInt(100);
-            int temp = 0;
-            //for loop to add to temp for comparing spawn to temp until spawn <= temp, then gets monster info
-            for (int monster : World.getZone().getMonsters()) {
-                if (monsterSpawn >= temp && monsterSpawn <= (temp += monsters.get(monster).getRate())){
-                    System.out.println(monsters.get(monster).name);
-                    Game.e = new Enemy(monsters.get(monster)); //Creates Enemy
+            if (generator.nextInt(100) <= World.getZone().getRate()) {
+                int monsterSpawn = generator.nextInt(100);
+                int temp = 0;
+                //for loop to add to temp for comparing spawn to temp until spawn <= temp, then gets monster info
+                for (int monster : World.getZone().getMonsters()) {
+                    if (monsterSpawn >= temp && monsterSpawn <= (temp += monsters.get(monster).getRate())) {
+                        System.out.println(monsters.get(monster).name);
+                        Game.e = new Enemy(monsters.get(monster)); //Creates Enemy
 
-                    m.startCombat(dir);
+                        m.startCombat(dir);
+                    }
+
                 }
-                
-            }
 
-        }
-        }
-        catch (Exception e) {
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -1,6 +1,5 @@
 package thatproject.entities;
 
-
 public class Item {
 
     //declaring and initializing variables.
@@ -53,7 +52,6 @@ public class Item {
             return "<html><b>" + name + "</b>" + nl + description + nl + itemStats() + "</html>";
     }
 
-    
     public String getPath() {
         return PATH + imagePath + EXT;
     }

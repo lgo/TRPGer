@@ -20,7 +20,7 @@ public class Enemy extends Monster {
     public int exp() {
         return (int) (hpMax * .5);
     }
-    
+
     //function for attacking the enemy.
     public void hit(int d, int attack) {
         hp -= d; //reduces health by the amount of damage dealt
@@ -30,12 +30,16 @@ public class Enemy extends Monster {
             MainMenu.add("Congragulations! You have killed the " + name + ".");
         }
         Attack.attackDisplay(this, Attack.SPACES); //calls attackDisplay function from the Attack class.
+        String temp = "";
         switch (attack) {
             case 0:
+                temp += "";
                 break;
             case 1:
+                temp += "";
                 break;
             case 2:
+                temp += "";
                 break;
         }
     }
