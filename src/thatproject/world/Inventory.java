@@ -45,6 +45,18 @@ public class Inventory {
         }
     }
 
+    public static void haveItem(Item item) {
+        for (int z = 6; z > -1; z--) {
+            for (int i = 4; i > -1; i--) {
+                if (items[i][z].equals(item)) {
+                    MainMenu.set("YOU WON!");
+                    return;
+                }
+            }
+        }
+        MainMenu.set("YOU LOST!");
+    }
+
     public static void useItem(int x, int y) {
         if (items[x][y].type == 1) {
             MainMenu.addTemp("\n\nYou have drank the " + items[x][y].name + " and regained " + items[x][y].stat + " health.");

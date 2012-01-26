@@ -10,8 +10,8 @@ import thatproject.menu.MainMenu;
 import thatproject.util.Commands;
 
 public class Map {
-    private int x;
-    private int y;
+    public int x;
+    public int y;
 
     private ArrayList<Integer> monster = new ArrayList<Integer>();
 

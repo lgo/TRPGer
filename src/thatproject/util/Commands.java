@@ -49,6 +49,13 @@ public class Commands {
             help();
         } else if (active.equals("potion")) {
             Inventory.getItem(Inventory.itemList.get(2));
+        } else if (active.equals("debug")) {
+            Game.p.str = 9001;
+        }
+
+        if (World.currentMap.isMap(4, 5)) {
+            MainMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
+            Inventory.getItem(Inventory.itemList.get(0));
         }
 
     }
@@ -62,7 +69,7 @@ public class Commands {
     private static void battleState() {
         if (check(attacks)) {
             attack();
-        } else if (active.equals("continue")) {
+        } else if (active.equals("continue") || active.equals("c")) {
             gameState = 1;
             World.currentMap.postCombat(World.nextMapInt);
         }
