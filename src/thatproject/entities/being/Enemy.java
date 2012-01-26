@@ -1,5 +1,6 @@
 package thatproject.entities.being;
 
+import thatproject.Game;
 import thatproject.actions.Attack;
 import thatproject.entities.Monster;
 import thatproject.menu.MainMenu;
@@ -25,14 +26,15 @@ public class Enemy extends Monster {
     public void hit(int d, int attack) {
         hp -= d; //reduces health by the amount of damage dealt
         hp = hp < 0 ? 0 : hp; //check to set monster hp to 0 if deals more than the remaining hp
-        //if to check whether or not monster is dead and displays a message if dead.
-        if (hp < 0) {
+
+        MainMenu.set(Attack.attackDisplay(this, Attack.SPACES));//calls attackDisplay function from the Attack class.
+        if (hp == 0) {//if to check whether or not monster is dead and displays a message if dead.
+            
             MainMenu.add("\n\nCongragulations! You have killed the " + name + ".");
             MainMenu.addTemp("\nType 'continue' to move on.");
+            Game.e = null;
             return;
         }
-        MainMenu.set(Attack.attackDisplay(this, Attack.SPACES));
-        Attack.attackDisplay(this, Attack.SPACES); //calls attackDisplay function from the Attack class.
         String temp = "";
         switch (attack) {
             case 0:

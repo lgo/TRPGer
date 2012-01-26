@@ -62,6 +62,9 @@ public class Commands {
     private static void battleState() {
         if (check(attacks)) {
             attack();
+        } else if (active.equals("continue")) {
+            gameState = 1;
+            World.nextMap.postCombat(World.nextMapInt);
         }
     }
 

@@ -131,7 +131,7 @@ public class Save {
         createSave(document, child, sections);
         saveToFile();
 
-        return new int[] { 1, 0, 1, 1, 1, 1, 0, 100, 100, Game.gameStartX, Game.gameStartY };
+        return new int[] { 1, 0, 5, 1, 1, 1, 0, 100, 100, Game.gameStartX, Game.gameStartY };
     }
 
     /**
@@ -150,7 +150,7 @@ public class Save {
         insertElement(d, element[0], "hpMax", "100");
         insertElement(d, element[0], "lvl", "1");
         insertElement(d, element[0], "exp", "0");
-        insertElement(d, element[0], "str", "1");
+        insertElement(d, element[0], "str", "5");
         insertElement(d, element[0], "end", "1");
         insertElement(d, element[0], "dex", "1");
         insertElement(d, element[0], "luc", "1");

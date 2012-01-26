@@ -35,6 +35,8 @@ public class MonsterManager {
 
                 }
 
+            } else {
+                m.postSpawn(dir);
             }
         } catch (Exception e) {
             e.printStackTrace();
