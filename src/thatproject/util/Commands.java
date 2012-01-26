@@ -14,7 +14,7 @@ public class Commands {
     private static String[] attacks = { "slash", "stab", "crush" };
     private static String[] accept = { "yes", "y", "okay", "k" };
     private static String[] deny = { "no", "n" };
-    private static String[] directions = { "n", "s", "e", "w" };
+    private static String[] directions = { "n", "s", "e", "w", "north", "south", "east", "west" };
 
     private static int count = 0;
 
@@ -58,6 +58,14 @@ public class Commands {
             Inventory.getItem(Inventory.itemList.get(0));
         }
 
+        if (World.currentMap.isMap(0, 3)) {
+            if (Inventory.haveItem(Inventory.itemList.get(0))) {
+                MainMenu.addTemp("\nYOU WON!");
+            } else {
+                MainMenu.addTemp("\nYOU LOST!");
+            }
+        }
+
     }
 
     private static void statState() {
@@ -84,13 +92,13 @@ public class Commands {
             Event.drop(false);
         } else if (check(directions)) {
             int dir = 0;
-            if (active.equals("n")) {
+            if (active.equals("n") || active.equals("north")) {
                 dir = 0;
-            } else if (active.equals("s")) {
+            } else if (active.equals("s") || active.equals("south")) {
                 dir = 1;
-            } else if (active.equals("e")) {
+            } else if (active.equals("e") || active.equals("east")) {
                 dir = 2;
-            } else if (active.equals("w")) {
+            } else if (active.equals("w") || active.equals("west")) {
                 dir = 3;
             }
             Event.move(dir);

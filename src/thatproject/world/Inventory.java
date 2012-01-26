@@ -45,16 +45,16 @@ public class Inventory {
         }
     }
 
-    public static void haveItem(Item item) {
+    public static boolean haveItem(Item item) {
         for (int z = 6; z > -1; z--) {
             for (int i = 4; i > -1; i--) {
-                if (items[i][z].equals(item)) {
-                    MainMenu.set("YOU WON!");
-                    return;
+                if (items[i][z] != null) {
+                    if (items[i][z].equals(item))
+                        return true;
                 }
             }
         }
-        MainMenu.set("YOU LOST!");
+        return false;
     }
 
     public static void useItem(int x, int y) {
