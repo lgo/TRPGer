@@ -64,7 +64,7 @@ public class Commands {
             attack();
         } else if (active.equals("continue")) {
             gameState = 1;
-            World.nextMap.postCombat(World.nextMapInt);
+            World.currentMap.postCombat(World.nextMapInt);
         }
     }
 
@@ -162,10 +162,11 @@ public class Commands {
                         }
                     }
                 }
-                MainMenu.addTemp(t);
                 break;
             case 2:
-
+                t += "slash - Attack for 70% damage and 100% hit rate";
+                t += "stab - Attack for 100% damage and 70% hit rate";
+                t += "crush - Attack for 120% damage and 50% hit rate";
                 break;
             case 3:
                 break;
