@@ -282,7 +282,6 @@ public class MainMenu extends JPanel implements ActionListener {
 
     public static void set() {
         textArea.setText(hi);
-        Game.done = true;
     }
 
     /**
@@ -402,12 +401,6 @@ public class MainMenu extends JPanel implements ActionListener {
             temp = 1;
         } else {
             temp = 0;
-        }
-        
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         frame.remove(desk);
         frame.setContentPane(introOutro);

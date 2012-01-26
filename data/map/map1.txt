@@ -15,7 +15,7 @@ The forest is thick around you. There is an oddly shaped bush to your left.
 
 2,3
 0
-The forest is thinning out before you but is still too thick to see through the foliage. You see 5000 gold on the ground.
+The forest is thinning out before you but is still too thick to see through the foliage. You see 5000 gold on the ground, but you feel like it's a little dangerous.
 1,1,1,1
 
 2,4
@@ -25,7 +25,7 @@ A squirrel swarm darts towards you, fight them off before they overwhelm you!
 
 3,0
 1
-A clearing is opened up to you as you stumble out of the forest. There is a leafy bed that looks comfortable for a 'rest'. You see an opened chest beside it with a Dull Sword inside of it.
+A clearing is opened up to you as you stumble out of the forest. There is a leafy bed that looks comfortable for a 'rest'.
 0,0,1,0
 
 3,1
@@ -55,7 +55,7 @@ Birds fly by as the bush thickens.
 
 4,3
 1
-A troll stands before a gate sporting a tight leather suit. "Away with you pawn, I'm busy." Upon seeing you not leaving he picks you up and flings you to the west.
+A troll stands before a gate sporting a tight leather suit. "Away with you pawn, I'm busy." Upon seeing you not leaving he picks you up and flings you.
 0,0,1,1
 
 4,4

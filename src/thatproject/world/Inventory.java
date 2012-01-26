@@ -33,6 +33,19 @@ public class Inventory {
         items[x][y] = null;
         nextSlot();
     }
+    
+    public static void removeItem(Item i) {
+        for (int z = 6; z > -1; z--) {
+            for (int x = 4; x > -1; x--) {
+                if (items[x][z] == i) {
+                    MainMenu.buttons[x][z].setIcon(null);
+                    MainMenu.buttons[x][z].setToolTipText(null);
+                    items[x][z] = null;
+                }
+            }
+        }
+        nextSlot();
+    }
 
     private static void nextSlot() {
         for (int z = 6; z > -1; z--) {

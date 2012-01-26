@@ -26,6 +26,11 @@ public class Commands {
         active = s.toLowerCase();
         if (specialEvent) {
             SpecialEvents.command(active);
+        } else if (Game.done) {
+            if (active.equals("continue")) {
+                MainMenu.setGameEnd(Game.win);
+            }
+            return;
         }
         switch (gameState) {
             case 0:
@@ -62,16 +67,14 @@ public class Commands {
             if (Inventory.haveItem(Inventory.itemList.get(0))) {
                 Game.win = true;
             }
-            Game.done = false;
-            MainMenu.hi = "The forest opens to a clearing, the sky has gone dark and you stand alone with a hooded figure holding an imposing gun. He walks up to you shoots you before " + (Game.win ? "leaving through the door you opened. You majestically feel yourself enter a near flying state as you weightlessly drift off." : "opening a door with a peculiar key, and pass through it. You instantaneously feel yourself fall down with the weight of a cinder block.");
-            MainMenu.set();
-            Thread.yield();
-            
+            Game.done = true;
+            MainMenu.set("");
             if (Game.win) {
-                MainMenu.setGameEnd(true);
-            } else {
-                MainMenu.setGameEnd(false);
+                Inventory.removeItem(Inventory.itemList.get(0));
+                MainMenu.add("The forest opens to a clearing and you see a door in the midst. Looking at your hand the Skeleton Key resembles the emblem on the door and you inject it into the keyhole.\n\n");
             }
+            MainMenu.add("The sky has gone dark and you stand alone with a hooded figure holding an imposing gun. He walks up to you shoots you before " + (Game.win ? "leaving through the door you opened with the Skeleton key. You majestically feel yourself enter a near flying state as you weightlessly drift off." : "opening a door in the midst with a peculiar key, vanishing through the frame. You instantaneously feel yourself fall down with the weight of a cinder block."));
+            MainMenu.add("\n\nType 'continue' to move on in life.");
         }
 
     }
@@ -186,9 +189,9 @@ public class Commands {
                 }
                 break;
             case 2:
-                t += "slash - Attack for 70% damage and 100% hit rate";
-                t += "stab - Attack for 100% damage and 70% hit rate";
-                t += "crush - Attack for 120% damage and 50% hit rate";
+                t += "\n\nslash - Attack for 70% damage and 100% hit rate";
+                t += "\nstab - Attack for 100% damage and 70% hit rate";
+                t += "\ncrush - Attack for 120% damage and 50% hit rate";
                 break;
             case 3:
                 break;

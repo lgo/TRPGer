@@ -51,7 +51,9 @@ public class Enemy extends Monster {
                 break;
         }
         temp += enemyAttack();
+        if (!Game.done) {
         MainMenu.add(temp);
+        }
     }
 
     private String enemyAttack() {

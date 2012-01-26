@@ -28,7 +28,6 @@ public class MonsterManager {
                 for (int monster : World.getZone().getMonsters()) {
                     if (monsterSpawn >= temp && monsterSpawn <= (temp += monsters.get(monster).getRate())) {
                         Game.e = new Enemy(monsters.get(monster)); //Creates Enemy
-
                         m.startCombat(dir);
                     }
 
