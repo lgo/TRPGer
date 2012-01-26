@@ -9,7 +9,12 @@ public class Player extends Entity {
 
     //declaring and initializing variables
     public int hp, hpMax, stamina = 100, staminaMax = stamina;
-    private int lvl, exp, str, end, dex, luc, gold;
+    private int lvl, exp;
+    public int str;
+    private int end;
+    private int dex;
+    private int luc;
+    private int gold;
     private int x, y;
     public int spareStats = 4;
 

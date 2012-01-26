@@ -49,6 +49,13 @@ public class Commands {
             help();
         } else if (active.equals("potion")) {
             Inventory.getItem(Inventory.itemList.get(2));
+        } else if (active.equals("debug")) {
+            Game.p.str = 9001;
+        }
+
+        if (World.currentMap.x == 4 && World.currentMap.y == 5) {
+            MainMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
+            Inventory.getItem(Inventory.itemList.get(0));
         }
 
     }

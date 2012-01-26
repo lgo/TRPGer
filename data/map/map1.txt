@@ -50,7 +50,7 @@ A squirrel swarm darts towards you! Fight them off before they overwhelm you!
 
 4,2
 1
-TODO STUFF (MISSING >_>)
+Birds fly by as the bush thickens.
 1,0,1,0
 
 4,3

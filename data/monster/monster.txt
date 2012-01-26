@@ -7,14 +7,35 @@ A snake slithers out from the grass and attacks!
 
 Giant Bird
 5
-120
-12,7
+75
+7,7
 
 A bird swoops from the trees, attacking you.
 
-Giant Birdz
-45
-120
-12,7
+Large Rat
+25
+30
+3,4
 
-A birdz swoops from the trees, attacking you.
+A large fetid looking rat jumps at you from a nearby bush
+
+Wurm
+10
+40
+4,5
+
+A giant wurm erupts from the ground at you.
+
+wild Boar
+9
+45
+5,6
+
+A boar wanders past, you insult his mother and he charges at you
+
+Giant Snail
+1
+100
+6,7
+
+A snail trundles past. You kick it and it fights backs.
