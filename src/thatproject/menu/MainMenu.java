@@ -27,6 +27,7 @@ import thatproject.util.Event;
 
 public class MainMenu extends JPanel implements ActionListener {
 
+    //Declaring and initializing variables
     private static JTextArea textArea;
     private static final int taX = 5;
     private static final int taY = 5;
@@ -139,6 +140,7 @@ public class MainMenu extends JPanel implements ActionListener {
             }
         }
 
+        //calls functions to create health and stamina bar
         healthBar();
         staminaBar();
 
@@ -262,6 +264,7 @@ public class MainMenu extends JPanel implements ActionListener {
         focus();
     }
 
+    //Focuses window
     public static void focus() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -271,8 +274,10 @@ public class MainMenu extends JPanel implements ActionListener {
         });
     }
 
+    //Places health bar onto the screen
     public void healthBar() {
         UIManager.put("ProgressBar.foreground", Color.RED);
+        //sets progress bar specifications for health
         healthBar = new JProgressBar();
         healthBar.setBounds(barX, barY, barW, barH);
         healthBar.setMinimum(0);
@@ -282,6 +287,7 @@ public class MainMenu extends JPanel implements ActionListener {
         healthBar.setValue(Game.p.hp);
         desk.add(healthBar);
 
+        //sets textfield specifications and text for detail on player health bar.
         playerHP = new JTextField() {
             @Override
             public void setBorder(Border border) {
@@ -298,6 +304,7 @@ public class MainMenu extends JPanel implements ActionListener {
         // Setup Stamina bar and flair
         UIManager.put("ProgressBar.foreground", Color.GREEN);
         UIManager.put("ProgressBar.selectionForeground", Color.BLACK);
+        //sets progress bar specifications for stamina
         staminaBar = new JProgressBar();
         staminaBar.setBounds(sbarX, sbarY, sbarW, sbarH);
         staminaBar.setMinimum(0);
@@ -307,6 +314,7 @@ public class MainMenu extends JPanel implements ActionListener {
         staminaBar.setValue(Game.p.stamina);
         desk.add(staminaBar);
 
+        //sets textfield specifications and text for detail on player stamina bar.
         playerStamina = new JTextField() {
             @Override
             public void setBorder(Border border) {
@@ -318,6 +326,7 @@ public class MainMenu extends JPanel implements ActionListener {
         desk.add(playerStamina);
     }
 
+    //displays current health
     public static void refreshHP() {
 
         healthBar.setValue(Game.p.hp < 0 ? 0 : Game.p.hp);
@@ -326,6 +335,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     }
 
+    //set inventory's icon and tool tip.
     public static void setButton(int x, int y, Item i) {
         buttons[x][y].setIcon(new ImageIcon(i.getPath()));
         buttons[x][y].setToolTipText(i.getToolTip());
