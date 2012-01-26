@@ -56,6 +56,7 @@ public class Enemy extends Monster {
 
     private String enemyAttack() {
         int temp = Attack.attack((int) (stats[0] * 0.8), (int) (stats[0] * 1.2));
+        Game.p.hit(temp);
         return "\n" + name + " attacked you for " + temp + ".";
     }
 

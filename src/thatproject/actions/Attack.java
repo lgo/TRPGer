@@ -63,12 +63,12 @@ public class Attack {
             case 1:
                 attackLow = temp[0];
                 attackHigh = temp[1];
-                accuracy = 80;
+                accuracy = 70;
                 break;
             case 2:
                 attackLow = (int) (temp[0] * 1.2);
                 attackHigh = (int) (temp[1] * 1.2);
-                accuracy = 65;
+                accuracy = 50;
                 break;
         }
         if (generator.nextInt(100) > accuracy) {
