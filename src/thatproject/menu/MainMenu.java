@@ -86,6 +86,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private static JDesktopPane desk = new JDesktopPane();
 
     private static JButton introButton;
+    private static JButton[] end = new JButton[2];
     
     public MainMenu() {
 
@@ -95,15 +96,33 @@ public class MainMenu extends JPanel implements ActionListener {
         super(new GridBagLayout());
         // Initialize
 
+        for (int i = 0; i < 2; i++) {
+            end[i] = new JButton();
+            end[i] = new JButton();
+            end[i].setBorder(null);
+            end[i].setBounds(0,0,900,600);
+            end[i].setIcon(new ImageIcon("data/assets/gameover.png"));
+            final int z = i;
+            end[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                    System.exit(0);
+                }
+
+            });
+            
+        }
+        
         introButton = new JButton();
         introButton.setBorder(null);
         introButton.setBounds(0,0,900,600);
-        introButton.setIcon(new ImageIcon("data/assets/intro.jpg"));
+        introButton.setIcon(new ImageIcon("data/assets/intro.png"));
         introButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent evt) {
                 desk.remove(introButton);
+                desk.repaint();
             }
 
         });
@@ -357,5 +376,16 @@ public class MainMenu extends JPanel implements ActionListener {
         buttons[x][y].setIcon(new ImageIcon(i.getPath()));
         buttons[x][y].setToolTipText(i.getToolTip());
 
+    }
+    
+    public void setGameEnd(boolean win) {
+        int temp = -1;
+        if (win) {
+            temp = 1;
+        } else {
+            temp = 0;
+        }
+        desk.removeAll();
+        desk.add(end[temp]);
     }
 }
