@@ -40,7 +40,7 @@ public class MonsterReader extends FileReader {
             int rate = Integer.parseInt(content.get(i + count()));
             int health = Integer.parseInt(content.get(i + count()));
             int[] stats = splitInt(content.get(i + count()));
-            int[] itemDrops = (temp = content.get(i)) == null ? splitInt(temp) : null;
+            int[] itemDrops = (temp = content.get(i + count())) == null ? splitInt(temp) : null;
             String encounter = content.get(i + count());
             MonsterManager.populateMonsters(name, rate, health, stats, itemDrops, encounter);
         }

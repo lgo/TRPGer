@@ -4,7 +4,6 @@ import java.util.Random;
 
 import thatproject.Game;
 import thatproject.entities.being.Enemy;
-import thatproject.menu.MainMenu;
 import thatproject.world.World;
 
 public class Attack {
@@ -73,15 +72,11 @@ public class Attack {
                 break;
         }
         if (generator.nextInt(100) > accuracy) {
-            missed();
+            Game.e.hit(0, 3);
         } else {
             Game.e.hit(attack(attackLow, attackHigh), i);
 
         }
-    }
-
-    private static void missed() {
-        MainMenu.addTemp("\nYou swung at the " + Game.e.name + " and missed.");
     }
 
     public static void endCombat() {

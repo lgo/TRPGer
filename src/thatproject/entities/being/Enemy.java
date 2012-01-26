@@ -29,7 +29,9 @@ public class Enemy extends Monster {
         if (hp < 0) {
             MainMenu.add("\n\nCongragulations! You have killed the " + name + ".");
             MainMenu.addTemp("\nType 'continue' to move on.");
+            return;
         }
+        MainMenu.set(Attack.attackDisplay(this, Attack.SPACES));
         Attack.attackDisplay(this, Attack.SPACES); //calls attackDisplay function from the Attack class.
         String temp = "";
         switch (attack) {
@@ -41,6 +43,9 @@ public class Enemy extends Monster {
                 break;
             case 2:
                 temp += "\nYou whale towards the " + name + " hit it bluntly for " + d + ".";
+                break;
+            case 3:
+                temp += "\nYou swung at the " + name + " and missed.";
                 break;
         }
         temp += enemyAttack();
