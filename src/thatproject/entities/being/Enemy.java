@@ -22,7 +22,7 @@ public class Enemy extends Monster {
     }
     
     //function for attacking the enemy.
-    public void hit(int d) {
+    public void hit(int d, int attack) {
         hp -= d; //reduces health by the amount of damage dealt
         hp = hp < 0 ? 0 : hp; //check to set monster hp to 0 if deals more than the remaining hp
         //if to check whether or not monster is dead and displays a message if dead.
@@ -30,6 +30,14 @@ public class Enemy extends Monster {
             MainMenu.add("Congragulations! You have killed the " + name + ".");
         }
         Attack.attackDisplay(this, Attack.SPACES); //calls attackDisplay function from the Attack class.
+        switch (attack) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
     }
 
 }

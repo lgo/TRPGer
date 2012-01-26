@@ -75,12 +75,13 @@ public class Attack {
         if (generator.nextInt(100) > accuracy) {
             missed();
         } else {
-            attack(attackLow, attackHigh);
+            Game.e.hit(attack(attackLow, attackHigh), i);
+            
         }
     }
     
     private static void missed() {
-        MainMenu.add("You swung at the " + Game.e.name + " and missed.");
+        MainMenu.addTemp("\nYou swung at the " + Game.e.name + " and missed.");
     }
     
     public static void endCombat() {
