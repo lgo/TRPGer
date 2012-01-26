@@ -29,7 +29,7 @@ public class Enemy extends Monster {
 
         MainMenu.set(Attack.attackDisplay(this, Attack.SPACES));//calls attackDisplay function from the Attack class.
         if (hp == 0) {//if to check whether or not monster is dead and displays a message if dead.
-            
+
             MainMenu.add("\n\nCongragulations! You have killed the " + name + ".");
             MainMenu.addTemp("\nType 'continue' to move on.");
             Game.e = null;
