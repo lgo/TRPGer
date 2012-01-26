@@ -9,12 +9,13 @@ import thatproject.world.World;
 
 public class Commands {
 
+    //declaring and initializing variables
     public static int gameState = 0;
 
     private static String[] attacks = { "slash", "stab", "crush" };
     private static String[] accept = { "yes", "y", "okay", "k" };
     private static String[] deny = { "no", "n" };
-    private static String[] directions = { "n", "s", "e", "w" };
+    private static String[] directions = { "n", "s", "e", "w", "north", "south", "east", "west" };
 
     private static int count = 0;
 
@@ -22,13 +23,24 @@ public class Commands {
 
     public static boolean specialEvent = false;
 
+    //If Game.done then waits 2 seconds before calling calling function st00fz 
     public static void command(String s) {
         active = s.toLowerCase();
-        if (Game.lost)
+        if (Game.done)
+        {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
             return;
+    }
+        //if special event calls special event.
         if (specialEvent) {
             SpecialEvents.command(active);
         }
+        //depending on gamestate, calls certain function
         switch (gameState) {
             case 0:
                 startState();
@@ -44,7 +56,7 @@ public class Commands {
                 break;
         }
 
-        // Globals
+        // Globals 
         if (active.equals("help")) {
             help();
         } else if (active.equals("potion")) {
@@ -53,13 +65,29 @@ public class Commands {
             Game.p.str = 9001;
         }
 
-        if (World.currentMap.x == 4 && World.currentMap.y == 5) {
+        // if you enter the map specified you gain a skeleton key in your inventory
+        if (World.currentMap.isMap(4, 5)) {
+            if (!Inventory.haveItem(Inventory.itemList.get(0))) {
             MainMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
             Inventory.getItem(Inventory.itemList.get(0));
+            }
+        }
+
+        // if you enter this map without the key you lose, if you have it, you win.
+        if (World.currentMap.isMap(0, 3)) {
+            if (Inventory.haveItem(Inventory.itemList.get(0))) {
+                Game.win = true;
+                MainMenu.addTemp("\nYOU WON!");
+            } else {
+                MainMenu.addTemp("\nYOU LOST!");
+            }
+            Game.done = true;
+            Commands.command(null);
         }
 
     }
 
+    // 
     private static void statState() {
         if (active.equals("exit")) {
             gameState = 1;
@@ -69,12 +97,13 @@ public class Commands {
     private static void battleState() {
         if (check(attacks)) {
             attack();
-        } else if (active.equals("continue")) {
+        } else if (active.equals("continue") || active.equals("c")) {
             gameState = 1;
             World.currentMap.postCombat(World.nextMapInt);
         }
     }
 
+    
     private static void mapState() {
         if (check(accept)) {
             Event.accept();
@@ -84,13 +113,13 @@ public class Commands {
             Event.drop(false);
         } else if (check(directions)) {
             int dir = 0;
-            if (active.equals("n")) {
+            if (active.equals("n") || active.equals("north")) {
                 dir = 0;
-            } else if (active.equals("s")) {
+            } else if (active.equals("s") || active.equals("south")) {
                 dir = 1;
-            } else if (active.equals("e")) {
+            } else if (active.equals("e") || active.equals("east")) {
                 dir = 2;
-            } else if (active.equals("w")) {
+            } else if (active.equals("w") || active.equals("west")) {
                 dir = 3;
             }
             Event.move(dir);
@@ -128,6 +157,7 @@ public class Commands {
 
     }
 
+    //checks active = temp
     private static boolean check(String[] a) {
         for (String temp : a) {
             if (active.equals(temp))
@@ -136,6 +166,7 @@ public class Commands {
         return false;
     }
 
+    //calls attack function in Attack class
     private static void attack() {
         for (int i = 0; i < attacks.length; i++) {
             if (active.equals(attacks[i])) {
@@ -144,6 +175,7 @@ public class Commands {
         }
     }
 
+    //Function to show commands for current map/battle.
     private static void help() {
         String t = "\n";
         switch (gameState) {

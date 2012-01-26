@@ -30,6 +30,8 @@ public class Game {
 
     public static boolean loaded = false;
     public static boolean lost;
+    public static boolean done = false;
+    public static boolean win = false;
 
     //Initial starting function to starting function
     public static void start() {
