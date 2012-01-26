@@ -81,27 +81,30 @@ public class MainMenu extends JPanel implements ActionListener {
     private static final int atW = 200;
     private static final int atH = 30;
 
-    private static String hi;
+    public static String hi;
 
     private static JDesktopPane desk = new JDesktopPane();
+    private static JDesktopPane introOutro = new JDesktopPane();
 
     private static JButton introButton;
     private static JButton[] end = new JButton[2];
-    
+    private static JFrame frame;
+
     public MainMenu() {
 
     }
 
-    public MainMenu(JFrame frame) {
+    public MainMenu(JFrame f) {
         super(new GridBagLayout());
+        frame = f;
         // Initialize
-
+        String[] temp = { "data/assets/gameover.png", "data/assets/win.png" };
         for (int i = 0; i < 2; i++) {
             end[i] = new JButton();
             end[i] = new JButton();
             end[i].setBorder(null);
-            end[i].setBounds(0,0,900,600);
-            end[i].setIcon(new ImageIcon("data/assets/gameover.png"));
+            end[i].setBounds(0, 0, 504, 360);
+            end[i].setIcon(new ImageIcon(temp[i]));
             final int z = i;
             end[i].addActionListener(new ActionListener() {
                 @Override
@@ -110,29 +113,43 @@ public class MainMenu extends JPanel implements ActionListener {
                 }
 
             });
-            
+
         }
-        
+
+        f.setSize(504, 360);// Set frame size
+        f.setVisible(true);
+
+        // Center the window
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int w = f.getSize().width;
+        int h = f.getSize().height;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
+        f.setLocation(x, y);
+
         introButton = new JButton();
         introButton.setBorder(null);
-        introButton.setBounds(0,0,900,600);
+        introButton.setBounds(0, 0, 504, 360);
         introButton.setIcon(new ImageIcon("data/assets/intro.png"));
         introButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent evt) {
-                desk.remove(introButton);
-                desk.repaint();
+                frame.remove(introOutro);
+                frame.setContentPane(desk);
+                reSize(ThatProject.x, ThatProject.y);
+                focus();
             }
 
         });
-        desk.add(introButton);
+        introOutro.add(introButton);
+        frame.setContentPane(introOutro);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         buttons = new JButton[buttonAmountWidth][buttonAmountHeight];
 
         // Setup text area
@@ -196,6 +213,17 @@ public class MainMenu extends JPanel implements ActionListener {
         ThatProject.menuLoaded = true;
     }
 
+    protected static void reSize(int x, int y) {
+        frame.resize(x, y);
+        // Center the window
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int w = frame.getSize().width;
+        int h = frame.getSize().height;
+        x = (dim.width - w) / 2;
+        y = (dim.height - h) / 2;
+        frame.setLocation(x, y);
+    }
+
     @Override
     public void actionPerformed(ActionEvent evt) {
         Commands.command(textField.getText());
@@ -254,6 +282,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     public static void set() {
         textArea.setText(hi);
+        Game.done = true;
     }
 
     /**
@@ -267,19 +296,8 @@ public class MainMenu extends JPanel implements ActionListener {
 
         ThatProject.m = new MainMenu(frame);// Initialize un-static functions
                                             // and create object
-        frame.setSize(ThatProject.x, ThatProject.y);// Set frame size
         frame.setVisible(true);
-
-        // Center the window
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        int w = frame.getSize().width;
-        int h = frame.getSize().height;
-        int x = (dim.width - w) / 2;
-        int y = (dim.height - h) / 2;
-        frame.setLocation(x, y);
-
-        // Add content
-        frame.setContentPane(desk);
+        frame.setResizable(false);
     }
 
     /**
@@ -377,15 +395,25 @@ public class MainMenu extends JPanel implements ActionListener {
         buttons[x][y].setToolTipText(i.getToolTip());
 
     }
-    
-    public void setGameEnd(boolean win) {
+
+    public static void setGameEnd(boolean win) {
         int temp = -1;
         if (win) {
             temp = 1;
         } else {
             temp = 0;
         }
+        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        frame.remove(desk);
+        frame.setContentPane(introOutro);
+        introOutro.removeAll();
+        introOutro.add(end[temp]);
+        reSize(504, 360);
         desk.removeAll();
-        desk.add(end[temp]);
     }
 }

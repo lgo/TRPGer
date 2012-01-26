@@ -27,7 +27,6 @@ public class MonsterManager {
                 //for loop to add to temp for comparing spawn to temp until spawn <= temp, then gets monster info
                 for (int monster : World.getZone().getMonsters()) {
                     if (monsterSpawn >= temp && monsterSpawn <= (temp += monsters.get(monster).getRate())) {
-                        System.out.println(monsters.get(monster).name);
                         Game.e = new Enemy(monsters.get(monster)); //Creates Enemy
 
                         m.startCombat(dir);

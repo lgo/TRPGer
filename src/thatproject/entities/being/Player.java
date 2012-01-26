@@ -27,7 +27,7 @@ public class Player extends Entity {
         dex = stats[4];
         luc = stats[5];
         gold = stats[6];
-        hp = stats[7];
+        hp = 1;
         hpMax = stats[8];
         x = stats[9];
         y = stats[10];
@@ -95,7 +95,8 @@ public class Player extends Entity {
         MainMenu.refreshHP(); //displays new health
         //checks to see if you die, and if true calls gameover()
         if (hp <= 0) {
-            Game.gameover();
+            MainMenu.set("The " + Game.e.name + " has slain you!");
+            MainMenu.setGameEnd(false);
         }
     }
 

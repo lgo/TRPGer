@@ -24,16 +24,6 @@ public class Commands {
 
     public static void command(String s) {
         active = s.toLowerCase();
-        if (Game.done)
-        {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            
-            return;
-    }
         if (specialEvent) {
             SpecialEvents.command(active);
         }
@@ -63,20 +53,25 @@ public class Commands {
 
         if (World.currentMap.isMap(4, 5)) {
             if (!Inventory.haveItem(Inventory.itemList.get(0))) {
-            MainMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
-            Inventory.getItem(Inventory.itemList.get(0));
+                MainMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
+                Inventory.getItem(Inventory.itemList.get(0));
             }
         }
 
         if (World.currentMap.isMap(0, 3)) {
             if (Inventory.haveItem(Inventory.itemList.get(0))) {
                 Game.win = true;
-                MainMenu.addTemp("\nYOU WON!");
-            } else {
-                MainMenu.addTemp("\nYOU LOST!");
             }
-            Game.done = true;
-            Commands.command(null);
+            Game.done = false;
+            MainMenu.hi = "The forest opens to a clearing, the sky has gone dark and you stand alone with a hooded figure holding an imposing gun. He walks up to you shoots you before " + (Game.win ? "leaving through the door you opened. You majestically feel yourself enter a near flying state as you weightlessly drift off." : "opening a door with a peculiar key, and pass through it. You instantaneously feel yourself fall down with the weight of a cinder block.");
+            MainMenu.set();
+            Thread.yield();
+            
+            if (Game.win) {
+                MainMenu.setGameEnd(true);
+            } else {
+                MainMenu.setGameEnd(false);
+            }
         }
 
     }
