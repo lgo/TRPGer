@@ -27,21 +27,29 @@ public class Enemy extends Monster {
         hp = hp < 0 ? 0 : hp; //check to set monster hp to 0 if deals more than the remaining hp
         //if to check whether or not monster is dead and displays a message if dead.
         if (hp < 0) {
-            MainMenu.add("Congragulations! You have killed the " + name + ".");
+            MainMenu.add("\n\nCongragulations! You have killed the " + name + ".");
+            MainMenu.addTemp("\nType 'continue' to move on.");
         }
         Attack.attackDisplay(this, Attack.SPACES); //calls attackDisplay function from the Attack class.
         String temp = "";
         switch (attack) {
             case 0:
-                temp += "";
+                temp += "\nYou swing at the " + name + " slash for " + d + ".";
                 break;
             case 1:
-                temp += "";
+                temp += "\nYou go to impale the " + name + " for " + d + ".";
                 break;
             case 2:
-                temp += "";
+                temp += "\nYou whale towards the " + name + " hit it bluntly for " + d + ".";
                 break;
         }
+        temp += enemyAttack();
+        MainMenu.add(temp);
+    }
+
+    private String enemyAttack() {
+        int temp = Attack.attack((int) (stats[0] * 0.8), (int) (stats[0] * 1.2));
+        return "\n" + name + " attacked you for " + temp + ".";
     }
 
 }
