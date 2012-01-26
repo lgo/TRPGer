@@ -55,7 +55,7 @@ public class Movement {
         String[] s;
         if ((s = FileReader.split(string, "]")).length != 1) {
             string = "";
-            String direction = "";
+            String direction = directionToString(dir);
 
             for (int j = 1; j < s.length; j++) {
                 if (j == 1) {

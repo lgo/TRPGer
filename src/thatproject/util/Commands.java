@@ -24,8 +24,16 @@ public class Commands {
 
     public static void command(String s) {
         active = s.toLowerCase();
-        if (Game.lost)
+        if (Game.done)
+        {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
             return;
+    }
         if (specialEvent) {
             SpecialEvents.command(active);
         }
@@ -54,16 +62,21 @@ public class Commands {
         }
 
         if (World.currentMap.isMap(4, 5)) {
+            if (!Inventory.haveItem(Inventory.itemList.get(0))) {
             MainMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
             Inventory.getItem(Inventory.itemList.get(0));
+            }
         }
 
         if (World.currentMap.isMap(0, 3)) {
             if (Inventory.haveItem(Inventory.itemList.get(0))) {
+                Game.win = true;
                 MainMenu.addTemp("\nYOU WON!");
             } else {
                 MainMenu.addTemp("\nYOU LOST!");
             }
+            Game.done = true;
+            Commands.command(null);
         }
 
     }

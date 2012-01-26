@@ -85,6 +85,8 @@ public class MainMenu extends JPanel implements ActionListener {
 
     private static JDesktopPane desk = new JDesktopPane();
 
+    private static JButton introButton;
+    
     public MainMenu() {
 
     }
@@ -92,11 +94,26 @@ public class MainMenu extends JPanel implements ActionListener {
     public MainMenu(JFrame frame) {
         super(new GridBagLayout());
         // Initialize
+
+        introButton = new JButton();
+        introButton.setBorder(null);
+        introButton.setBounds(0,0,900,600);
+        introButton.setIcon(new ImageIcon("data/assets/intro.jpg"));
+        introButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                desk.remove(introButton);
+            }
+
+        });
+        desk.add(introButton);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
         buttons = new JButton[buttonAmountWidth][buttonAmountHeight];
 
         // Setup text area

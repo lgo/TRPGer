@@ -25,7 +25,7 @@ public class MapManager {
         //if you can enter map, sends to next map
         if (World.currentMap.move(dir)) {
             Random generator = new Random();
-            if (generator.nextInt(100) <= 25) {
+            if (generator.nextInt(100) <= 20) {
                 Inventory.getItem(Inventory.itemList.get(2));
             }
             World.currentMap.directionToMap(dir).enter(dir);
