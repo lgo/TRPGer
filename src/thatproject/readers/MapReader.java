@@ -7,12 +7,14 @@ import thatproject.util.FileReader;
 
 public class MapReader extends FileReader {
 
+    //declaring/initializing variables
     private static final String PATH = "data/map/map";
     private static final String EXT = ".txt";
     private static int /* DEBUG mapAmount = 8; */mapAmount = 1;
     private static final int LINESIZE = 5;
     private static int counter = 0;
 
+    //function to read map
     public MapReader() {
         while (ThatProject.threadFreeze) {
             Thread.yield();
@@ -25,6 +27,7 @@ public class MapReader extends FileReader {
         Game.loaded = true;
     }
 
+    //creates new thread to run multiple things at once
     public static void exec() {
         new Thread(new Runnable() {
 
@@ -40,14 +43,17 @@ public class MapReader extends FileReader {
         Game.mapr = new MapReader();
     }
 
+    //gets info and then calls function to set map in game
     private void parse(int zone) {
         for (int i = 0; i < content.size(); i += LINESIZE) {
+            //declaring and initializing variables
             String[] xy = split(content.get(i + 0));
             int x = Integer.parseInt(xy[0]);
             int y = Integer.parseInt(xy[1]);
             boolean spawn = Integer.parseInt(content.get(i + 1)) == 1 ? false : true;
             String description = content.get(i + 2);
             boolean[] directions = directionSplit(content.get(i + 3));
+            //calling function for map.
             MapManager.populateWorlds(zone - 1, x, y, spawn, description, directions);
         }
     }

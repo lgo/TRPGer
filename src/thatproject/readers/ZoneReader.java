@@ -8,11 +8,13 @@ import thatproject.world.Zone;
 
 public class ZoneReader extends FileReader {
 
+    //declaring/initializing variables
     private static final String PATH = "data/map/mapzone";
     private static final String EXT = ".txt";
     private static final int LINESIZE = 5;
     private static int counter = 0;
 
+    //reading and parsing zone info
     public ZoneReader() {
         path = PATH + EXT;
         read();
@@ -20,6 +22,7 @@ public class ZoneReader extends FileReader {
         ThatProject.threadFreeze = false;
     }
 
+    //creates new thread to run multiple things at once
     public static void exec() {
         new Thread(new Runnable() {
 
@@ -35,6 +38,7 @@ public class ZoneReader extends FileReader {
         Game.zoner = new ZoneReader();
     }
 
+    //gets info and creates zone
     private void parse() {
         World.zones = new Zone[content.size() + 1 / LINESIZE];
         for (int i = 0, count = 0; i < content.size(); i += LINESIZE, count++) {
@@ -47,10 +51,12 @@ public class ZoneReader extends FileReader {
         }
     }
 
+    //function to call count() with false
     private int count() {
         return count(false);
     }
 
+    //function to change counter value
     private int count(boolean mode) {
         if (!mode) {
             counter++;
