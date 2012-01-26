@@ -1,7 +1,10 @@
 package thatproject.manager;
 
+import java.util.Random;
+
 import thatproject.actions.Movement;
 import thatproject.menu.MainMenu;
+import thatproject.world.Inventory;
 import thatproject.world.Map;
 import thatproject.world.World;
 
@@ -21,6 +24,10 @@ public class MapManager {
     public static void Move(int dir) {
         //if you can enter map, sends to next map
         if (World.currentMap.move(dir)) {
+            Random generator = new Random();
+            if (generator.nextInt(100) <= 25) {
+                Inventory.getItem(Inventory.itemList.get(2));
+            }
             World.currentMap.directionToMap(dir).enter(dir);
             //else calls wrong direction function
         } else {

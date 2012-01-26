@@ -86,7 +86,6 @@ public class Commands {
             } else if (active.equals("w")) {
                 dir = 3;
             }
-
             Event.move(dir);
         } else if (check(new String[] { "stat", "stats" })) {
 
