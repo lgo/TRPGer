@@ -46,4 +46,10 @@ public class MonsterManager {
         monsters.add(new Monster(name, rate, health, stats, itemDrops, encounter));
     }
 
+    public static void spawn(int dir, Map m, int i) {
+       
+                        Game.e = new Enemy(monsters.get(1)); //Creates Enemy
+                        m.startCombat(dir);
+    }
+
 }

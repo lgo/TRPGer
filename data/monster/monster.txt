@@ -26,7 +26,7 @@ Wurm
 
 A giant wurm erupts from the ground at you.
 
-wild Boar
+Wild Boar
 9
 45
 5,6

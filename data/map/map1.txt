@@ -40,12 +40,12 @@ The forest thickens.
 
 3,3
 1
-A giant ostrich sprints towers you. Will you run or fight it?
+A giant ostrich sprints towards you. You warily hide in the bush while it passes.
 1,1,0,1
 
 3,4
 1
-A squirrel swarm darts towards you! Fight them off before they overwhelm you!
+A squirrel swarm darts towards you! You fight them off before they overwhelm you although you still have a few hanging by your pants!
 1,0,1,1
 
 4,2
@@ -55,7 +55,7 @@ Birds fly by as the bush thickens.
 
 4,3
 1
-A troll stands before a gate sporting a tight leather suit. "Away with you pawn, I'm busy." Upon seeing you not leaving he picks you up and flings you.
+A troll stands before a gate sporting a tight leather suit. "Away with you pawn, I'm busy." Upon seeing you not leaving he curses you off.
 0,0,1,1
 
 4,4
@@ -65,10 +65,10 @@ You sense a trap as you look towards the south and east.
 
 4,5
 1
-A giant bird sweeps down from a nearby tree and pins you to the ground.
+A giant bird sweeps down from a nearby tree and watches you intently.
 0,0,0,1
 
 5,4
 1
-A giant bird sweeps down from a nearby tree and pins you to the ground.
+A giant bird sweeps down from a nearby tree and pins you to the ground. You malignantly hit it and which it then scatters off deep into the groove.
 1,0,0,0
