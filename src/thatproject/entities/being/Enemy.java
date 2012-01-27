@@ -52,10 +52,15 @@ public class Enemy extends Monster {
         }
         temp += enemyAttack();
         if (!Game.done) {
-        MainMenu.add(temp);
+            MainMenu.add(temp);
         }
     }
 
+    /**
+     * Calculate enemy attack and produce a string for the attack, damage player
+     * 
+     * @return string of attack line
+     */
     private String enemyAttack() {
         int temp = Attack.attack((int) (stats[0] * 0.8), (int) (stats[0] * 1.2));
         Game.p.hit(temp);

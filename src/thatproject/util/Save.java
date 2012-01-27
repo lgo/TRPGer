@@ -86,6 +86,7 @@ public class Save {
         return temp;
     }
 
+    //Grab the value of a tag
     private static String getTagValue(String sTag, Element eElement) {
         NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
 

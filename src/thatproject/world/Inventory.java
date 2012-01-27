@@ -14,12 +14,14 @@ public class Inventory {
     public static int nextX = 0;
     public static int nextY = 0;
 
+    //Instert given item into given button
     public static void insertItem(int x, int y, Item i) {
         itemCount++;
         MainMenu.setButton(x, y, i);
         items[x][y] = i;
     }
 
+    //Callen when a item is gotten
     public static void getItem(Item item) {
         int y = nextY;
         int x = nextX;
@@ -27,13 +29,15 @@ public class Inventory {
         nextSlot();
     }
 
+    //Remove item from given slot
     public static void removeItem(int x, int y) {
         MainMenu.buttons[x][y].setIcon(null);
         MainMenu.buttons[x][y].setToolTipText(null);
         items[x][y] = null;
         nextSlot();
     }
-    
+
+    //Remove item from given item
     public static void removeItem(Item i) {
         for (int z = 6; z > -1; z--) {
             for (int x = 4; x > -1; x--) {
@@ -47,6 +51,7 @@ public class Inventory {
         nextSlot();
     }
 
+    //Retrieve next empty slot
     private static void nextSlot() {
         for (int z = 6; z > -1; z--) {
             for (int i = 4; i > -1; i--) {
@@ -58,6 +63,7 @@ public class Inventory {
         }
     }
 
+    //Check if item is in inventory
     public static boolean haveItem(Item item) {
         for (int z = 6; z > -1; z--) {
             for (int i = 4; i > -1; i--) {
@@ -70,6 +76,7 @@ public class Inventory {
         return false;
     }
 
+    //Use potion (Remove)
     public static void useItem(int x, int y) {
         if (items[x][y].type == 1) {
             MainMenu.addTemp("\n\nYou have drank the " + items[x][y].name + " and regained " + items[x][y].stat + " health.");
@@ -78,6 +85,9 @@ public class Inventory {
         }
     }
 
+    ///
+    ///CONSTRUCTOR CALLS
+    ///
     public static void addEquip(String name, String description, String imgPath, int stat, int equipType) {
         itemList.add(new Item(name, description, imgPath, stat, equipType));
     }
@@ -90,6 +100,7 @@ public class Inventory {
         itemList.add(new Item(name, description, imgPath));
     }
 
+    //Check if slot is filled
     public static boolean exists(int x, int y) {
         return items[x][y] != null;
     }

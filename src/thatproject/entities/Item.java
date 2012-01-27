@@ -52,6 +52,11 @@ public class Item {
             return "<html><b>" + name + "</b>" + nl + description + nl + itemStats() + "</html>";
     }
 
+    /**
+     * Get the image path appointed to this item
+     * 
+     * @return string of image path
+     */
     public String getPath() {
         return PATH + imagePath + EXT;
     }

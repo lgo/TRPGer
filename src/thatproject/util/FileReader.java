@@ -12,6 +12,7 @@ public abstract class FileReader {
     public String path;
     protected ArrayList<String> content = new ArrayList<String>();
 
+    //REad the file into an arraylist
     public void read() {
         try {
             FileInputStream fstream = new FileInputStream(path);
@@ -27,14 +28,17 @@ public abstract class FileReader {
         }
     }
 
+    //Regex split on commas
     public static String[] split(String input) {
         return split(input, ",");
     }
 
+    //Custom input regex split
     public static String[] split(String input, String regex) {
         return input.split(regex);
     }
 
+    //Regex split on commas, return integer array
     public static int[] splitInt(String input) {
         String[] s = input.split(",");
         int[] temp = new int[s.length];

@@ -11,6 +11,8 @@ public class SpecialEvents {
     private static int temp = 50;
     private static String active;
 
+    //All tutorial spider stuff, going in order of each stage of the tutorial
+    //Mostly just lots of text to display
     public static void tutorialSpider() {
         Commands.specialEvent = true;
         spider = true;
@@ -86,10 +88,12 @@ public class SpecialEvents {
         }
     }
 
+    //End the spider events
     private static void spiderEnd() {
         SpecialEvents.spider = false;
     }
 
+    //Retrieve info for executing special events
     public static void command(String a) {
         active = a;
         if (spider) {

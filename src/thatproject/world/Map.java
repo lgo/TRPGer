@@ -22,6 +22,7 @@ public class Map {
     private boolean[] direction = new boolean[4];
     private static final String nl = "\n";
 
+    //Create map without name
     public Map(int xLoc, int yLoc, boolean s, String d, boolean[] dir) {
         x = xLoc;
         y = yLoc;
@@ -30,6 +31,7 @@ public class Map {
         direction = dir;
     }
 
+    //Create map with name
     public Map(String n, int xLoc, int yLoc, boolean s, String d, boolean[] dir) {
         name = n;
         x = xLoc;
@@ -39,22 +41,27 @@ public class Map {
         direction = dir;
     }
 
+    //Return map name (If none return generic name)
     public String getName() {
         return name == null ? World.getZone().getName() : name;
     }
 
+    //Inster monster into arraylist
     public void insertMonster(int id) {
         monster.add(id);
     }
 
+    //Return if that direction is moveable
     public boolean move(int dir) {
         return direction[dir];
     }
 
+    //Return all directions moveable
     public boolean[] move() {
         return direction;
     }
 
+    //Enter this map, with direction integer for custom output
     public void enter(int dir) {
         World.currentMap = this;
         if (spawn) {
@@ -64,24 +71,29 @@ public class Map {
         }
     }
 
+    //Call post combat functions
     public void postCombat(int dir) {
         postSpawn(dir);
     }
 
+    //Execute post spawn stuff
     public void postSpawn(int dir) {
         MainMenu.set(Movement.getMovement(this, dir) + enter(true));
     }
 
+    //Set entery info
     public void enter() {
         MainMenu.set(description);
         MainMenu.add(travelDirections());
     }
 
+    //Return entry info
     public String enter(boolean override) {
         return description + travelDirections();
 
     }
 
+    //Return strings for each direction travellable and prints upon no map avialable in that direction
     private String travelDirections() {
         String r = "";
         for (int i = 0; i < 4; i++) {
@@ -97,10 +109,12 @@ public class Map {
         return r;
     }
 
+    //Check if certian location is a map
     public boolean isMap(int xLoc, int yLoc) {
         return x == xLoc && y == yLoc ? true : false;
     }
 
+    //Get the mapzone of the given direction
     public Map directionToMap(int dir) {
         Map temp = null;
         switch (dir) {
@@ -120,6 +134,7 @@ public class Map {
         return temp;
     }
 
+    //Initiate combat with enemy
     public void startCombat(int dir) {
         Commands.gameState = 2;
         World.nextMap = this;

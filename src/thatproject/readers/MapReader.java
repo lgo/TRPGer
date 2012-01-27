@@ -39,6 +39,7 @@ public class MapReader extends FileReader {
         }).start();
     }
 
+    //Start non-static map reader calls with constructor
     public static void init() {
         Game.mapr = new MapReader();
     }

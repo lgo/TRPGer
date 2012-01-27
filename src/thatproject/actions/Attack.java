@@ -79,6 +79,9 @@ public class Attack {
         }
     }
 
+    /**
+     * Call all functions for ending the combat process
+     */
     public static void endCombat() {
         World.nextMap.postCombat(World.nextMapInt);
     }

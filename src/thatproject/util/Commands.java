@@ -85,13 +85,14 @@ public class Commands {
 
     }
 
-    // 
+    // UNUSED - NOT IMPLEMENTED
     private static void statState() {
         if (active.equals("exit")) {
             gameState = 1;
         }
     }
 
+    //Specific command checks for attacks
     private static void battleState() {
         if (check(attacks)) {
             attack();
@@ -101,7 +102,7 @@ public class Commands {
         }
     }
 
-    
+    //Specific command checks for maps
     private static void mapState() {
         if (check(accept)) {
             Event.accept();
@@ -122,8 +123,8 @@ public class Commands {
             }
             Event.move(dir);
         } else if (check(new String[] { "stat", "stats" })) {
-
-        } else if (active.equals("rest") && World.currentMap.isMap(3, 0)) {
+            //NOT USED
+        } else if (active.equals("rest") && World.currentMap.isMap(3, 0)) {//Check if on spawn and used rest for resting
             MainMenu.addTemp("\nYou have rested here, your HP and Stamina have regenerated.");
             Game.p.hp = Game.p.hpMax;
             MainMenu.refreshHP();
@@ -132,6 +133,7 @@ public class Commands {
 
     }
 
+    //Specific commands for start state
     private static void startState() {
         switch (count) {
             case 0:

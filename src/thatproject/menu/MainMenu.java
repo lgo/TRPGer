@@ -95,10 +95,19 @@ public class MainMenu extends JPanel implements ActionListener {
     }
 
     public MainMenu(JFrame f) {
+
         super(new GridBagLayout());
-        frame = f;
+        //Setup windows look
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // Initialize
+        frame = f;
+
         String[] temp = { "data/assets/gameover.png", "data/assets/win.png" };
+        //Create two end buttons, one for loss one for win
         for (int i = 0; i < 2; i++) {
             end[i] = new JButton();
             end[i] = new JButton();
@@ -106,6 +115,7 @@ public class MainMenu extends JPanel implements ActionListener {
             end[i].setBounds(0, 0, 504, 360);
             end[i].setIcon(new ImageIcon(temp[i]));
             final int z = i;
+            //Exit on button press
             end[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent evt) {
@@ -115,7 +125,7 @@ public class MainMenu extends JPanel implements ActionListener {
             });
 
         }
-
+        //Starting frame size
         f.setSize(504, 360);// Set frame size
         f.setVisible(true);
 
@@ -126,7 +136,7 @@ public class MainMenu extends JPanel implements ActionListener {
         int x = (dim.width - w) / 2;
         int y = (dim.height - h) / 2;
         f.setLocation(x, y);
-
+        //Intro image button and settings
         introButton = new JButton();
         introButton.setBorder(null);
         introButton.setBounds(0, 0, 504, 360);
@@ -135,20 +145,18 @@ public class MainMenu extends JPanel implements ActionListener {
 
             @Override
             public void actionPerformed(ActionEvent evt) {
+                //Tranistion from intro into game panes
                 frame.remove(introOutro);
                 frame.setContentPane(desk);
                 reSize(ThatProject.x, ThatProject.y);
+                //Gain focus on textfield
                 focus();
             }
 
         });
+        //Add pane stuff
         introOutro.add(introButton);
         frame.setContentPane(introOutro);
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         buttons = new JButton[buttonAmountWidth][buttonAmountHeight];
 
@@ -180,13 +188,16 @@ public class MainMenu extends JPanel implements ActionListener {
 
                     @Override
                     public void actionPerformed(ActionEvent evt) {
+                        //Call button function with appropriate button ID
                         Event.buttonPress(tempI, tempJ);
+                        //Regain focus
                         MainMenu.focus();
                     }
 
                 });
             }
         }
+        //Add each button
         for (JButton[] button : buttons) {
             for (JButton button2 : button) {
                 desk.add(button2);
@@ -197,6 +208,7 @@ public class MainMenu extends JPanel implements ActionListener {
         healthBar();
         staminaBar();
 
+        //Create made by text field
         authorField = new JTextField() {
             @Override
             public void setBorder(Border border) {
@@ -210,10 +222,13 @@ public class MainMenu extends JPanel implements ActionListener {
         // Setup content pane
         desk.setOpaque(false);
 
+        //LOADED MENU
         ThatProject.menuLoaded = true;
     }
 
+    //Resize to x and y size
     protected static void reSize(int x, int y) {
+        //Deprecated but useable resize
         frame.resize(x, y);
         // Center the window
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -225,6 +240,7 @@ public class MainMenu extends JPanel implements ActionListener {
     }
 
     @Override
+    //Action listener for text field entry (Enter button)
     public void actionPerformed(ActionEvent evt) {
         Commands.command(textField.getText());
         textField.setText("");
@@ -240,6 +256,7 @@ public class MainMenu extends JPanel implements ActionListener {
         set(contents, true);
     }
 
+    //Add a temperary string (Don't append to new add's and remove on addTemp's)
     public static void addTemp(String s) {
         set(contents + s, true);
     }
@@ -264,6 +281,7 @@ public class MainMenu extends JPanel implements ActionListener {
         }
     }
 
+    //Sets the textarea to said string
     public static void set(String s) {
         contents = s;
         // Create a seperate dispatch thread for initializing GUI
@@ -280,27 +298,26 @@ public class MainMenu extends JPanel implements ActionListener {
         }
     }
 
+    //Threaded function
     public static void set() {
         textArea.setText(hi);
     }
 
     /**
-     * Create the JFrame and add GUI contents
+     * Create the JFrame and add GUI contents (Static call to non-static
+     * conscructor)
      */
     private static void init() {
         JFrame frame = new JFrame(ThatProject.name);// Create new JFrame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// End Java
-                                                             // application on
-                                                             // window close
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// End Java application on window close
 
-        ThatProject.m = new MainMenu(frame);// Initialize un-static functions
-                                            // and create object
+        ThatProject.m = new MainMenu(frame);// Initialize un-static functions and create object
         frame.setVisible(true);
         frame.setResizable(false);
     }
 
     /**
-     * Start thread for creating the GUI
+     * Start thread for calling and creating the GUI
      */
     public static void exec() {
         // Create a seperate dispatch thread for initializing GUI
@@ -395,6 +412,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     }
 
+    //Called to produce the end game screen, boolean whether or not gameover or win
     public static void setGameEnd(boolean win) {
         int temp = -1;
         if (win) {
@@ -402,6 +420,7 @@ public class MainMenu extends JPanel implements ActionListener {
         } else {
             temp = 0;
         }
+        //Transition for panes
         frame.remove(desk);
         frame.setContentPane(introOutro);
         introOutro.removeAll();

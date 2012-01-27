@@ -1,8 +1,5 @@
 package thatproject.world;
 
-import thatproject.entities.Monster;
-import thatproject.entities.being.Enemy;
-
 public class World {
 
     public static Zone[] zones;
@@ -12,16 +9,19 @@ public class World {
     public static Map nextMap;
     public static int nextMapInt;
 
+    //Setup varaibles for starting the game
     public static void startGame(int gamestartx, int gamestarty) {
         currentMap = getZone().getMap(gamestartx, gamestarty);
         x = gamestartx;
         y = gamestarty;
     }
 
+    //Get the current zone player is in
     public static Zone getZone() {
         return zones[currentZone];
     }
 
+    //Change varible according to movement
     public static void move(int dir) {
         switch (dir) {
             case 0:
@@ -40,13 +40,9 @@ public class World {
         currentMap = getZone().getMap(x, y);
     }
 
+    //Game starting function calling
     public static void start() {
         currentMap.enter();
-    }
-
-    public static void startCombat(Monster monster) {
-        Enemy e = new Enemy(monster);
-        System.out.println(e.name);
     }
 
 }
