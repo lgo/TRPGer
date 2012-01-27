@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public abstract class FileReader {
 
+    //declaring variable 
     public String path;
     protected ArrayList<String> content = new ArrayList<String>();
 

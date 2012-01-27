@@ -9,6 +9,7 @@ import thatproject.world.World;
 
 public class Commands {
 
+    //declaring and initializing variables
     public static int gameState = 0;
 
     private static String[] attacks = { "slash", "stab", "crush" };
@@ -22,8 +23,10 @@ public class Commands {
 
     public static boolean specialEvent = false;
 
+    //If Game.done then waits 2 seconds before calling calling function st00fz 
     public static void command(String s) {
         active = s.toLowerCase();
+        //if special event calls special event.
         if (specialEvent) {
             SpecialEvents.command(active);
         } else if (Game.done) {
@@ -32,6 +35,7 @@ public class Commands {
             }
             return;
         }
+        //depending on gamestate, calls certain function
         switch (gameState) {
             case 0:
                 startState();
@@ -47,7 +51,7 @@ public class Commands {
                 break;
         }
 
-        // Globals
+        // Globals 
         if (active.equals("help")) {
             help();
         } else if (active.equals("potion")) {
@@ -56,6 +60,7 @@ public class Commands {
             Game.p.str = 9001;
         }
 
+        // if you enter the map specified you gain a skeleton key in your inventory
         if (World.currentMap.isMap(4, 5)) {
             if (!Inventory.haveItem(Inventory.itemList.get(0))) {
                 MainMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
@@ -63,6 +68,7 @@ public class Commands {
             }
         }
 
+        // if you enter this map without the key you lose, if you have it, you win.
         if (World.currentMap.isMap(0, 3)) {
             if (Inventory.haveItem(Inventory.itemList.get(0))) {
                 Game.win = true;
@@ -79,6 +85,7 @@ public class Commands {
 
     }
 
+    // 
     private static void statState() {
         if (active.equals("exit")) {
             gameState = 1;
@@ -94,6 +101,7 @@ public class Commands {
         }
     }
 
+    
     private static void mapState() {
         if (check(accept)) {
             Event.accept();
@@ -147,6 +155,7 @@ public class Commands {
 
     }
 
+    //checks active = temp
     private static boolean check(String[] a) {
         for (String temp : a) {
             if (active.equals(temp))
@@ -155,6 +164,7 @@ public class Commands {
         return false;
     }
 
+    //calls attack function in Attack class
     private static void attack() {
         for (int i = 0; i < attacks.length; i++) {
             if (active.equals(attacks[i])) {
@@ -163,6 +173,7 @@ public class Commands {
         }
     }
 
+    //Function to show commands for current map/battle.
     private static void help() {
         String t = "\n";
         switch (gameState) {
