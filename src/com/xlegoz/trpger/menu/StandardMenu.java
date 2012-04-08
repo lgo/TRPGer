@@ -25,8 +25,8 @@ import com.xlegoz.trpger.TRPGer;
 import com.xlegoz.trpger.entities.Item;
 import com.xlegoz.trpger.util.Commands;
 import com.xlegoz.trpger.util.Event;
-/*
-public class MainMenu extends JPanel implements ActionListener {
+
+public class StandardMenu extends JPanel implements ActionListener {
 
     //Declaring and initializing variables
     private static JTextArea textArea;
@@ -91,73 +91,22 @@ public class MainMenu extends JPanel implements ActionListener {
     private static JButton[] end = new JButton[2];
     private static JFrame frame;
 
-    public MainMenu() {
+    public StandardMenu() {
 
     }
 
-    public MainMenu(JFrame f) {
-
+    public StandardMenu(JFrame f) {
         super(new GridBagLayout());
-        //Setup windows look
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Initialize
         frame = f;
 
-        String[] temp = { "data/assets/gameover.png", "data/assets/win.png" };
-        //Create two end buttons, one for loss one for win
-        for (int i = 0; i < 2; i++) {
-            end[i] = new JButton();
-            end[i] = new JButton();
-            end[i].setBorder(null);
-            end[i].setBounds(0, 0, 504, 360);
-            end[i].setIcon(new ImageIcon(temp[i]));
-            final int z = i;
-            //Exit on button press
-            end[i].addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent evt) {
-                    System.exit(0);
-                }
-
-            });
-
-        }
-        //Starting frame size
-        f.setSize(504, 360);// Set frame size
-        f.setVisible(true);
-
-        // Center the window
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        int w = f.getSize().width;
-        int h = f.getSize().height;
-        int x = (dim.width - w) / 2;
-        int y = (dim.height - h) / 2;
-        f.setLocation(x, y);
-        //Intro image button and settings
-        introButton = new JButton();
-        introButton.setBorder(null);
-        introButton.setBounds(0, 0, 504, 360);
-        introButton.setIcon(new ImageIcon("data/assets/intro.png"));
-        introButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                //Tranistion from intro into game panes
-                frame.remove(introOutro);
-                frame.setContentPane(desk);
-                reSize(TRPGer.x, TRPGer.y);
-                //Gain focus on textfield
-                focus();
-            }
-
-        });
-        //Add pane stuff
-        introOutro.add(introButton);
-        frame.setContentPane(introOutro);
+        frame.setContentPane(desk);
+        reSize(TRPGer.x, TRPGer.y);
+        focus();
 
         buttons = new JButton[buttonAmountWidth][buttonAmountHeight];
 
@@ -192,7 +141,7 @@ public class MainMenu extends JPanel implements ActionListener {
                         //Call button function with appropriate button ID
                         Event.buttonPress(tempI, tempJ);
                         //Regain focus
-                        MainMenu.focus();
+                        StandardMenu.focus();
                     }
 
                 });
@@ -251,7 +200,7 @@ public class MainMenu extends JPanel implements ActionListener {
      * Adds text to the textarea
      * 
      * @param s to add to textarea
-     *
+     */
     public static void add(String s) {
         contents += s;
         set(contents, true);
@@ -266,7 +215,7 @@ public class MainMenu extends JPanel implements ActionListener {
      * Sets text to the textarea (Used to call from add())
      * 
      * @param s to set to textarea
-     *
+     */
     public static void set(String s, boolean overmode) {
         // Create a seperate dispatch thread for initializing GUI
         hi = s;
@@ -307,19 +256,19 @@ public class MainMenu extends JPanel implements ActionListener {
     /**
      * Create the JFrame and add GUI contents (Static call to non-static
      * conscructor)
-     *
+     */
     private static void init() {
         JFrame frame = new JFrame(TRPGer.name);// Create new JFrame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// End Java application on window close
 
-        TRPGer.m = new MainMenu(frame);// Initialize un-static functions and create object
+        TRPGer.m = new StandardMenu(frame);// Initialize un-static functions and create object
         frame.setVisible(true);
         frame.setResizable(false);
     }
 
     /**
      * Start thread for calling and creating the GUI
-     *
+     */
     public static void exec() {
         // Create a seperate dispatch thread for initializing GUI
         try {
@@ -429,4 +378,4 @@ public class MainMenu extends JPanel implements ActionListener {
         reSize(504, 360);
         desk.removeAll();
     }
-} */
+}

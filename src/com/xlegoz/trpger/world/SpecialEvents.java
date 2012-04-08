@@ -1,7 +1,7 @@
 package com.xlegoz.trpger.world;
 
 import com.xlegoz.trpger.actions.Attack;
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 import com.xlegoz.trpger.util.Commands;
 
 public class SpecialEvents {
@@ -17,41 +17,41 @@ public class SpecialEvents {
         Commands.specialEvent = true;
         spider = true;
         if (stage == 0) {
-            MainMenu.set("Spider     <- This is the monsters name. Below is it's health points.\n");
-            MainMenu.add(Attack.healthDisplay(50, 50, 20));
-            MainMenu.addTemp("\n\nNow attack it by typing 'slash', one of the many attacks.");
+            StandardMenu.set("Spider     <- This is the monsters name. Below is it's health points.\n");
+            StandardMenu.add(Attack.healthDisplay(50, 50, 20));
+            StandardMenu.addTemp("\n\nNow attack it by typing 'slash', one of the many attacks.");
             stage++;
         } else if (stage == 1) {
             if (active.equals("slash")) {
                 int damage = Attack.attack(5, 10);
                 temp -= damage;
-                MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
-                MainMenu.add("\nYou slash away at the spider for " + damage + ".\n\n");
-                MainMenu.addTemp("Great! You got a nasty blow on the Spider. In this tutorial the spider won't actually attack back, for the sake of learning. Now if you'd go ahead and give it a good 'stab' to continue that would be great.");
+                StandardMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                StandardMenu.add("\nYou slash away at the spider for " + damage + ".\n\n");
+                StandardMenu.addTemp("Great! You got a nasty blow on the Spider. In this tutorial the spider won't actually attack back, for the sake of learning. Now if you'd go ahead and give it a good 'stab' to continue that would be great.");
                 stage++;
             } else {
-                MainMenu.addTemp("\n\nYou didn't type 'slash'! Go ahead, try it out.");
+                StandardMenu.addTemp("\n\nYou didn't type 'slash'! Go ahead, try it out.");
             }
         } else if (stage == 2) {
             if (active.equals("stab")) {
                 int damage = Attack.attack(15, 25);
                 temp -= damage;
-                MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
-                MainMenu.add("\nYou give the spider a deep impale for " + damage + ".\n\n");
-                MainMenu.addTemp("See how that did much more damage? That's because different attacks have different amounts of damage that it will induce. Go ahead and give the spider another 'stab'!");
+                StandardMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                StandardMenu.add("\nYou give the spider a deep impale for " + damage + ".\n\n");
+                StandardMenu.addTemp("See how that did much more damage? That's because different attacks have different amounts of damage that it will induce. Go ahead and give the spider another 'stab'!");
                 stage++;
             } else {
-                MainMenu.addTemp("If you would like to survive, I highly advise you give 'stab' a go.");
+                StandardMenu.addTemp("If you would like to survive, I highly advise you give 'stab' a go.");
             }
 
         } else if (stage == 3) {
             if (active.equals("stab")) {
-                MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
-                MainMenu.add("\nYou lunge at the spider, but swiftly miss it with the dagger.\n\n");
-                MainMenu.addTemp("That's the downside of more powerful attacks such as stab, they miss more often then attacks such as slash.\n\nThroughout this journey you will find what suits you as well as what your limits are. With this in mind, finish off the Spider with what you know.");
+                StandardMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                StandardMenu.add("\nYou lunge at the spider, but swiftly miss it with the dagger.\n\n");
+                StandardMenu.addTemp("That's the downside of more powerful attacks such as stab, they miss more often then attacks such as slash.\n\nThroughout this journey you will find what suits you as well as what your limits are. With this in mind, finish off the Spider with what you know.");
                 stage++;
             } else {
-                MainMenu.addTemp("If you really want to get going, you definitely need to give 'stab' another shot!");
+                StandardMenu.addTemp("If you really want to get going, you definitely need to give 'stab' another shot!");
             }
         }
 
@@ -61,29 +61,29 @@ public class SpecialEvents {
                 temp -= damage;
                 if (temp <= 0) {
 
-                    MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
-                    MainMenu.add("\nYou give the spider a deep impale for " + damage + " and finish it off!\n\n");
-                    MainMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures! Type 'continue' to move on.");
+                    StandardMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                    StandardMenu.add("\nYou give the spider a deep impale for " + damage + " and finish it off!\n\n");
+                    StandardMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures! Type 'continue' to move on.");
                     spiderEnd();
                 } else {
-                    MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
-                    MainMenu.add("\nYou give the spider a deep impale for " + damage + ".\n\n");
+                    StandardMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                    StandardMenu.add("\nYou give the spider a deep impale for " + damage + ".\n\n");
                 }
             } else if (active.equals("slash")) {
                 int damage = Attack.attack(5, 10);
                 temp -= damage;
                 if (temp <= 0) {
 
-                    MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
-                    MainMenu.add("\nYou slash away at the spider for " + damage + " and finish it off!\n\n");
-                    MainMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures! Type 'continue' to move on.");
+                    StandardMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                    StandardMenu.add("\nYou slash away at the spider for " + damage + " and finish it off!\n\n");
+                    StandardMenu.add("Congragulations, you have killed your first monster! Now that you have the basics of combat you're ready to delve into adventures! Type 'continue' to move on.");
                     spiderEnd();
                 } else {
-                    MainMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
-                    MainMenu.add("\nYou slash away at the spider for " + damage + ".\n\n");
+                    StandardMenu.set(Attack.attackDisplay(temp, 50, Attack.SPACES, "Spider"));
+                    StandardMenu.add("\nYou slash away at the spider for " + damage + ".\n\n");
                 }
             } else {
-                MainMenu.addTemp("If you keep this up the Spider will end up attacking you!");
+                StandardMenu.addTemp("If you keep this up the Spider will end up attacking you!");
             }
         }
     }

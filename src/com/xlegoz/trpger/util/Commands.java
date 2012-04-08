@@ -3,7 +3,7 @@ package com.xlegoz.trpger.util;
 
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.actions.Attack;
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 import com.xlegoz.trpger.world.Inventory;
 import com.xlegoz.trpger.world.SpecialEvents;
 import com.xlegoz.trpger.world.World;
@@ -32,7 +32,7 @@ public class Commands {
             SpecialEvents.command(active);
         } else if (Game.done) {
             if (active.equals("continue")) {
-                MainMenu.setGameEnd(Game.win);
+                StandardMenu.setGameEnd(Game.win);
             }
             return;
         }
@@ -64,7 +64,7 @@ public class Commands {
         // if you enter the map specified you gain a skeleton key in your inventory
         if (World.currentMap.isMap(4, 5)) {
             if (!Inventory.haveItem(Inventory.itemList.get(0))) {
-                MainMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
+                StandardMenu.addTemp("\nYou've found a Skeleton Key pertrueding from a branch.");
                 Inventory.getItem(Inventory.itemList.get(0));
             }
         }
@@ -75,13 +75,13 @@ public class Commands {
                 Game.win = true;
             }
             Game.done = true;
-            MainMenu.set("");
+            StandardMenu.set("");
             if (Game.win) {
                 Inventory.removeItem(Inventory.itemList.get(0));
-                MainMenu.add("The forest opens to a clearing and you see a door in the midst. Looking at your hand the Skeleton Key resembles the emblem on the door and you inject it into the keyhole.\n\n");
+                StandardMenu.add("The forest opens to a clearing and you see a door in the midst. Looking at your hand the Skeleton Key resembles the emblem on the door and you inject it into the keyhole.\n\n");
             }
-            MainMenu.add("The sky has gone dark and you stand alone with a hooded figure holding an imposing gun. He walks up to you shoots you before " + (Game.win ? "leaving through the door you opened with the Skeleton key. You majestically feel yourself enter a near flying state as you weightlessly drift off." : "opening a door in the midst with a peculiar key, vanishing through the frame. You instantaneously feel yourself fall down with the weight of a cinder block."));
-            MainMenu.add("\n\nType 'continue' to move on in life.");
+            StandardMenu.add("The sky has gone dark and you stand alone with a hooded figure holding an imposing gun. He walks up to you shoots you before " + (Game.win ? "leaving through the door you opened with the Skeleton key. You majestically feel yourself enter a near flying state as you weightlessly drift off." : "opening a door in the midst with a peculiar key, vanishing through the frame. You instantaneously feel yourself fall down with the weight of a cinder block."));
+            StandardMenu.add("\n\nType 'continue' to move on in life.");
         }
 
     }
@@ -126,9 +126,9 @@ public class Commands {
         } else if (check(new String[] { "stat", "stats" })) {
             //NOT USED
         } else if (active.equals("rest") && World.currentMap.isMap(3, 0)) {//Check if on spawn and used rest for resting
-            MainMenu.addTemp("\nYou have rested here, your HP and Stamina have regenerated.");
+            StandardMenu.addTemp("\nYou have rested here, your HP and Stamina have regenerated.");
             Game.p.hp = Game.p.hpMax;
-            MainMenu.refreshHP();
+            StandardMenu.refreshHP();
 
         }
 
@@ -210,7 +210,7 @@ public class Commands {
             case 3:
                 break;
         }
-        MainMenu.addTemp(t);
+        StandardMenu.addTemp(t);
     }
 
     /**

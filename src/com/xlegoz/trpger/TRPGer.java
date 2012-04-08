@@ -1,6 +1,6 @@
 package com.xlegoz.trpger;
 
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 
 
 public class TRPGer {
@@ -9,7 +9,7 @@ public class TRPGer {
     public static String name = "Absolute Power";
     public static int x = 900, y = 600; //dimensions of game window
 
-    public static MainMenu m;
+    public static StandardMenu m;
 
     public static boolean threadFreeze = true;
     public static boolean menuLoaded = false;
@@ -19,7 +19,7 @@ public class TRPGer {
     public static void main(String[] args) {
         try {
 
-            MainMenu.exec();
+            StandardMenu.exec();
             Game.start();
         }
         //Catches error and prints it.

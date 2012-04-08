@@ -2,7 +2,7 @@ package com.xlegoz.trpger.entities.being;
 
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.entities.Entity;
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 import com.xlegoz.trpger.util.Formulas;
 
 
@@ -56,7 +56,7 @@ public class Player extends Entity {
         lvl++;
         spareStats += 5;
         hpMax = 86 + str + end * 5 + lvl * 8;
-        MainMenu.refreshHP();
+        StandardMenu.refreshHP();
     }
 
     /**
@@ -81,24 +81,24 @@ public class Player extends Entity {
         }
         spareStats--; //lowers spare stat point used to increase a stat
         hpMax = 86 + str + end * 5 + lvl * 8; //assigns new max health value
-        MainMenu.refreshHP(); //displays new max health value
+        StandardMenu.refreshHP(); //displays new max health value
     }
 
     //Function for using a healing item
     public void heal(int stat) {
         hp = hp + stat > hpMax ? hpMax : hp + stat; //Adds value to health and just sets to max health if increases by more than max
-        MainMenu.refreshHP(); //displays new health value
+        StandardMenu.refreshHP(); //displays new health value
     }
 
     //Function for taking damage from enemy
     public void hit(int damage) {
         hp -= damage; //reduces health
-        MainMenu.refreshHP(); //displays new health
+        StandardMenu.refreshHP(); //displays new health
         //checks to see if you die, and if true calls gameover()
         if (hp <= 0) {
             Game.done = true;
-            MainMenu.set("The " + Game.e.name + " has slain you!");
-            MainMenu.add("\n\nType 'continue' to move on in life.");
+            StandardMenu.set("The " + Game.e.name + " has slain you!");
+            StandardMenu.add("\n\nType 'continue' to move on in life.");
         }
     }
 

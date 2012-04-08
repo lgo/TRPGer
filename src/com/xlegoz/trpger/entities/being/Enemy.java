@@ -3,7 +3,7 @@ package com.xlegoz.trpger.entities.being;
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.actions.Attack;
 import com.xlegoz.trpger.entities.Monster;
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 
 public class Enemy extends Monster {
 
@@ -27,11 +27,11 @@ public class Enemy extends Monster {
         hp -= d; //reduces health by the amount of damage dealt
         hp = hp < 0 ? 0 : hp; //check to set monster hp to 0 if deals more than the remaining hp
 
-        MainMenu.set(Attack.attackDisplay(this, Attack.SPACES));//calls attackDisplay function from the Attack class.
+        StandardMenu.set(Attack.attackDisplay(this, Attack.SPACES));//calls attackDisplay function from the Attack class.
         if (hp == 0) {//if to check whether or not monster is dead and displays a message if dead.
 
-            MainMenu.add("\n\nCongragulations! You have killed the " + name + ".");
-            MainMenu.addTemp("\nType 'continue' to move on.");
+            StandardMenu.add("\n\nCongragulations! You have killed the " + name + ".");
+            StandardMenu.addTemp("\nType 'continue' to move on.");
             Game.e = null;
             return;
         }
@@ -52,7 +52,7 @@ public class Enemy extends Monster {
         }
         temp += enemyAttack();
         if (!Game.done) {
-            MainMenu.add(temp);
+            StandardMenu.add(temp);
         }
     }
 

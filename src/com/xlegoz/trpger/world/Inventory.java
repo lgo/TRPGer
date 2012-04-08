@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.entities.Item;
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 
 public class Inventory {
 
@@ -18,7 +18,7 @@ public class Inventory {
     //Instert given item into given button
     public static void insertItem(int x, int y, Item i) {
         itemCount++;
-        MainMenu.setButton(x, y, i);
+        StandardMenu.setButton(x, y, i);
         items[x][y] = i;
     }
 
@@ -32,8 +32,8 @@ public class Inventory {
 
     //Remove item from given slot
     public static void removeItem(int x, int y) {
-        MainMenu.buttons[x][y].setIcon(null);
-        MainMenu.buttons[x][y].setToolTipText(null);
+        StandardMenu.buttons[x][y].setIcon(null);
+        StandardMenu.buttons[x][y].setToolTipText(null);
         items[x][y] = null;
         nextSlot();
     }
@@ -43,8 +43,8 @@ public class Inventory {
         for (int z = 6; z > -1; z--) {
             for (int x = 4; x > -1; x--) {
                 if (items[x][z] == i) {
-                    MainMenu.buttons[x][z].setIcon(null);
-                    MainMenu.buttons[x][z].setToolTipText(null);
+                    StandardMenu.buttons[x][z].setIcon(null);
+                    StandardMenu.buttons[x][z].setToolTipText(null);
                     items[x][z] = null;
                 }
             }
@@ -80,7 +80,7 @@ public class Inventory {
     //Use potion (Remove)
     public static void useItem(int x, int y) {
         if (items[x][y].type == 1) {
-            MainMenu.addTemp("\n\nYou have drank the " + items[x][y].name + " and regained " + items[x][y].stat + " health.");
+            StandardMenu.addTemp("\n\nYou have drank the " + items[x][y].name + " and regained " + items[x][y].stat + " health.");
             Game.p.heal(items[x][y].stat);
             removeItem(x, y);
         }

@@ -3,7 +3,7 @@ package com.xlegoz.trpger.manager;
 import java.util.Random;
 
 import com.xlegoz.trpger.actions.Movement;
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 import com.xlegoz.trpger.world.Inventory;
 import com.xlegoz.trpger.world.Map;
 import com.xlegoz.trpger.world.World;
@@ -37,7 +37,7 @@ public class MapManager {
 
     //tells player that they cannot go in the direction they were trying to go.
     private static void wrongDirection(int dir) {
-        MainMenu.addTemp("\nYou cannot go " + Movement.directionToString(dir) + " from here.");
+        StandardMenu.addTemp("\nYou cannot go " + Movement.directionToString(dir) + " from here.");
     }
 
 }

@@ -6,7 +6,7 @@ import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.actions.Attack;
 import com.xlegoz.trpger.actions.Movement;
 import com.xlegoz.trpger.manager.MonsterManager;
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 import com.xlegoz.trpger.util.Commands;
 
 
@@ -79,13 +79,13 @@ public class Map {
 
     //Execute post spawn stuff
     public void postSpawn(int dir) {
-        MainMenu.set(Movement.getMovement(this, dir) + enter(true));
+        StandardMenu.set(Movement.getMovement(this, dir) + enter(true));
     }
 
     //Set entery info
     public void enter() {
-        MainMenu.set(description);
-        MainMenu.add(travelDirections());
+        StandardMenu.set(description);
+        StandardMenu.add(travelDirections());
     }
 
     //Return entry info
@@ -140,8 +140,8 @@ public class Map {
         Commands.gameState = 2;
         World.nextMap = this;
         World.nextMapInt = dir;
-        MainMenu.set(Attack.attackDisplay(Game.e, Attack.SPACES));
-        MainMenu.add(nl + Game.e.encounter);
+        StandardMenu.set(Attack.attackDisplay(Game.e, Attack.SPACES));
+        StandardMenu.add(nl + Game.e.encounter);
 
     }
 }

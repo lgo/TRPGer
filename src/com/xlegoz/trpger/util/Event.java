@@ -1,7 +1,7 @@
 package com.xlegoz.trpger.util;
 
 import com.xlegoz.trpger.manager.MapManager;
-import com.xlegoz.trpger.menu.MainMenu;
+import com.xlegoz.trpger.menu.StandardMenu;
 import com.xlegoz.trpger.world.Inventory;
 import com.xlegoz.trpger.world.World;
 
@@ -50,6 +50,6 @@ public class Event {
 
     //sets opening text after starting game
     public static void initiateFirst() {
-        MainMenu.set("You awaken, brandished of what has occured in recent moments. With complete amnesia you move forward to the edge of a tree, only to see a large spider drop down and prepare to pounce(LOLWUT?) onto you.\n\nDo you wish to engage it (Combat Tutorial)?");
+        StandardMenu.set("You awaken, brandished of what has occured in recent moments. With complete amnesia you move forward to the edge of a tree, only to see a large spider drop down and prepare to pounce(LOLWUT?) onto you.\n\nDo you wish to engage it (Combat Tutorial)?");
     }
 }
