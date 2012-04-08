@@ -3,7 +3,7 @@ package com.xlegoz.trpger.entities.being;
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.actions.Attack;
 import com.xlegoz.trpger.entities.Monster;
-import com.xlegoz.trpger.menu.StandardMenu;
+import com.xlegoz.trpger.gui.StandardMenu;
 
 public class Enemy extends Monster {
 

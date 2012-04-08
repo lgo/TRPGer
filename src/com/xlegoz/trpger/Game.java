@@ -2,12 +2,13 @@ package com.xlegoz.trpger;
 
 import com.xlegoz.trpger.entities.being.Enemy;
 import com.xlegoz.trpger.entities.being.Player;
-import com.xlegoz.trpger.menu.StandardMenu;
+import com.xlegoz.trpger.gui.StandardMenu;
 import com.xlegoz.trpger.readers.ItemReader;
 import com.xlegoz.trpger.readers.MapReader;
 import com.xlegoz.trpger.readers.MonsterReader;
 import com.xlegoz.trpger.readers.MovementReader;
 import com.xlegoz.trpger.readers.ZoneReader;
+import com.xlegoz.trpger.script.Scripts;
 import com.xlegoz.trpger.util.Save;
 import com.xlegoz.trpger.world.World;
 
@@ -61,6 +62,7 @@ public class Game {
 
     //Starts the readers for maps, zones, and others.
     private static void initFiles() {
+        Scripts.exec();
         ZoneReader.exec();
         MapReader.exec();
         MovementReader.exec();
@@ -78,7 +80,7 @@ public class Game {
         while (!TRPGer.itemsLoaded || !TRPGer.menuLoaded) {
             Thread.yield();
         }
-        //After full load
+
     }
 
     //sets menu to say game over

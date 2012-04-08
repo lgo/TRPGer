@@ -3,7 +3,7 @@ package com.xlegoz.trpger.manager;
 import java.util.Random;
 
 import com.xlegoz.trpger.actions.Movement;
-import com.xlegoz.trpger.menu.StandardMenu;
+import com.xlegoz.trpger.gui.StandardMenu;
 import com.xlegoz.trpger.world.Inventory;
 import com.xlegoz.trpger.world.Map;
 import com.xlegoz.trpger.world.World;

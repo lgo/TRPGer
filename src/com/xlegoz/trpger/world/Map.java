@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.actions.Attack;
 import com.xlegoz.trpger.actions.Movement;
+import com.xlegoz.trpger.gui.StandardMenu;
 import com.xlegoz.trpger.manager.MonsterManager;
-import com.xlegoz.trpger.menu.StandardMenu;
 import com.xlegoz.trpger.util.Commands;
 
 

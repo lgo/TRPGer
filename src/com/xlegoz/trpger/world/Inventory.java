@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.entities.Item;
-import com.xlegoz.trpger.menu.StandardMenu;
+import com.xlegoz.trpger.gui.StandardMenu;
 
 public class Inventory {
 

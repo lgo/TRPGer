@@ -1,7 +1,7 @@
 package com.xlegoz.trpger.util;
 
+import com.xlegoz.trpger.gui.StandardMenu;
 import com.xlegoz.trpger.manager.MapManager;
-import com.xlegoz.trpger.menu.StandardMenu;
 import com.xlegoz.trpger.world.Inventory;
 import com.xlegoz.trpger.world.World;
 

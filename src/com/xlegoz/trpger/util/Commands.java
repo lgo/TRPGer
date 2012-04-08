@@ -3,7 +3,7 @@ package com.xlegoz.trpger.util;
 
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.actions.Attack;
-import com.xlegoz.trpger.menu.StandardMenu;
+import com.xlegoz.trpger.gui.StandardMenu;
 import com.xlegoz.trpger.world.Inventory;
 import com.xlegoz.trpger.world.SpecialEvents;
 import com.xlegoz.trpger.world.World;

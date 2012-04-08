@@ -1,4 +1,4 @@
-package com.xlegoz.trpger.menu;
+package com.xlegoz.trpger.gui;
 
 
 import java.awt.Color;

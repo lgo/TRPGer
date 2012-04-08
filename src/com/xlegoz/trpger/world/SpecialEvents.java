@@ -1,7 +1,7 @@
 package com.xlegoz.trpger.world;
 
 import com.xlegoz.trpger.actions.Attack;
-import com.xlegoz.trpger.menu.StandardMenu;
+import com.xlegoz.trpger.gui.StandardMenu;
 import com.xlegoz.trpger.util.Commands;
 
 public class SpecialEvents {

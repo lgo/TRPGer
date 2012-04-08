@@ -2,7 +2,7 @@ package com.xlegoz.trpger.entities.being;
 
 import com.xlegoz.trpger.Game;
 import com.xlegoz.trpger.entities.Entity;
-import com.xlegoz.trpger.menu.StandardMenu;
+import com.xlegoz.trpger.gui.StandardMenu;
 import com.xlegoz.trpger.util.Formulas;
 
 
